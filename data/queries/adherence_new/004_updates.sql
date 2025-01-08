@@ -1,0 +1,1 @@
+ALTER TABLE iam_caccess ADD if not exists external boolean DEFAULT false;

@@ -1,0 +1,7 @@
+INSERT INTO hierarchy_associations (association_id, hierarchy_id, value, created_at, updated_at) VALUES ((SELECT id FROM associations_master WHERE type = 'pfmsAgencyMapping'), (SELECT id FROM hierarchy WHERE client_id = (SELECT id FROM client WHERE name = 'Nikshay') AND level = 4 AND name = 'tu'), '1', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+INSERT INTO hierarchy_associations (association_id, hierarchy_id, value, created_at, updated_at) VALUES ((SELECT id FROM associations_master WHERE type = 'handlePfmsAgencyUpdate'), (SELECT id FROM hierarchy WHERE client_id = (SELECT id FROM client WHERE name = 'Nikshay') AND level = 4 AND name = 'tu'), 'true', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+
+INSERT INTO revinfo (rev, revtstmp) VALUES ((SELECT GREATEST(0, MAX(rev)) + 1 FROM revinfo), "TIMESTAMP_DATE_TIME_PLUS_16_MINUTE");
+
+INSERT INTO hierarchy_associations_aud (id, rev, revtype, value) VALUES ((SELECT id FROM hierarchy_associations WHERE hierarchy_id = (SELECT id FROM hierarchy WHERE level = 4 AND name = 'tu') AND association_id = (SELECT id FROM associations_master WHERE type = 'pfmsAgencyMapping')), (SELECT MAX(rev) from revinfo), 0, '1');
+INSERT INTO hierarchy_associations_aud (id, rev, revtype, value) VALUES ((SELECT id FROM hierarchy_associations WHERE hierarchy_id = (SELECT id FROM hierarchy WHERE level = 4 AND name = 'tu') AND association_id = (SELECT id FROM associations_master WHERE type = 'handlePfmsAgencyUpdate')), (SELECT MAX(rev) from revinfo), 0, 'true');

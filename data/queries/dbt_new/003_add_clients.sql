@@ -1,0 +1,1 @@
+INSERT INTO x_client (id, eventflowid, createddate, name, password) VALUES (29, null, 'UTC_DATE_TIME_PLUS_0_DAY', 'Nikshay', '$2a$10$BJZ1a5evUzOb8zOQNU.PQ.XSHhPT.km4cZJiZ3KyeeytSeaWgMiXy');

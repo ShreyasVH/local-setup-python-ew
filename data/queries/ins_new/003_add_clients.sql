@@ -1,0 +1,2 @@
+INSERT INTO ins_client (id, event_flow_id, created_date, name, password) VALUES (63, null, NOW(), 'Hub', '$2a$10$DXcex4GtuUQTHGkooIO1BO7J5yy35gPdNVk/Oo.gViayXyDkUQrr.');
+INSERT INTO ins_client (id, event_flow_id, created_date, name, password) VALUES (29, null, NOW(), 'Nikshay', '$2a$10$sI3ScCJ9mwx9jzKJ8fBcCOUrMsJKIa9MkmsPE8kvn3ZluHMNMr2ky');

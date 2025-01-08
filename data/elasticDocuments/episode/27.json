@@ -1,0 +1,128 @@
+{
+  "_class": "com.everwell.transition.elasticsearch.indices.EpisodeIndex",
+  "id": 27,
+  "clientId": 29,
+  "personId": 69,
+  "deleted": false,
+  "diseaseIdOptions": "1,2",
+  "createdDate": "UTC_DATE_TIME_PLUS_0_DAY",
+  "currentStageId": 4,
+  "addedBy": 9,
+  "stageKey": "DIAGNOSED_ON_TREATMENT_PUBLIC",
+  "stageName": "On Treatment (Notified)",
+  "typeOfEpisode": "IndiaTbPublic",
+  "lastActivityDate": "UTC_DATE_TIME_PLUS_10_MINUTE",
+  "hierarchyMappings": {
+    "current_all": [
+      5,
+      1,
+      2,
+      3,
+      4
+    ],
+    "enrollment_all": [
+      5,
+      1,
+      2,
+      3,
+      4
+    ],
+    "current": 5,
+    "residence": 5,
+    "residence_all": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "enrollment": 5,
+    "diagnosed_all": [
+      10,
+      1,
+      2,
+      3,
+      4
+    ],
+    "diagnosed": 10,
+    "initiation": 5,
+    "initiation_all": [
+      5,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "associations": {
+    "deploymentCode": "IND",
+    "beneficiaryId": "27"
+  },
+  "stageData": {
+    "adherenceDispensationRelation": "true",
+    "lastName": "Old Benefit",
+    "occupation": "Unknown",
+    "gender": "Male",
+    "emailList": [],
+    "typeOfCaseFinding": "Passive (Routine programme)",
+    "verifications": [],
+    "foregoBenefits": "false",
+    "socioEconomicStatus": "Unknown",
+    "isEpisodeEnabled": true,
+    "addedByType": "USER_ACCESS",
+    "isIAMEnabled": "true",
+    "hivTestStatus": "Unknown",
+    "area": "Unknown",
+    "pincode": 999999,
+    "address": "Address",
+    "addedBy": 9,
+    "externalIds": [],
+    "primaryPhoneNumber": "9999999937",
+    "dateOfBirth": 946684800000,
+    "keyPopulation": "Not Applicable",
+    "treatmentPhase": "IP",
+    "firstName": "NS",
+    "mobileList": [
+      {
+        "id": 75,
+        "userId": 69,
+        "number": "9999999937",
+        "createdAt": "TIMESTAMP_DATE_TIME_PLUS_0_DAY",
+        "updatedAt": "TIMESTAMP_DATE_TIME_PLUS_0_DAY",
+        "primary": true,
+        "verified": false
+      }
+    ],
+    "symptom": "Asymptomatic,",
+    "name": "NS Old Benefit",
+    "dataConsent": false,
+    "maritalStatus": "Unknown",
+    "age": 24,
+    "positiveTestDiseaseIdsMapping": [
+      2
+    ],
+    "treatmentStartTimeStamp": "UTC_DATE_MINUS_89_DAY",
+    "typeOfCase": "New",
+    "duplicateStatus": "SYSTEM_IDENTIFIED_UNIQUE",
+    "typeOfDOT": "",
+    "siteOfDisease": "Pulmonary",
+    "diagnosisBasis": "Microscopy ZN",
+    "drugResistance": "Unknown",
+    "diagnosisDate": "UTC_DATE_MINUS_90_DAY",
+    "notificationTestId": "10",
+    "regimenType": "2HRZE/4HRE",
+    "epSite": "",
+    "monitoringMethod": "None",
+    "weight": 50,
+    "height": 100
+  },
+  "currentTags": [],
+  "endDate": "UTC_DATE_PLUS_79_DAY",
+  "currentHierarchyDetails": {
+    "hasChildren": false,
+    "active": false
+  },
+  "disease": "Drug Sensitive Tuberculosis",
+  "diseaseId": 2,
+  "startDate": "UTC_DATE_MINUS_89_DAY"
+}

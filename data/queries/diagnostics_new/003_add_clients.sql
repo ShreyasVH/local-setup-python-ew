@@ -1,0 +1,2 @@
+INSERT INTO client (id, access_token, created_date, event_flow_id, matomo_site_id, matomo_url, name, next_refresh, password, updated_date) VALUES (63, null, NOW(), null, null, null, 'Hub', null, '$2a$10$ZA.0DbJXTlLc6GJfPCrBhuei.lAHly9F8VnBxAhqa.4VnrBjO2Vne', null);
+INSERT INTO client (id, access_token, created_date, event_flow_id, matomo_site_id, matomo_url, name, next_refresh, password, updated_date) VALUES (29, null, NOW(), null, null, null, 'Nikshay', null, '$2a$10$ZA.0DbJXTlLc6GJfPCrBhuei.lAHly9F8VnBxAhqa.4VnrBjO2Vne', null);

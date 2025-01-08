@@ -1,0 +1,1 @@
+create table sso_inactive_session( id int8 not null, archived_at timestamp, created_at timestamp, device_id varchar(255), end_session timestamp, ip_address varchar(255), is_active boolean, last_activity_date timestamp, referrer varchar(255), source varchar(255), sso_user_id int8, updated_at timestamp, user_agent varchar(255), primary key (id));

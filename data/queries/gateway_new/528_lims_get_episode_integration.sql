@@ -1,0 +1,4 @@
+UPDATE client SET accessible_client = 29, ip = '12.34.56.78' WHERE client_name = 'lims';
+
+INSERT INTO event_client (client_id, event_id, response_type, active) VALUES ((SELECT id FROM client WHERE client_name = 'lims'), (SELECT id FROM event WHERE event_name = 'GET_EPISODE'), 'SIMPLE_JSON_RESPONSE', true);
+INSERT INTO subscriber_url (created_at, is_enabled, updated_at, url, event_client_id, request_method) VALUES ('UTC_DATE_TIME_PLUS_2_MINUTE', true, 'UTC_DATE_TIME_PLUS_2_MINUTE', '/registry/v1/user/episode', (SELECT id FROM event_client WHERE client_id = (SELECT id FROM client WHERE client_name = 'lims') AND event_id = (SELECT id FROM event WHERE event_name = 'GET_EPISODE')), 'POST');

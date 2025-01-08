@@ -1,0 +1,442 @@
+{
+  "iam": {
+    "port": 9090,
+    "internalPort": 9090,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/everwell/iam-backend/",
+    "serverType": "",
+    "checkUrl": "/actuator/health",
+    "databases": [
+      {
+        "name": "adherence_new",
+        "type": "postgres",
+        "additionalQueries": [
+          "400_foreign_keys.sql"
+        ]
+      }
+    ],
+    "queues": [
+      "q.iam.process_call"
+    ],
+    "exchanges": [
+      {
+        "name": "direct",
+        "type": "direct",
+        "queues": [
+          {
+            "name": "q.iam.process_call",
+            "routingKey": "q.iam.process_call"
+          }
+        ]
+      }
+    ]
+  },
+  "sso": {
+    "port": 9098,
+    "internalPort": 9098,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/everwell/ssologin/",
+    "serverType": "",
+    "checkUrl": "/actuator/health",
+    "databases": [
+      {
+        "name": "sso_new",
+        "type": "postgres",
+        "additionalQueries": [
+          "400_foreign_keys.sql"
+        ]
+      }
+    ]
+  },
+  "ins": {
+    "port": 9101,
+    "internalPort": 9101,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/everwell/ins/",
+    "serverType": "",
+    "checkUrl": "/actuator/health",
+    "databases": [
+      {
+        "name": "ins_new",
+        "type": "postgres",
+        "additionalQueries": [
+          "400_foreign_keys.sql"
+        ]
+      }
+    ],
+    "queues": [
+      "q.ins.process_sms"
+    ],
+    "exchanges": [
+      {
+        "name": "ins-sms-input",
+        "type": "topic",
+        "queues": [
+          {
+            "name": "q.ins.process_sms",
+            "routingKey": "#"
+          }
+        ]
+      }
+    ]
+  },
+  "dispensation": {
+    "port": 9080,
+    "internalPort": 9080,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/everwell/dispensation-service/",
+    "serverType": "",
+    "checkUrl": "/actuator/health",
+    "databases": [
+      {
+        "name": "dispensation_new",
+        "type": "postgres",
+        "additionalQueries": [
+          "400_foreign_keys.sql"
+        ]
+      }
+    ],
+    "queues": [
+      "q.dg.disp_add_products",
+      "q.disp.share_dispensation",
+      "q.dg.disp_product_search"
+    ],
+    "exchanges": [
+      {
+        "name": "share-dispensation",
+        "type": "topic",
+        "queues": [
+          {
+            "name": "q.disp.share_dispensation",
+            "routingKey": "Ds_details_29"
+          }
+        ]
+      },
+      {
+        "name": "direct-incoming",
+        "type": "direct",
+        "queues": [
+          {
+            "name": "q.dg.disp_product_search",
+            "routingKey": "q.dg.disp_product_search"
+          }
+        ]
+      }
+    ]
+  },
+  "diagnostics": {
+    "port": 9555,
+    "internalPort": 9555,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/everwell/diagnosticsBackend/",
+    "serverType": "",
+    "checkUrl": "/actuator/health",
+    "databases": [
+      {
+        "name": "diagnostics_new",
+        "type": "postgres",
+        "additionalQueries": [
+          "400_foreign_keys.sql"
+        ]
+      }
+    ],
+    "queues": [
+      "q.diagnostics.sample_state_event_queue"
+    ]
+  },
+  "person": {
+    "port": 9099,
+    "internalPort": 9099,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/everwell/UserService/",
+    "serverType": "",
+    "checkUrl": "/actuator/health",
+    "databases": [
+      {
+        "name": "user_service_new",
+        "type": "postgres",
+        "additionalQueries": [
+          "400_foreign_keys.sql"
+        ]
+      }
+    ],
+    "queues": [
+      "abdm_add_update_consent"
+    ],
+    "exchanges": [
+      {
+        "name": "userservice.user_exchange",
+        "type": "direct",
+        "queues": [
+          {
+            "name": "abdm_add_update_consent",
+            "routingKey": "abdm-add-update-consent"
+          }
+        ]
+      }
+    ]
+  },
+  "dataGateway": {
+    "port": 9999,
+    "internalPort": 9999,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/everwell/data-gateway/",
+    "serverType": "",
+    "checkUrl": "/actuator/health",
+    "databases": [
+      {
+        "name": "gateway_new",
+        "type": "postgres",
+        "additionalQueries": [
+          "400_foreign_keys.sql"
+        ]
+      }
+    ],
+    "queues": [
+      "q.dg.abdm_data_exchange_gateway",
+      "abdm_link_care_context",
+      "abdm_care_context_notify",
+      "abdm_notify_via_sms",
+      "q.disp.share_dispensation_datagateway",
+      "q.dg.dlq",
+      "q.dg.share_merm_event",
+      "patient_enrollment_gramener",
+      "q.dg.ref_id_reply_queue",
+      "q.dg.initiate_consent_request",
+      "abdm_add_update_consent",
+      "q.dg.ecbss_adherence_data",
+      "q.dg.add_test",
+      "q.dg.abdm_add_update_consent",
+      "q.dg.add_patient",
+      "q.dg.abdm_data_exchange",
+      "q.dg.update_episode"
+    ],
+    "exchanges": [
+      {
+        "name": "direct-incoming",
+        "type": "direct",
+        "queues": [
+          {
+            "name": "q.dg.add_test",
+            "routingKey": "q.dg.add_test"
+          },
+          {
+            "name": "q.dg.abdm_add_update_consent",
+            "routingKey": "q.dg.abdm_add_update_consent"
+          },
+          {
+            "name": "q.dg.add_patient",
+            "routingKey": "q.dg.add_patient"
+          },
+          {
+            "name": "q.dg.abdm_data_exchange",
+            "routingKey": "q.dg.abdm_data_exchange"
+          },
+          {
+            "name": "q.dg.update_episode",
+            "routingKey": "q.dg.update_episode"
+          }
+        ]
+      }
+    ]
+  },
+  "registry": {
+    "port": 9210,
+    "internalPort": 9210,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/everwell/registryservice/",
+    "serverType": "",
+    "checkUrl": "/actuator/health",
+    "databases": [
+      {
+        "name": "registry_new",
+        "type": "postgres",
+        "additionalQueries": [
+          "400_foreign_keys.sql"
+        ]
+      },
+      {
+        "name": "jobrunr",
+        "type": "postgres"
+      }
+    ],
+    "queues": [
+      "q.dg.add_merm_entity_mapping",
+      "q.dg.deallocate_merm_entity_mapping",
+      "q.dg.update_merm_entity_mapping",
+      "q.dg.disp_stock_search",
+      "q.dg.add_test",
+      "q.dg.get_test_id",
+      "q.dg.get_test_patient_id",
+      "q.dg.update_test",
+      "q.iam.process_unregistered_call",
+      "q.registry.last_dosage",
+      "q.iam.process_phone_call",
+      "q.dg.disp_stock_debit",
+      "q.dg.disp_stock_credit",
+      "q.registry.process_call"
+    ],
+    "exchanges": [
+      {
+        "name": "direct",
+        "type": "direct",
+        "queues": [
+          {
+            "name": "q.dg.ref_id_reply_queue",
+            "routingKey": "update-episode"
+          }
+        ]
+      }
+    ]
+  },
+  "episode": {
+    "port": 8787,
+    "internalPort": 8787,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/everwell/transition-service/",
+    "serverType": "",
+    "checkUrl": "/actuator/health",
+    "databases": [
+      {
+        "name": "transition_new",
+        "type": "postgres",
+        "additionalQueries": [
+          "400_foreign_keys.sql"
+        ]
+      }
+    ],
+    "queues": [
+      "q.episode.client.add_episode",
+      "q.episode.update_tracker",
+      "q.episode.episodeDoseReminder",
+      "q.episode.refreshTagForAllEpisodes"
+    ],
+    "indices": [
+      "episode"
+    ]
+  },
+  "nikshay": {
+    "port": 80,
+    "internalPort": 59992,
+    "host": "nikshay.local.everwell.org",
+    "protocol": "http",
+    "databases": [
+      {
+        "name": "nikshay_new",
+        "type": "mssql",
+        "additionalQueries": [
+          "400_foreign_keys_nikshay.sql"
+        ]
+      },
+      {
+        "name": "nikshay_archival_new",
+        "type": "mssql"
+      },
+      {
+        "name": "nikshay_reports_webservice_new",
+        "type": "mssql"
+      },
+      {
+        "name": "nikshay_reports_new",
+        "type": "mssql"
+      }
+    ],
+    "queues": [
+      "q.nikshay.add_test"
+    ],
+    "exchanges": [
+      {
+        "name": "direct",
+        "type": "direct",
+        "queues": [
+          {
+            "name": "q.episode.client.add_episode",
+            "routingKey": "q.episode.client.add_episode"
+          },
+          {
+            "name": "q.ins.process_sms",
+            "routingKey": "q.ins.process_sms"
+          },
+          {
+            "name": "q.episode.update_tracker",
+            "routingKey": "q.episode.update_tracker"
+          },
+          {
+            "name": "q.dg.ref_id_reply_queue",
+            "routingKey": "add-test"
+          },
+          {
+            "name": "q.dg.ref_id_reply_queue",
+            "routingKey": "add-patient"
+          },
+          {
+            "name": "q.nikshay.add_test",
+            "routingKey": "q.nikshay.add_test"
+          }
+        ]
+      }
+    ]
+  },
+  "hub": {
+    "databases": [
+      {
+        "name": "hub_new",
+        "type": "mssql"
+      }
+    ]
+  },
+  "pfms_webservice": {
+    "databases": [
+      {
+        "name": "pfms_new",
+        "type": "postgres"
+      }
+    ]
+  },
+  "interceptor": {
+    "port": 9070,
+    "internalPort": 9070,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/myProjects/java/play/interceptor/",
+    "serverType": "",
+    "checkUrl": "/",
+    "databases": [],
+    "queues": [],
+    "indices": []
+  },
+  "dbt": {
+    "port": 1276,
+    "internalPort": 1276,
+    "host": "localhost",
+    "protocol": "http",
+    "deployPath": "/Users/shreyas/workspace/everwell/dbt-service/",
+    "serverType": "",
+    "checkUrl": "/actuator/health",
+    "databases": [
+      {
+        "name": "dbt_new",
+        "type": "postgres",
+        "additionalQueries": [
+          "400_foreign_keys.sql"
+        ]
+      }
+    ]
+  },
+  "nikshay_webapp": {
+    "port": 58227,
+    "internalPort": 58227,
+    "host": "host.docker.internal",
+    "protocol": "http",
+    "databases":  []
+  }
+}

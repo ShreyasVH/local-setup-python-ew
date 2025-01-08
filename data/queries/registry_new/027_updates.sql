@@ -1,0 +1,1 @@
+alter table field alter column label type text using label::text;

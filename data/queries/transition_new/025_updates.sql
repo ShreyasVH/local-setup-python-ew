@@ -1,0 +1,1 @@
+alter table if exists client add column vot_unique_type varchar(255);

@@ -1,0 +1,3 @@
+CREATE TABLE flyway_schema_history( installed_rank int4 NOT NULL, "version" varchar(50) NULL, description varchar(200) NOT NULL, "type" varchar(20) NOT NULL, script varchar(1000) NOT NULL, checksum int4 NULL, installed_by varchar(100) NOT NULL, installed_on timestamp NOT NULL DEFAULT now(), execution_time int4 NOT NULL, success bool NOT NULL, CONSTRAINT flyway_schema_history_pk PRIMARY KEY (installed_rank));
+
+CREATE SEQUENCE hibernate_sequence START 1;

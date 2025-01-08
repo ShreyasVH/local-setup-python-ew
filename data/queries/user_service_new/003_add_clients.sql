@@ -1,0 +1,2 @@
+INSERT INTO user_client (id, created_date, event_flow_id, name, password) VALUES (63, NOW(), null, 'Hub', '$2a$10$c4z64JPHNagEUWc0O/iype7640a89H9wuVXYDZUZKvUUad5bKKGd2');
+INSERT INTO user_client (id, created_date, event_flow_id, name, password) VALUES (29, NOW(), null, 'Nikshay', '$2a$10$px5.jt5hUr1jqIcphLd5Me7.LFwTgw4U/Lbo4rJu9f51z1ZGTbaoS');

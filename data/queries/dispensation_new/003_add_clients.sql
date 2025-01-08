@@ -1,0 +1,2 @@
+INSERT INTO ds_client (id, created_date, name, password, event_flow_id) VALUES (63, NOW(), 'Hub', '$2a$10$ECN79N5hpY1rc.aUYlaXdOY.D8K2M6BYK0G.aYUHeRo.AwfR7MUUG', null);
+INSERT INTO ds_client (id, created_date, name, password, event_flow_id) VALUES (29, NOW(), 'Nikshay', '$2a$10$YjhC9lurGk1mEMUjXk4XBO59kMAfxppvwmoD6p3EUDN5uGu0xr5L.', null);

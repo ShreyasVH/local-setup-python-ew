@@ -1,0 +1,136 @@
+{
+  "_class": "com.everwell.transition.elasticsearch.indices.EpisodeIndex",
+  "id": 3,
+  "clientId": 29,
+  "personId": 45,
+  "riskStatus": null,
+  "deleted": false,
+  "diseaseIdOptions": "1,2",
+  "createdDate": "UTC_DATE_TIME_PLUS_0_DAY",
+  "currentStageId": 3,
+  "currentTags": [
+  ],
+  "endDate": null,
+  "addedBy": 9,
+  "stageKey": "DIAGNOSED_NOT_ON_TREATMENT",
+  "stageName": "Diagnosed But Pending Treatment (Notified)",
+  "typeOfEpisode": "IndiaTbPublic",
+  "lastActivityDate": "UTC_DATE_TIME_PLUS_5_MINUTE",
+  "hierarchyMappings": {
+    "current_all": [
+      5,
+      1,
+      2,
+      3,
+      4
+    ],
+    "enrollment_all": [
+      5,
+      1,
+      2,
+      3,
+      4
+    ],
+    "current": 5,
+    "residence": 5,
+    "residence_all": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "enrollment": 5,
+    "diagnosed_all": [
+      10,
+      1,
+      2,
+      3,
+      4
+    ],
+    "diagnosed": 10
+  },
+  "associations": {
+    "deploymentCode": "IND",
+    "beneficiaryId": "3",
+    "notificationTestId": "1"
+  },
+  "stageData": {
+    "adherenceDispensationRelation": "true",
+    "lastName": "Not on Treatment Public",
+    "occupation": "Unknown",
+    "gender": "Male",
+    "emailList": [],
+    "typeOfCaseFinding": "Passive (Routine programme)",
+    "foregoBenefits": "false",
+    "socioEconomicStatus": "Unknown",
+    "isEpisodeEnabled": true,
+    "isIAMEnabled": "false",
+    "isDuplicate": null,
+    "hivTestStatus": "Unknown",
+    "area": "Unknown",
+    "pincode": 999999,
+    "address": "Address",
+    "addedBy": 9,
+    "primaryPhoneNumber": "9999999959",
+    "dateOfBirth": 946684800000,
+    "keyPopulation": "Not Applicable",
+    "treatmentPhase": "IP",
+    "firstName": "Diagnosed",
+    "mobileList": [
+      {
+        "id": 51,
+        "userId": 45,
+        "number": "9999999959",
+        "primary": true,
+        "verified": false,
+        "createdAt": "TIMESTAMP_DATE_TIME_PLUS_0_DAY",
+        "updatedAt": "TIMESTAMP_DATE_TIME_PLUS_0_DAY",
+        "stoppedAt": null,
+        "owner": null
+      }
+    ],
+    "symptom": "Asymptomatic,",
+    "name": "Diagnosed Not on Treatment Public",
+    "dataConsent": false,
+    "age": 24,
+    "maritalStatus": "Unknown",
+    "externalIds": [],
+    "verifications": [],
+    "addedByType": "USER_ACCESS",
+    "notificationTestId": 1,
+    "duplicateStatus": "SYSTEM_IDENTIFIED_UNIQUE",
+    "typeOfCase": "New",
+    "diagnosisDate": "UTC_DATE_MINUS_3_DAY",
+    "diagnosisBasis": "Microscopy ZN",
+    "drugResistance": "Unknown",
+    "typeOfDOT": null,
+    "tbCategory": null,
+    "transferId": null,
+    "treatmentOutcome": null,
+    "refillMonitoring": null,
+    "positiveTestDiseaseIdsMapping": [
+      2
+    ],
+    "monthsOfTreatment": null,
+    "monthsSinceEpisode": null,
+    "latitude": null,
+    "longitude": null,
+    "householdVisits": null,
+    "engagementExists": null,
+    "duplicateOf": null,
+    "diabetesStatus": null,
+    "callCenterCalls": null,
+    "endOfIp": null,
+    "epSite": null,
+    "regimenType": null,
+    "siteOfDisease": null,
+    "treatmentStartTimeStamp": null,
+    "treatmentType": null,
+    "vaccinationDate": null
+  },
+  "currentHierarchyDetails": {
+    "active": false,
+    "hasChildren": false
+  }
+}

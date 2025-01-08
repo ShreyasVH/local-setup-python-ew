@@ -1,0 +1,7 @@
+pika
+pyodbc
+psycopg2-binary
+requests
+tabulate
+redis
+pytz

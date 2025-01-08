@@ -1,0 +1,3 @@
+INSERT INTO _DeploymentTrigger (HierarchyId, TriggerId, DefaultTemplateId, TemplateIds, CronTime, EventName, EventType, Mandatory, EntityTimeRelated, NotificationType) VALUES ((SELECT Id FROM Foreign_Hierarchies WHERE Name = 'India' AND Level = 1), (SELECT Id FROM Foreign_Ins_Triggers WHERE Name = 'Username New Facility'), (SELECT Id FROM Foreign_Ins_Templates WHERE Content = 'Your Username is %(user). Use the Id and the password you set while registering, to login to Nikshay platform. CTD-MoHFW www.nikshay.in'), null, null, N'Confirmation_To_User', null, 1, 0, N'DEFAULT');
+
+INSERT INTO _VendorMapping (VendorId, DeploymentCode, NotificationType) VALUES ((SELECT Id FROM Foreign_Ins_Vendor WHERE Gateway = 'PLIVO'), N'IND', N'OTP');

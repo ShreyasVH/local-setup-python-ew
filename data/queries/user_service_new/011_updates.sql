@@ -1,0 +1,1 @@
+alter table verifications alter column entity_value type varchar(510) using entity_value::varchar(510);

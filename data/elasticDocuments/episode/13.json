@@ -1,0 +1,95 @@
+{
+    "_class": "com.everwell.transition.elasticsearch.indices.EpisodeIndex",
+    "addedBy": 9,
+    "associations": {
+        "beneficiaryId": "13",
+        "deploymentCode": "IND",
+        "tbWinReferenceId": "1"
+    },
+    "clientId": 29,
+    "createdDate": "UTC_DATE_TIME_PLUS_0_DAY",
+    "currentStageId": 1,
+    "currentTags": [
+    ],
+    "deleted": false,
+    "diseaseIdOptions": "1,2,3",
+    "hierarchyMappings": {
+        "current": 5,
+        "current_all": [
+            5,
+            1,
+            2,
+            3,
+            4
+        ],
+        "enrollment": 5,
+        "enrollment_all": [
+            5,
+            1,
+            2,
+            3,
+            4
+        ],
+        "residence": 5,
+        "residence_all": [
+            1,
+            2,
+            3,
+            4,
+            5
+        ]
+    },
+    "id": "13",
+    "lastActivityDate": "UTC_DATE_TIME_PLUS_0_DAY",
+    "personId": 55,
+    "stageData": {
+        "adherenceDispensationRelation": "true",
+        "addedBy": 9,
+        "addedByType": "USER_ACCESS",
+        "address": "Address",
+        "age": 24,
+        "area": "Unknown",
+        "dataConsent": false,
+        "dateOfBirth": 946684800000,
+        "emailList": [
+        ],
+        "externalIds": [
+        ],
+        "foregoBenefits": "false",
+        "firstName": "Vaccination",
+        "gender": "Male",
+        "hivTestStatus": "Unknown",
+        "isIAMEnabled": "false",
+        "isEpisodeEnabled": true,
+        "keyPopulation": "H/o Adult BCG Vaccination",
+        "lastName": "Followup One",
+        "maritalStatus": "Unknown",
+        "mobileList": [
+            {
+                "createdAt": "TIMESTAMP_DATE_TIME_PLUS_0_DAY",
+                "id": 61,
+                "number": "9999999933",
+                "owner": null,
+                "primary": true,
+                "stoppedAt": null,
+                "updatedAt": "TIMESTAMP_DATE_TIME_PLUS_0_DAY",
+                "userId": 55,
+                "verified": false
+            }
+        ],
+        "name": "Vaccination Followup One",
+        "occupation": "Unknown",
+        "pincode": 999999,
+        "primaryPhoneNumber": "9999999933",
+        "socioEconomicStatus": "Unknown",
+        "symptom": "Asymptomatic,",
+        "treatmentPhase": "IP",
+        "typeOfCaseFinding": "Passive (Routine programme)",
+        "vaccinationDate": "UTC_DATE_MINUS_30_DAY",
+        "verifications": [
+        ]
+    },
+    "stageKey": "PRESUMPTIVE_OPEN_PUBLIC",
+    "stageName": "Presumptive (Open)",
+    "typeOfEpisode": "IndiaTbPublic"
+}

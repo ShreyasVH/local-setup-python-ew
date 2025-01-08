@@ -1,0 +1,1 @@
+INSERT INTO sso_user (created_at, password, password_last_updated, salt, updated_at, user_name) VALUES ('UTC_DATE_TIME_PLUS_0_DAY', 'ea32961dbd579ef5697c367f9267921ee07f14d77fb2d4fb9500d4221d615695', 'UTC_DATE_TIME_PLUS_0_DAY', 'salt', 'UTC_DATE_TIME_PLUS_0_DAY', '10');

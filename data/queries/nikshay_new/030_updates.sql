@@ -1,0 +1,1 @@
+alter table [_BenefitsBatch] add CreatedAt datetime NULL;

@@ -1,0 +1,1 @@
+alter table hierarchy_benefit_status_aud add column version int8;

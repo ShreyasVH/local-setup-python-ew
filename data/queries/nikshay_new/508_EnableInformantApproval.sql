@@ -1,0 +1,1 @@
+INSERT INTO _DeploymentTrigger (HierarchyId, TriggerId, DefaultTemplateId, TemplateIds, CronTime, EventName, EventType, Mandatory, EntityTimeRelated, NotificationType) VALUES (1, 6, 5, null, null, N'OTP_Benificiary_Approval', null, 1, 0, N'DEFAULT');

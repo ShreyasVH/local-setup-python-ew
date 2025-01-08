@@ -1,0 +1,53 @@
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0155 - Informant changes - Add Status & Id in Beneficiary.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0162 - Add New PNs.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0164 - Add IsEpisodeEnabled to Patient.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0165 - Add New PNs.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0166 - Add Config for Risk Stratification.sql', N'2024-01-27 11:25:29.360');
+
+ALTER TABLE [_PatientEngagementConfig] DROP CONSTRAINT IF EXISTS [FK__PatientEngagementConfig.PatientId];
+ALTER TABLE [_Comorbidity] DROP CONSTRAINT If exists [FK___Comorbid__Patie__56B3DD81];
+ALTER TABLE [_ContactTracing] DROP CONSTRAINT If exists [FK___ContactT__Patie__3F6663D5];
+ALTER TABLE [_ContactTracingContact] DROP CONSTRAINT If exists [FK_ContactTracingContact_Patient];
+ALTER TABLE [_ContactTracingContact] DROP CONSTRAINT If exists [FK_ContactTracingContact_Contact];
+ALTER TABLE [_PatientFollowUp] DROP CONSTRAINT If exists [FK__PatientFollowUp.PatientId];
+ALTER TABLE [_PatientFieldStaffMap] DROP CONSTRAINT If exists [FK___PatientF__Patie__29221CFB];
+ALTER TABLE [_TransferInOut] DROP CONSTRAINT If exists [FK___Transfer__Patie__607D3EDD];
+
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0172 - Drop FK mappings for Patient related tables.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0172 - Update Dispensation FormPart Label.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0173 - Update in _Field component and FieldOption.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0174 - Add new OTP template for Data consent.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0175 - Add TPT fields.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0176 - Migration for Regimen type values.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0176 - Update Field Validation list.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0176 - Updating Patient Age Values.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0179 - Inventory_management_dynamic_form.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0180 - Add Config MermMappingLevel and HasMerm.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0180 - Add Configs for DOB in enrollment form.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0182 - Add Seeded_at column.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0182 - Remove _Hierarchy foreign constraints.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0182 - Update Lookups for PatientSector.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0182 - Update_Notified_Stages_Config.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0183 - Benefit Batch Configs.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0184 - Copy HasMerm values to _HierarchyConfigMap.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0184 - Update informant email validation.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0185 - Add Config STATE_LEVEL_CONTROL_BENEFIT_BATCH.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0186 - Update_dispensation_form_issusing_facility_field.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0187 - Update Refugee to Illegal immigrants.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0188 - Add Cy-Tb Test Type in Basis of Diagnosis.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0190 - Update_treatment_details_form.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0191 - Update_treatment_details_form_fixes.sql', N'2024-01-27 11:25:29.360');
+
+drop table _Hierarchy;
+ALTER TABLE _Benefit DROP CONSTRAINT IF EXISTS FK_PatientEpisodeId;
+
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0192 - Remove _Hierarchy table.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Script0192 - View and Edit Treatment details form changes for BasisOfDiagnosis.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Spript0163 - Correct default visibility for add adverse event.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Spript0171 - Add FieldDependencies for Informant Registration Page.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Spript0171 - Config for generate benefit job.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Spript0172 - Add new configs.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Spript0173 - Add new Config BeneficiaryMigrationBatchSize.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Spript0181 - Config for generate NS benefit job.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Spript0182 - Remove constraint FK_PatientEpisodeId.sql', N'2024-01-27 11:25:29.360');
+INSERT INTO SchemaVersions (ScriptName, Applied) VALUES (N'AdherentLibrary.Migrations.Spript0183 - Update basisOfDiagnosis option.sql', N'2024-01-27 11:25:29.360');

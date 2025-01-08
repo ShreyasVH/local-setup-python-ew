@@ -1,0 +1,71 @@
+{
+  "_class": "com.everwell.transition.elasticsearch.indices.EpisodeIndex",
+  "id": "10",
+  "clientId": 63,
+  "personId": 11,
+  "deleted": false,
+  "diseaseId": 4,
+  "diseaseIdOptions": "4",
+  "createdDate": "UTC_DATE_TIME_PLUS_0_DAY",
+  "currentStageId": 9,
+  "addedBy": 1,
+  "stageKey": "ON_TREATMENT",
+  "stageName": "Treatment",
+  "typeOfEpisode": "PublicPrivatePartnership",
+  "endDate": "UTC_DATE_PLUS_166_DAY",
+  "startDate": "UTC_DATE_MINUS_3_DAY",
+  "lastActivityDate": "UTC_DATE_TIME_PLUS_0_DAY",
+  "hierarchyMappings": {
+    "current_all": [
+      38,
+      35,
+      36,
+      37
+    ],
+    "current": 38,
+    "initiation": 38,
+    "initiation_all": [
+      38,
+      35,
+      36,
+      37
+    ],
+    "residence": 38,
+    "residence_all": [
+      38,
+      35,
+      36,
+      37
+    ]
+  },
+  "associations": {
+    "deploymentCode": "DEMOC"
+  },
+  "stageData": {
+    "firstName": "On",
+    "lastName": "Treatment",
+    "mobileList": [
+      {
+        "id": 8,
+        "userId": 8,
+        "number": "9999999951",
+        "createdAt": "TIMESTAMP_DATE_TIME_PLUS_0_DAY",
+        "updatedAt": "TIMESTAMP_DATE_TIME_PLUS_0_DAY",
+        "stoppedAt": null,
+        "owner": null,
+        "primary": true,
+        "verified": false
+      }
+    ],
+    "treatmentStartTimeStamp": "UTC_DATE_MINUS_2_DAY",
+    "weightBand": "2",
+    "name": "On Treatment",
+    "primaryPhoneNumber": "9999999951",
+    "isEpisodeEnabled": true,
+    "isIAMEnabled": "true",
+    "monitoringMethod": "None"
+  },
+  "currentTags": [
+    "New_Enrollment"
+  ]
+}

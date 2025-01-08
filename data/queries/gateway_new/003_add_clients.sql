@@ -1,0 +1,1 @@
+INSERT INTO client (auth_token_for_proxy, created_at, failure_email, password, updated_at, client_name) VALUES (null, NOW(), 'shreyas@everwell.org', '$2a$10$dic4QhTs7rLTcmDajicShuKqdt8GERlYUliIWxxJT72HKsGrGlfii', NOW(), 'internal_client');

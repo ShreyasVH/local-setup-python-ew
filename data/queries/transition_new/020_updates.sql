@@ -1,0 +1,1 @@
+ALTER TABLE episode_hierarchy_linkage ALTER COLUMN hierarchy_id TYPE VARCHAR(255);

@@ -1,0 +1,1 @@
+ALTER TABLE tab_permission ADD COLUMN IF NOT EXISTS type_of_episode varchar(255) default NULL;

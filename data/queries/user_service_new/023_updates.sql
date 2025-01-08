@@ -1,0 +1,1 @@
+alter table if exists user_medical_records add column hiu_nonce varchar(255);

@@ -1,0 +1,100 @@
+{
+  "_class": "com.everwell.transition.elasticsearch.indices.EpisodeIndex",
+  "id": "2",
+  "clientId": 29,
+  "personId": 44,
+  "deleted": false,
+  "diseaseIdOptions": "1,2",
+  "createdDate": "UTC_DATE_TIME_PLUS_0_DAY",
+  "currentStageId": 2,
+  "currentTags": [
+    ],
+  "addedBy": 10,
+  "stageKey": "PRESUMPTIVE_OPEN_PRIVATE",
+  "stageName": "Presumptive (Open)",
+  "typeOfEpisode": "IndiaTbPrivate",
+  "lastActivityDate": "UTC_DATE_TIME_PLUS_0_DAY",
+  "hierarchyMappings": {
+    "current_all": [
+      6,
+      1,
+      2,
+      3,
+      4
+    ],
+    "enrollment_all": [
+      6,
+      1,
+      2,
+      3,
+      4
+    ],
+    "current": 6,
+    "residence": 6,
+    "residence_all": [
+      1,
+      2,
+      3,
+      4,
+      6
+    ],
+    "privateFacility_all": [
+      6,
+      1,
+      2,
+      3,
+      4
+    ],
+    "enrollment": 6,
+    "privateFacility": 6
+  },
+  "associations": {
+    "deploymentCode": "IND",
+    "beneficiaryId": "2"
+  },
+  "stageData": {
+    "adherenceDispensationRelation": "true",
+    "lastName": "Patient",
+    "occupation": "Unknown",
+    "gender": "Male",
+    "emailList": [],
+    "typeOfCaseFinding": "Passive (Routine programme)",
+    "foregoBenefits": "false",
+    "socioEconomicStatus": "Unknown",
+    "isEpisodeEnabled": true,
+    "isIAMEnabled": "false",
+    "hivTestStatus": "Unknown",
+    "area": "Unknown",
+    "pincode": 999999,
+    "address": "Address",
+    "addedBy": 10,
+    "addedByType": "USER_ACCESS",
+    "primaryPhoneNumber": "9999999960",
+    "dateOfBirth": 946684800000,
+    "keyPopulation": "Not Applicable",
+    "treatmentPhase": "IP",
+    "firstName": "Private",
+    "mobileList": [
+      {
+        "id": 50,
+        "userId": 44,
+        "number": "9999999960",
+        "owner": null,
+        "primary": true,
+        "verified": false,
+        "createdAt": "TIMESTAMP_DATE_TIME_PLUS_0_DAY",
+        "updatedAt": "TIMESTAMP_DATE_TIME_PLUS_0_DAY",
+        "stoppedAt": null
+      }
+    ],
+    "symptom": "Asymptomatic,",
+    "name": "Private Patient",
+    "dataConsent": false,
+    "age": 24,
+    "maritalStatus": "Unknown",
+    "verifications": [
+    ],
+    "externalIds": [
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+    "settings": {
+        "index": {
+            "number_of_shards": "1",
+            "number_of_replicas": "1"
+        }
+    },
+    "mappings": {
+        "properties": {
+            "dosage": {
+                "type": "text"
+            },
+            "drugCode": {
+                "type": "keyword"
+            },
+            "composition": {
+                "type": "text"
+            },
+            "dosageForm": {
+                "type": "text"
+            },
+            "id": {
+                "type": "text"
+            },
+            "category": {
+                "type": "keyword"
+            },
+            "productName": {
+                "type": "text"
+            },
+            "manufacturer": {
+                "type": "text"
+            }
+        }
+    }
+}

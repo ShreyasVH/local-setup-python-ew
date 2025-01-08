@@ -1,0 +1,3 @@
+INSERT INTO _DeploymentTrigger (HierarchyId, TriggerId, DefaultTemplateId, TemplateIds, CronTime, EventName, EventType, Mandatory, EntityTimeRelated, NotificationType) VALUES (1, 4, 1, null, null, N'Nikshay_Username_Updated', null, 1, 0, N'DEFAULT');
+
+INSERT INTO _DeploymentTrigger (HierarchyId, TriggerId, DefaultTemplateId, TemplateIds, CronTime, EventName, EventType, Mandatory, EntityTimeRelated, NotificationType) VALUES (1, 5, 3, null, null, N'Nikshay_Password_Updated', null, 1, 0, N'DEFAULT');

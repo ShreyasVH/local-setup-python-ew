@@ -1,0 +1,1 @@
+alter table if exists test_request add column updated_by int8;
