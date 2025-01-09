@@ -70,8 +70,10 @@ class NikshayHelper(BaseHelper):
             "Address": "",
             "Pincode": data['pincode'],
             "Name": "",
+            "IsNotActive": not data['active'] if 'active' in data else None,
             "levelID": data['level'],
-            "Secondary_Phone_No_1": data['phoneOffice'],
+            "Secondary_Phone_No_1": data['secondaryMobile1'] if 'secondaryMobile1' in data else None,
+            "Secondary_Phone_No_2": data['secondaryMobile2'] if 'secondaryMobile2' in data else None,
             "json_data": data['extraData'],
             "resource": "Hierarchy",
             "rcountry": "READ",
@@ -90,7 +92,7 @@ class NikshayHelper(BaseHelper):
             "Access_Default": False,
             "Access_IndiaTbPublic": True,
             "Access_IndiaTbPrivate": True,
-            "facility_code": data['code'],
+            "facility_code": data['code'] if 'code' in data else None,
             "facility_sector": "ALL",
             "Password": "MlpCmYX96kmXzSCjuBFMKQ==",
             "facility_Parent_Id": data['parentId'],
@@ -114,6 +116,7 @@ class NikshayHelper(BaseHelper):
             'email': 'mail.one@gmail.com',
             'pincode': '999999',
             'phoneOffice': '9999999997',
+            'secondaryMobile1': '9999999997',
             'level': 2,
             'typeOfPatientsAdded': 'NONE',
             'extraData': json.dumps({
@@ -139,6 +142,7 @@ class NikshayHelper(BaseHelper):
             'email': 'mail.two@gmail.com',
             'pincode': '999999',
             'phoneOffice': '9999999995',
+            'secondaryMobile1': '9999999995',
             'level': 3,
             'typeOfPatientsAdded': 'IndiaTbPublic,IndiaTbPrivate',
             'extraData': json.dumps({
@@ -159,3 +163,31 @@ class NikshayHelper(BaseHelper):
         query = 'UPDATE _UserAccess SET TypeOfStaffAllowedToAdd = \'IndiaTbPublic,IndiaTbPrivate\' WHERE Username = \'sto-KA\''
         mssql_helper = MssqlHelper()
         mssql_helper.execute(query, 'nikshay_new')
+
+    def create_tu(self, token):
+        return self.create_facility(token, {
+            'name': 'tu',
+            'type': 'TU',
+            'mobile': '9999999994',
+            'email': 'mail.three@gmail.com',
+            'pincode': '999999',
+            'phoneOffice': '9999999993',
+            'secondaryMobile1': '9999999993',
+            'secondaryMobile2': '9999999992',
+            'level': 4,
+            'typeOfPatientsAdded': 'IndiaTbPublic,IndiaTbPrivate',
+            'extraData': json.dumps({
+                "MotcName": "",
+                "MobileNo": '9999999994',
+                "Email": "mail.three@gmail.com",
+                "Sts": "",
+                "MobileSts": "9999999993",
+                "Stls": "",
+                "MobileStls": "9999999992",
+                "TuAddress": "",
+                "TuPincode": "999999",
+                "UpdatedBy": "india-all",
+                "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+            }),
+            'parentId': self.get_hierarchy_id('Dharwad', 3)
+        })

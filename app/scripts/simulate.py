@@ -111,6 +111,7 @@ if starting_version <= version_map['NikshayState'] <= ending_version:
     registry_helper.add_state_sidebar_permissions()
     Logger.info('simulate', 'Adding configs')
     registry_helper.add_state_configs()
+    Logger.info('simulate', '-------------------------------------------')
 
 if starting_version <= version_map['NikshayDistrict'] <= ending_version:
     Logger.info('simulate', 'Generating all india token')
@@ -125,5 +126,15 @@ if starting_version <= version_map['NikshayDistrict'] <= ending_version:
     registry_helper.add_district_patient_tab_permissions()
     Logger.info('simulate', 'Adding configs')
     registry_helper.add_district_configs()
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayTU'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating TU')
+    state_data = nikshay_helper.create_tu(all_india_token)
+    Logger.info('simulate', 'Adding sidebar permissions')
+    registry_helper.add_tu_sidebar_permissions()
+    Logger.info('simulate', '-------------------------------------------')
 
 

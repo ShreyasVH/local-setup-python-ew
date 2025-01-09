@@ -52,8 +52,7 @@ class RegistryHelper(BaseHelper):
         query = f"INSERT INTO module_permission (deployment_id, designation, item_id, is_active, hierarchy_type, item_type, view, add, edit, delete) VALUES ((select id from deployment where code = '{data['deploymentCode']}'), '{data['designation']}', {data['itemId']}, True, '{data['hierarchyType']}', '{data['itemType']}', {json.dumps(data['view'])}, {json.dumps(data['add'])}, {json.dumps(data['edit'])}, {json.dumps(data['delete'])})"
         postgres_helper.execute(query, 'registry_new')
 
-    def add_state_sidebar_permissions(self):
-        hierarchy_type = 'STATE'
+    def add_sidebar_permissions(self, hierarchy_type, permission_names):
         item_type = 'sidebar'
         designation = 'ADMIN'
         deployment_code = 'IND'
@@ -64,6 +63,23 @@ class RegistryHelper(BaseHelper):
         item_map = {}
         for item in rows:
             item_map[item['name']] = item['id']
+
+        for permission in permission_names:
+            data = {
+                'deploymentCode': deployment_code,
+                'designation': designation,
+                'hierarchyType': hierarchy_type,
+                'itemType': item_type,
+                'itemId': item_map[permission],
+                'view': False,
+                'add': False,
+                'edit': False,
+                'delete': False
+            }
+            self.add_module_permissions(data)
+
+    def add_state_sidebar_permissions(self):
+        hierarchy_type = 'STATE'
 
         sidebar_permissions = [
             'dashboards',
@@ -93,19 +109,7 @@ class RegistryHelper(BaseHelper):
             'MY_CONTRACTS'
         ]
 
-        for permission in sidebar_permissions:
-            data = {
-                'deploymentCode': deployment_code,
-                'designation': designation,
-                'hierarchyType': hierarchy_type,
-                'itemType': item_type,
-                'itemId': item_map[permission],
-                'view': False,
-                'add': False,
-                'edit': False,
-                'delete': False
-            }
-            self.add_module_permissions(data)
+        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
 
     def add_hierarchy_config(self, hierarchy_id, config_name, value, token):
         api_helper = ApiHelper()
@@ -162,16 +166,6 @@ class RegistryHelper(BaseHelper):
 
     def add_district_sidebar_permissions(self):
         hierarchy_type = 'DISTRICT'
-        item_type = 'sidebar'
-        designation = 'ADMIN'
-        deployment_code = 'IND'
-
-        postgres_helper = PostgresHelper()
-        query = 'SELECT id, name FROM sidebar_item'
-        rows = postgres_helper.select(query, 'registry_new')
-        item_map = {}
-        for item in rows:
-            item_map[item['name']] = item['id']
 
         sidebar_permissions = [
             'AboutUs',
@@ -210,19 +204,7 @@ class RegistryHelper(BaseHelper):
             'TBMP_REPORT'
         ]
 
-        for permission in sidebar_permissions:
-            data = {
-                'deploymentCode': deployment_code,
-                'designation': designation,
-                'hierarchyType': hierarchy_type,
-                'itemType': item_type,
-                'itemId': item_map[permission],
-                'view': False,
-                'add': False,
-                'edit': False,
-                'delete': False
-            }
-            self.add_module_permissions(data)
+        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
 
     def add_district_configs(self):
         client_id = self.get_client_id()
@@ -296,3 +278,37 @@ class RegistryHelper(BaseHelper):
             }
             self.add_module_permissions(data)
 
+    def add_tu_sidebar_permissions(self):
+        hierarchy_type = 'TU'
+
+        sidebar_permissions = [
+            'my_profile',
+            'UserManagement',
+            'StaffManagement',
+            '_reset_password',
+            'MappingDetailsActivityReports',
+            'ActiveCaseMappingsummary',
+            'GeneExpert',
+            'AboutUs',
+            'Overview',
+            'NewEnrollment',
+            'Dispensation',
+            'AddTestGlobal',
+            'Diagnostics',
+            'PatientManagement',
+            'TaskLists',
+            'AdherenceSummary',
+            'reports',
+            'Admin',
+            'Deduplication',
+            'Others',
+            'TransferInOut',
+            'facility_administration',
+            'AdverseEventReportingSystem',
+            'TaskListStats',
+            'EVRIMED_METRICS',
+            'INVENTORY_MANAGEMENT',
+            'SearchSample'
+        ]
+
+        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
