@@ -112,4 +112,18 @@ if starting_version <= version_map['NikshayState'] <= ending_version:
     Logger.info('simulate', 'Adding configs')
     registry_helper.add_state_configs()
 
+if starting_version <= version_map['NikshayDistrict'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating district')
+    state_data = nikshay_helper.create_district(all_india_token)
+    Logger.info('simulate', 'Adding associations')
+    registry_helper.add_district_associations()
+    Logger.info('simulate', 'Adding sidebar permissions')
+    registry_helper.add_district_sidebar_permissions()
+    Logger.info('simulate', 'Adding patient tab permissions')
+    registry_helper.add_district_patient_tab_permissions()
+    Logger.info('simulate', 'Adding configs')
+    registry_helper.add_district_configs()
+
 

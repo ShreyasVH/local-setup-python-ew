@@ -21,3 +21,8 @@ class FileHelper:
     def get_version_from_query_file(self, file_name):
         index = file_name.find('_')
         return int(file_name[:index])
+
+    def get_padded_version(self, version):
+        version_string_length = 3
+        return ('000' + str(version))[-1 * version_string_length:]
+

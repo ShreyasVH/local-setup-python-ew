@@ -3,8 +3,9 @@ from app.enums.Server import Server
 import json
 from app.utils.Utils import replace_time_strings
 from app.helpers.MssqlHelper import MssqlHelper
+from app.helpers.BaseHelper import BaseHelper
 
-class NikshayHelper:
+class NikshayHelper(BaseHelper):
     def __init__(self):
         self._api_helper = ApiHelper()
 
@@ -93,11 +94,9 @@ class NikshayHelper:
             "facility_sector": "ALL",
             "Password": "MlpCmYX96kmXzSCjuBFMKQ==",
             "facility_Parent_Id": data['parentId'],
-            "TypeOfPatientAdded": "NONE",
+            "TypeOfPatientAdded": data['typeOfPatientsAdded'],
             "ForgoIncentive": False
         }
-        print(json.dumps(payload, indent=1))
-        exit()
 
         cookies = {
             'IsUserFacilityOtpVerified': 'true'
@@ -116,6 +115,7 @@ class NikshayHelper:
             'pincode': '999999',
             'phoneOffice': '9999999997',
             'level': 2,
+            'typeOfPatientsAdded': 'NONE',
             'extraData': json.dumps({
                 "StoName": "",
                 "Email": "mail.one@gmail.com",
@@ -127,7 +127,32 @@ class NikshayHelper:
                 "UpdatedBy": "india-all",
                 "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
             }),
-            'parentId': 1
+            'parentId': self.get_hierarchy_id('India', 1)
+        })
+
+    def create_district(self, token):
+        return self.create_facility(token, {
+            'name': 'Dharwad',
+            'code': 'DHA',
+            'type': 'DISTRICT',
+            'mobile': '9999999996',
+            'email': 'mail.two@gmail.com',
+            'pincode': '999999',
+            'phoneOffice': '9999999995',
+            'level': 3,
+            'typeOfPatientsAdded': 'IndiaTbPublic,IndiaTbPrivate',
+            'extraData': json.dumps({
+                "DtoName": "",
+                "Email": "mail.two@gmail.com",
+                "PhoneOffice": '9999999995',
+                "MobileNo": '9999999996',
+                "DtcAddress": "",
+                "DtcPincode": "999999",
+                "PfmsDistrictCode": 0,
+                "UpdatedBy": "india-all",
+                "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+            }),
+            'parentId': self.get_hierarchy_id('Karnataka', 2)
         })
 
     def update_state_type_of_staff_allowed_to_add(self):

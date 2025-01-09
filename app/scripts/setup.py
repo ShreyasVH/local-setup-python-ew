@@ -24,9 +24,10 @@ if len(sys.argv) > 1:
         print("Invalid mode")
         sys.exit(1)
 
-# Clear previous logs
-Logger.info('setup', 'Clearing logs')
-Logger.clear_logs('')
+if mode == 'FULL':
+    # Clear previous logs
+    Logger.info('setup', 'Clearing logs')
+    Logger.clear_logs('')
 
 # Start services
 service_helper = ServiceHelper()
