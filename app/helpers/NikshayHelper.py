@@ -338,3 +338,30 @@ class NikshayHelper(BaseHelper):
             'accessPublicPatients': False,
             'accessPrivatePatients': True
         })
+
+    def create_private_chemist(self, token):
+        return self.create_facility(token, {
+            'name': 'private chemist',
+            'type': 'PVTCHEM',
+            'mobile': '9999999987',
+            'email': '',
+            'address': 'address',
+            'level': 5,
+            'typeOfPatientsAdded': 'IndiaTbPrivate',
+            'extraData': json.dumps({
+                "DmcNin": "",
+                "HFRegNo": "",
+                "ContactPersonName": "",
+                "ContactPersonDesg": "",
+                "ContactPersonEmail": "",
+                "MobileNo": "9999999987",
+                "Address": "address",
+                "FacilityType": "PVTCHEM",
+                "IsAfterLogin": True,
+                "UpdatedBy": "india-all",
+                "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+            }),
+            'parentId': self.get_hierarchy_id('tu', 4),
+            'accessPublicPatients': False,
+            'accessPrivatePatients': True
+        })

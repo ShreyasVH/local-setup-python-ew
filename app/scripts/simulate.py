@@ -191,4 +191,15 @@ if starting_version <= version_map['NikshayPrivateLab'] <= ending_version:
     registry_helper.add_private_lab_patient_tab_permissions()
     Logger.info('simulate', '-------------------------------------------')
 
+if starting_version <= version_map['NikshayPrivateChemist'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating Private Chemist')
+    state_data = nikshay_helper.create_private_chemist(all_india_token)
+    Logger.info('simulate', 'Adding sidebar permissions')
+    registry_helper.add_private_chemist_sidebar_permissions()
+    Logger.info('simulate', 'Adding patient tab permissions')
+    registry_helper.add_private_chemist_patient_tab_permissions()
+    Logger.info('simulate', '-------------------------------------------')
+
 

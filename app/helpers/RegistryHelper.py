@@ -538,3 +538,68 @@ class RegistryHelper(BaseHelper):
 
         self.add_patient_tab_permissions(hierarchy_type, sidebar_permissions)
 
+    def add_private_chemist_sidebar_permissions(self):
+        hierarchy_type = 'PVTCHEM'
+
+        sidebar_permissions = [
+            'AboutUs',
+            'ActiveCaseMappingsummary',
+            'AddTestGlobal',
+            'AdherenceSummary',
+            'AdverseEventReportingSystem',
+            'Dispensation',
+            'EVRIMED_METRICS',
+            'GeneExpert',
+            'INVENTORY_MANAGEMENT',
+            'my_profile',
+            'NewEnrollment',
+            'Others',
+            'Overview',
+            'PatientManagement',
+            '_reset_password',
+            'SearchSample',
+            'TaskLists',
+            'TaskListStats',
+            'TransferInOut',
+            'UserManagement'
+        ]
+
+        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+
+    def add_private_chemist_patient_tab_permissions(self):
+        hierarchy_type = 'PVTCHEM'
+
+        sidebar_permissions = {
+            'Tests': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': True
+            },
+            'Basic Details': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            },
+            'Health Facilities': {
+                'view': True,
+                'add': False,
+                'edit': True,
+                'delete': False
+            },
+            'Treatment Details': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            },
+            'Outcomes': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            }
+        }
+
+        self.add_patient_tab_permissions(hierarchy_type, sidebar_permissions)
