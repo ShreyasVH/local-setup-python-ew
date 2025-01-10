@@ -283,3 +283,32 @@ class NikshayHelper(BaseHelper):
             'accessPublicPatients': False,
             'accessPrivatePatients': True
         })
+
+    def create_multi_clinic(self, token):
+        return self.create_facility(token, {
+            'name': 'multi clinic',
+            'type': 'HUB',
+            'description': 'multi clinic MULTI Login',
+            'mobile': '9999999989',
+            'email': '',
+            'address': 'address',
+            'level': 5,
+            'typeOfPatientsAdded': 'IndiaTbPrivate',
+            'extraData': json.dumps({
+                "DmcNin": "",
+                "HFRegNo": "",
+                "ContactPersonName": "",
+                "ContactPersonDesg": "",
+                "ContactPersonEmail": "",
+                "MobileNo": "9999999989",
+                "Address": "address",
+                "FacilityType": "MULTI",
+                "IsAfterLogin": True,
+                "UpdatedBy": "india-all",
+                "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+            }),
+            'parentId': self.get_hierarchy_id('tu', 4),
+            'accessPublicPatients': False,
+            'accessPrivatePatients': True
+        })
+
