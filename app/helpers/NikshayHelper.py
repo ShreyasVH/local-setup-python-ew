@@ -68,8 +68,8 @@ class NikshayHelper(BaseHelper):
             "lUserID": None,
             "Email_ID": data['email'],
             "Primary_Phone_No": data['mobile'],
-            "Address": "",
-            "Pincode": data['pincode'],
+            "Address": data['address'] if 'address' in data else '',
+            "Pincode": data['pincode'] if 'pincode' in data else None,
             "Name": "",
             "IsNotActive": not data['active'] if 'active' in data else None,
             "levelID": data['level'],
@@ -91,8 +91,8 @@ class NikshayHelper(BaseHelper):
             "CanDeletePatients": True,
             "CanDelete": False,
             "Access_Default": False,
-            "Access_IndiaTbPublic": True,
-            "Access_IndiaTbPrivate": True,
+            "Access_IndiaTbPublic": data['accessPublicPatients'] if 'accessPublicPatients' in data else False,
+            "Access_IndiaTbPrivate": data['accessPrivatePatients'] if 'accessPrivatePatients' in data else False,
             "facility_code": data['code'] if 'code' in data else None,
             "facility_sector": "ALL",
             "Password": "MlpCmYX96kmXzSCjuBFMKQ==",
@@ -120,6 +120,8 @@ class NikshayHelper(BaseHelper):
             'secondaryMobile1': '9999999997',
             'level': 2,
             'typeOfPatientsAdded': 'NONE',
+            'accessPublicPatients': True,
+            'accessPrivatePatients': True,
             'extraData': json.dumps({
                 "StoName": "",
                 "Email": "mail.one@gmail.com",
@@ -157,7 +159,9 @@ class NikshayHelper(BaseHelper):
                 "UpdatedBy": "india-all",
                 "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
             }),
-            'parentId': self.get_hierarchy_id('Karnataka', 2)
+            'parentId': self.get_hierarchy_id('Karnataka', 2),
+            'accessPublicPatients': True,
+            'accessPrivatePatients': True
         })
 
     def update_state_type_of_staff_allowed_to_add(self):
@@ -190,7 +194,9 @@ class NikshayHelper(BaseHelper):
                 "UpdatedBy": "india-all",
                 "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
             }),
-            'parentId': self.get_hierarchy_id('Dharwad', 3)
+            'parentId': self.get_hierarchy_id('Dharwad', 3),
+            'accessPublicPatients': True,
+            'accessPrivatePatients': True
         })
 
     def create_phi(self, token):
@@ -199,7 +205,7 @@ class NikshayHelper(BaseHelper):
             'type': 'PHI',
             'mobile': '9999999991',
             'email': '',
-            'pincode': '999999',
+            'address': 'address',
             'level': 5,
             'typeOfPatientsAdded': 'IndiaTbPublic',
             'extraData': json.dumps({
@@ -215,7 +221,9 @@ class NikshayHelper(BaseHelper):
                 "UpdatedBy": "india-all",
                 "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
             }),
-            'parentId': self.get_hierarchy_id('tu', 4)
+            'parentId': self.get_hierarchy_id('tu', 4),
+            'accessPublicPatients': True,
+            'accessPrivatePatients': False
         })
 
     def create_pfms_agency(self, token):

@@ -299,16 +299,16 @@ class RegistryHelper(BaseHelper):
         self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
 
     def add_phi_sidebar_permissions(self):
-        hierarchy_type = 'TU'
+        hierarchy_type = 'PHI'
 
         sidebar_permissions = [
             'AboutUs',
             'ActiveCaseMappingsummary',
             'AddTestGlobal',
-            'Diagnostics',
             'AdherenceSummary',
             'Admin',
             'AdverseEventReportingSystem',
+            'Diagnostics',
             'Dispensation',
             'EVRIMED_METRICS',
             'GeneExpert',
