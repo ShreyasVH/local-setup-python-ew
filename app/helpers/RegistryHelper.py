@@ -471,3 +471,70 @@ class RegistryHelper(BaseHelper):
 
         self.add_patient_tab_permissions(hierarchy_type, sidebar_permissions)
 
+    def add_private_lab_sidebar_permissions(self):
+        hierarchy_type = 'PVTLAB'
+
+        sidebar_permissions = [
+            'AboutUs',
+            'ActiveCaseMappingsummary',
+            'AddTestGlobal',
+            'AdherenceSummary',
+            'AdverseEventReportingSystem',
+            'Dispensation',
+            'EVRIMED_METRICS',
+            'GeneExpert',
+            'my_profile',
+            'NewEnrollment',
+            'Others',
+            'Overview',
+            'PatientManagement',
+            'reports',
+            '_reset_password',
+            'SearchSample',
+            'StaffManagement',
+            'TaskLists',
+            'TaskListStats',
+            'TransferInOut',
+            'UserManagement'
+        ]
+
+        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+
+    def add_private_lab_patient_tab_permissions(self):
+        hierarchy_type = 'PVTLAB'
+
+        sidebar_permissions = {
+            'Tests': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': True
+            },
+            'Basic Details': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            },
+            'Health Facilities': {
+                'view': True,
+                'add': False,
+                'edit': True,
+                'delete': False
+            },
+            'Treatment Details': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            },
+            'Outcomes': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            }
+        }
+
+        self.add_patient_tab_permissions(hierarchy_type, sidebar_permissions)
+

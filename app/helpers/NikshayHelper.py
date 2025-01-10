@@ -312,3 +312,29 @@ class NikshayHelper(BaseHelper):
             'accessPrivatePatients': True
         })
 
+    def create_private_lab(self, token):
+        return self.create_facility(token, {
+            'name': 'private lab',
+            'type': 'PVTLAB',
+            'mobile': '9999999988',
+            'email': '',
+            'address': 'address',
+            'level': 5,
+            'typeOfPatientsAdded': 'IndiaTbPrivate',
+            'extraData': json.dumps({
+                "DmcNin": "",
+                "HFRegNo": "",
+                "ContactPersonName": "",
+                "ContactPersonDesg": "",
+                "ContactPersonEmail": "",
+                "MobileNo": "9999999988",
+                "Address": "address",
+                "FacilityType": "PVTLAB",
+                "IsAfterLogin": True,
+                "UpdatedBy": "india-all",
+                "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+            }),
+            'parentId': self.get_hierarchy_id('tu', 4),
+            'accessPublicPatients': False,
+            'accessPrivatePatients': True
+        })

@@ -173,4 +173,22 @@ if starting_version <= version_map['NikshayMultiClinic'] <= ending_version:
     state_data = nikshay_helper.create_multi_clinic(all_india_token)
     Logger.info('simulate', '-------------------------------------------')
 
+if starting_version <= version_map['NikshayMultiClinic'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating Multi clinic')
+    state_data = nikshay_helper.create_multi_clinic(all_india_token)
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayPrivateLab'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating Private Lab')
+    state_data = nikshay_helper.create_private_lab(all_india_token)
+    Logger.info('simulate', 'Adding sidebar permissions')
+    registry_helper.add_private_lab_sidebar_permissions()
+    Logger.info('simulate', 'Adding patient tab permissions')
+    registry_helper.add_private_lab_patient_tab_permissions()
+    Logger.info('simulate', '-------------------------------------------')
+
 
