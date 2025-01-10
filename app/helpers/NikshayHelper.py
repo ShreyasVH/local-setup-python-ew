@@ -62,7 +62,7 @@ class NikshayHelper(BaseHelper):
         payload = {
             "inputAction": "Insert",
             "ChooseFacilityType": data['type'],
-            "Description": data['name'] + " " + data['type'] + " Login",
+            "Description": data['description'] if 'description' in data else data['name'] + " " + data['type'] + " Login",
             "facility_name": data['name'],
             "UserId": 1,
             "lUserID": None,
@@ -256,3 +256,30 @@ class NikshayHelper(BaseHelper):
         response = self._api_helper.post(url, payload, headers)
         return json.loads(response['result'])
 
+    def create_single_clinic(self, token):
+        return self.create_facility(token, {
+            'name': 'single clinic',
+            'type': 'HUB',
+            'description': 'single clinic SINGLE Login',
+            'mobile': '9999999990',
+            'email': '',
+            'address': 'address',
+            'level': 5,
+            'typeOfPatientsAdded': 'IndiaTbPrivate',
+            'extraData': json.dumps({
+                "DmcNin": "",
+                "HFRegNo": "",
+                "ContactPersonName": "",
+                "ContactPersonDesg": "",
+                "ContactPersonEmail": "",
+                "MobileNo": "9999999990",
+                "Address": "address",
+                "FacilityType": "SINGLE",
+                "IsAfterLogin": True,
+                "UpdatedBy": "india-all",
+                "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+            }),
+            'parentId': self.get_hierarchy_id('tu', 4),
+            'accessPublicPatients': False,
+            'accessPrivatePatients': True
+        })

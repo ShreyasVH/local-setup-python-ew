@@ -393,3 +393,81 @@ class RegistryHelper(BaseHelper):
         }
 
         self.add_patient_tab_permissions(hierarchy_type, sidebar_permissions)
+
+    def add_single_clinic_sidebar_permissions(self):
+        hierarchy_type = 'HUB'
+
+        sidebar_permissions = [
+            'AboutUs',
+            'ActiveCaseMappingsummary',
+            'AddTestGlobal',
+            'AdherenceSummary',
+            'Admin',
+            'AdverseEventReportingSystem',
+            'Diagnostics',
+            'Dispensation',
+            'EVRIMED_METRICS',
+            'GeneExpert',
+            'INVENTORY_MANAGEMENT',
+            'MappingDetailsActivityReports',
+            'my_profile',
+            'NewEnrollment',
+            'reports',
+            'Others',
+            'Overview',
+            'PatientManagement',
+            '_reset_password',
+            'SearchSample',
+            'StaffManagement',
+            'TaskLists',
+            'TaskListStats',
+            'TransferInOut',
+            'UserManagement'
+        ]
+
+        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+
+    def add_single_clinic_patient_tab_permissions(self):
+        hierarchy_type = 'HUB'
+
+        sidebar_permissions = {
+            'Tests': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': True
+            },
+            'Basic Details': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            },
+            'Health Facilities': {
+                'view': True,
+                'add': False,
+                'edit': True,
+                'delete': False
+            },
+            'Treatment Details': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            },
+            'Outcomes': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            },
+            'DBT': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            }
+        }
+
+        self.add_patient_tab_permissions(hierarchy_type, sidebar_permissions)
+

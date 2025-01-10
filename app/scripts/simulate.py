@@ -155,4 +155,15 @@ if starting_version <= version_map['NikshayPHI'] <= ending_version:
     registry_helper.add_phi_patient_tab_permissions()
     Logger.info('simulate', '-------------------------------------------')
 
+if starting_version <= version_map['NikshaySingleClinic'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating Single clinic')
+    state_data = nikshay_helper.create_single_clinic(all_india_token)
+    Logger.info('simulate', 'Adding sidebar permissions')
+    registry_helper.add_single_clinic_sidebar_permissions()
+    Logger.info('simulate', 'Adding patient tab permissions')
+    registry_helper.add_single_clinic_patient_tab_permissions()
+    Logger.info('simulate', '-------------------------------------------')
+
 
