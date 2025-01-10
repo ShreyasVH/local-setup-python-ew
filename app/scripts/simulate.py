@@ -137,4 +137,22 @@ if starting_version <= version_map['NikshayTU'] <= ending_version:
     registry_helper.add_tu_sidebar_permissions()
     Logger.info('simulate', '-------------------------------------------')
 
+if starting_version <= version_map['NikshayPfmsAgency'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating PFMS Agency')
+    state_data = nikshay_helper.create_pfms_agency(all_india_token)
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayPHI'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating PHI')
+    state_data = nikshay_helper.create_phi(all_india_token)
+    Logger.info('simulate', 'Adding sidebar permissions')
+    registry_helper.add_phi_sidebar_permissions()
+    Logger.info('simulate', 'Adding patient tab permissions')
+    registry_helper.add_phi_patient_tab_permissions()
+    Logger.info('simulate', '-------------------------------------------')
+
 

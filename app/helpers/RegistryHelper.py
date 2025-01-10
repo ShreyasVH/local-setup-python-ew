@@ -221,9 +221,6 @@ class RegistryHelper(BaseHelper):
 
     def add_district_patient_tab_permissions(self):
         hierarchy_type = 'DISTRICT'
-        item_type = 'patient_tab'
-        designation = 'ADMIN'
-        deployment_code = 'IND'
 
         sidebar_permissions = {
             'Tests': {
@@ -264,19 +261,7 @@ class RegistryHelper(BaseHelper):
             }
         }
 
-        for key, values in sidebar_permissions.items():
-            data = {
-                'deploymentCode': deployment_code,
-                'designation': designation,
-                'hierarchyType': hierarchy_type,
-                'itemType': item_type,
-                'itemId': f"(SELECT id FROM foreign_supported_tab WHERE name = '{key}')",
-                'view': values['view'],
-                'add': values['add'],
-                'edit': values['edit'],
-                'delete': values['delete']
-            }
-            self.add_module_permissions(data)
+        self.add_patient_tab_permissions(hierarchy_type, sidebar_permissions)
 
     def add_tu_sidebar_permissions(self):
         hierarchy_type = 'TU'
@@ -312,3 +297,99 @@ class RegistryHelper(BaseHelper):
         ]
 
         self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+
+    def add_phi_sidebar_permissions(self):
+        hierarchy_type = 'TU'
+
+        sidebar_permissions = [
+            'AboutUs',
+            'ActiveCaseMappingsummary',
+            'AddTestGlobal',
+            'Diagnostics',
+            'AdherenceSummary',
+            'Admin',
+            'AdverseEventReportingSystem',
+            'Dispensation',
+            'EVRIMED_METRICS',
+            'GeneExpert',
+            'INVENTORY_MANAGEMENT',
+            'MappingDetailsActivityReports',
+            'my_profile',
+            'NewEnrollment',
+            'reports',
+            'Others',
+            'Overview',
+            'PatientManagement',
+            '_reset_password',
+            'SearchSample',
+            'StaffManagement',
+            'TaskLists',
+            'TaskListStats',
+            'TransferInOut',
+            'UserManagement'
+        ]
+
+        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+
+    def add_patient_tab_permissions(self, hierarchy_type, permissions):
+        item_type = 'patient_tab'
+        designation = 'ADMIN'
+        deployment_code = 'IND'
+
+        for key, values in permissions.items():
+            data = {
+                'deploymentCode': deployment_code,
+                'designation': designation,
+                'hierarchyType': hierarchy_type,
+                'itemType': item_type,
+                'itemId': f"(SELECT id FROM foreign_supported_tab WHERE name = '{key}')",
+                'view': values['view'],
+                'add': values['add'],
+                'edit': values['edit'],
+                'delete': values['delete']
+            }
+            self.add_module_permissions(data)
+
+    def add_phi_patient_tab_permissions(self):
+        hierarchy_type = 'PHI'
+
+        sidebar_permissions = {
+            'Tests': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': True
+            },
+            'Basic Details': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            },
+            'Health Facilities': {
+                'view': True,
+                'add': False,
+                'edit': True,
+                'delete': False
+            },
+            'Treatment Details': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            },
+            'Outcomes': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            },
+            'DBT': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': False
+            }
+        }
+
+        self.add_patient_tab_permissions(hierarchy_type, sidebar_permissions)

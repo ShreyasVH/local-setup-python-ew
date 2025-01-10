@@ -4,6 +4,7 @@ import json
 from app.utils.Utils import replace_time_strings
 from app.helpers.MssqlHelper import MssqlHelper
 from app.helpers.BaseHelper import BaseHelper
+from app.helpers.PostgresHelper import PostgresHelper
 
 class NikshayHelper(BaseHelper):
     def __init__(self):
@@ -191,3 +192,59 @@ class NikshayHelper(BaseHelper):
             }),
             'parentId': self.get_hierarchy_id('Dharwad', 3)
         })
+
+    def create_phi(self, token):
+        return self.create_facility(token, {
+            'name': 'phi',
+            'type': 'PHI',
+            'mobile': '9999999991',
+            'email': '',
+            'pincode': '999999',
+            'level': 5,
+            'typeOfPatientsAdded': 'IndiaTbPublic',
+            'extraData': json.dumps({
+                "DmcNin": "",
+                "HFRegNo": "",
+                "ContactPersonName": "",
+                "ContactPersonDesg": "",
+                "ContactPersonEmail": "",
+                "MobileNo": "9999999991",
+                "Address": "address",
+                "FacilityType": "PHI",
+                "IsAfterLogin": True,
+                "UpdatedBy": "india-all",
+                "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+            }),
+            'parentId': self.get_hierarchy_id('tu', 4)
+        })
+
+    def create_pfms_agency(self, token):
+        endpoint = self._api_helper.get_endpoint('nikshay')
+        url = endpoint + '/api/ApiAutomatedUpdate/UpdatePfmsAgencyMappings'
+
+        agency_name = 'Agency Name'
+        agency_code = 'AGC'
+
+        hierarchy_name = 'tu'
+        hierarchy_level = 4
+        state_code = self.get_state_code(hierarchy_name, hierarchy_level)
+        district_code = self.get_district_code(hierarchy_name, hierarchy_level)
+        tu_code = self.get_hierarchy_code(hierarchy_name, hierarchy_level)
+
+        payload = [
+            {
+                "StateCode": state_code,
+                "DistrictCode": district_code,
+                "TBUCodeFormatted": tu_code,
+                "PfmsAgencyName": agency_name,
+                "PfmsAgencyCode": agency_code
+            }
+        ]
+
+        headers = {
+            'Authorization': f"Bearer {token}"
+        }
+
+        response = self._api_helper.post(url, payload, headers)
+        return json.loads(response['result'])
+
