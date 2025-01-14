@@ -50,6 +50,8 @@ episode_map = {
     604: [31]
 }
 
+shell_exec_with_immediate_output(f"echo {os.getenv('USER_PASSWORD')} | sudo -S -p '' /usr/sbin/systemsetup -settimezone GMT")
+
 print("\n")
 print("Hit any key once nikshay is stopped")
 print("\n")
@@ -119,5 +121,7 @@ for document_id in document_ids:
 
 Logger.info('verify', 'Setting up db queries')
 shell_exec_with_immediate_output('python3 app/scripts/setup.py MINIMAL')
+
+shell_exec_with_immediate_output(f"echo {os.getenv('USER_PASSWORD')} | sudo -S -p '' /usr/sbin/systemsetup -settimezone Asia/Calcutta")
 
 

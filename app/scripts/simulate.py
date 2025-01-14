@@ -1,5 +1,5 @@
 from app.utils.Logger import Logger
-from app.utils.Utils import shell_exec_with_immediate_output
+from app.utils.Utils import shell_exec_with_immediate_output, replace_time_strings
 from app.helpers.FileHelper import FileHelper
 from app.scripts.commonDefinitions import APP_PATH
 import os
@@ -11,6 +11,7 @@ from app.helpers.DbtHelper import DbtHelper
 from app.helpers.RedisHelper import RedisHelper
 from app.helpers.EpisodeHelper import EpisodeHelper
 from app.helpers.IamHelper import IamHelper
+import json
 
 if len(sys.argv) > 2:
     starting_version = int(sys.argv[1])
@@ -148,7 +149,24 @@ if starting_version <= version_map['NikshayPHI'] <= ending_version:
     Logger.info('simulate', 'Generating all india token')
     all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
     Logger.info('simulate', 'Creating PHI')
-    state_data = nikshay_helper.create_phi(all_india_token)
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'phi',
+        'mobile': '9999999991',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "DmcNin": "",
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "MobileNo": "9999999991",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
     Logger.info('simulate', 'Adding sidebar permissions')
     registry_helper.add_phi_sidebar_permissions()
     Logger.info('simulate', 'Adding patient tab permissions')
@@ -159,7 +177,24 @@ if starting_version <= version_map['NikshaySingleClinic'] <= ending_version:
     Logger.info('simulate', 'Generating all india token')
     all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
     Logger.info('simulate', 'Creating Single clinic')
-    state_data = nikshay_helper.create_single_clinic(all_india_token)
+    state_data = nikshay_helper.create_single_clinic(all_india_token, {
+        'name': 'single clinic',
+        'mobile': '9999999990',
+        'extraData': json.dumps({
+            "DmcNin": "",
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "MobileNo": "9999999990",
+            "Address": "address",
+            "FacilityType": "SINGLE",
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        }),
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4)
+    })
     Logger.info('simulate', 'Adding sidebar permissions')
     registry_helper.add_single_clinic_sidebar_permissions()
     Logger.info('simulate', 'Adding patient tab permissions')
@@ -202,4 +237,1251 @@ if starting_version <= version_map['NikshayPrivateChemist'] <= ending_version:
     registry_helper.add_private_chemist_patient_tab_permissions()
     Logger.info('simulate', '-------------------------------------------')
 
+if starting_version <= version_map['NikshayDmcLab'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating Dmc Lab')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'dmc lab',
+        'mobile': '9999999986',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": True,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999986",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayTruenatLab'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating truenat Lab')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'truenat lab',
+        'mobile': '9999999985',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": True,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999985",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayCbnaatLab'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating cbnaat Lab')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'cbnaat lab',
+        'mobile': '9999999984',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": True,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999984",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayXrayLab'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating xray Lab')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'xray lab',
+        'mobile': '9999999983',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": True,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999983",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayIctcLab'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating ictc Lab')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'ictc lab',
+        'mobile': '9999999982',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": True,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999982",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayCdstLab'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating cdst Lab')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'cdst lab',
+        'mobile': '9999999981',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": True,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999981",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayDmScreeningLab'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating dm screening Lab')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'dm screening lab',
+        'mobile': '9999999980',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": True,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999980",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayTobaccoClinic'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating tobacco clinic')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'tobacco clinic',
+        'mobile': '9999999979',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": True,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999979",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayAncClinic'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating anc clinic')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'anc clinic',
+        'mobile': '9999999978',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": True,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999978",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayNutritionalCentre'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating nutritional centre')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'nutritional centre',
+        'mobile': '9999999977',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": True,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999977",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayDeAddictionCentre'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating de addiction centre')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'de addiction centre',
+        'mobile': '9999999976',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": True,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999976",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayPrison'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating prison')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'prison',
+        'mobile': '9999999975',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": True,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999975",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayArtCentre'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating art centre')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'art centre',
+        'mobile': '9999999974',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": True,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999974",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayDrugStore'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating drug store')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'drug store',
+        'mobile': '9999999973',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": True,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999973",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayMedicalCollege'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating medical college')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'medical college',
+        'mobile': '9999999972',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": True,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999972",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayNuhmFacility'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating nuhm facility')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'nuhm facility',
+        'mobile': '9999999971',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": True,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999971",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayDistrictDrtb'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating district drtb')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'drtb centre',
+        'mobile': '9999999970',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": True,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999970",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayNodalDrtb'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating district drtb')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'nodal drtb',
+        'mobile': '9999999969',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": True,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999969",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayIrl'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating irl')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'irl',
+        'mobile': '9999999968',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": True,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999968",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayNgo'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating ngo')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'ngo',
+        'mobile': '9999999967',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": True,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999967",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayPediatricFacility'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating pediatric facility')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'pediatric facility',
+        'mobile': '9999999966',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": True,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999966",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayCghs'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating cghs')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'cghs',
+        'mobile': '9999999965',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": True,
+            "IfYesCGHSCoal": "CGHS",
+            "MobileNo": "9999999965",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayWellnessCentre'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating wellness centre')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'wellness centre',
+        'mobile': '9999999964',
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4),
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": True,
+            "PhiHealthAndWellnessCentreType": "Sub Centre (SC)",
+            "PhiParentPhi": nikshay_helper.get_hierarchy_id('phi', 5),
+            "PhiTuForParentPhi": nikshay_helper.get_hierarchy_id('tu', 4),
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999964",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "MicroscopyService": None,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayMicroscopyServiceLab'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating microscopy service')
+    nikshay_helper.create_single_clinic(all_india_token, {
+        'name': 'microscopy service lab',
+        'mobile': '9999999963',
+        'extraData': json.dumps({
+            "Dmc": None,
+            "Irl": None,
+            "Cbnaat": None,
+            "Ndrtb": None,
+            "Ddrtb": None,
+            "DmcNin": "",
+            "MedicalCollege": None,
+            "ArtCentre": None,
+            "IctcFictc": None,
+            "CdstLabIncludingLpa": None,
+            "Ngo": None,
+            "PediatricCareFacility": None,
+            "PhiHealthAndWellnessCentre": None,
+            "PhiHealthAndWellnessCentreType": None,
+            "PhiParentPhi": None,
+            "PhiTuForParentPhi": None,
+            "IsDrugStore": None,
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "IsTruNat": None,
+            "IsXray": None,
+            "IsDMScreen": None,
+            "IsTobaccoClinic": None,
+            "IsANCClinic": None,
+            "IsNutriRehabCenter": None,
+            "IsDeAddictCenter": None,
+            "IsPrision": None,
+            "IsNUHMFacility": None,
+            "IsCGHSCoal": None,
+            "IfYesCGHSCoal": None,
+            "MobileNo": "9999999963",
+            "Address": "address",
+            "FacilityType": "SINGLE",
+            "MicroscopyService": True,
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        }),
+        'parentId': nikshay_helper.get_hierarchy_id('tu', 4)
+    })
+    Logger.info('simulate', '-------------------------------------------')
 

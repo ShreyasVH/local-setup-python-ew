@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 import json
 from app.scripts.commonDefinitions import APP_PATH, CURRENT_TIME
+import pytz
 
 class Logger:
     MAX_LINES_PER_FILE = 50000
@@ -14,10 +15,11 @@ class Logger:
         os.makedirs(log_folder, exist_ok=True)
 
         all_logs_file_path = os.path.join(log_folder, 'all.log')
+        timezone = pytz.timezone('Asia/Kolkata')
 
         message_for_all_logs = ''
         if timestamp_required:
-            timestamp = CURRENT_TIME.strftime('[%d-%b-%Y %I:%M:%S %p]')
+            timestamp = datetime.now(timezone).strftime('[%d-%b-%Y %I:%M:%S %p]')
             message_for_all_logs = f"{timestamp} [ {filename_base} ] [ {log_type.upper()} ] - {message}"
             message = f"{timestamp} [ {log_type.upper()} ] - {message}"
         else:

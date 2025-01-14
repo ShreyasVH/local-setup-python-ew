@@ -200,9 +200,10 @@ try:
                                     index_diff[id] = differences
 
                         except Exception as e:
-                            print(index_name)
-                            print(old_row)
-                            print(new_row)
+                            print(e)
+                            # print(index_name)
+                            # print(old_row)
+                            # print(new_row)
 
                 else:
                     print(f'####################### No id column in {index_name}')

@@ -199,29 +199,17 @@ class NikshayHelper(BaseHelper):
             'accessPrivatePatients': True
         })
 
-    def create_phi(self, token):
+    def create_phi(self, token, data):
         return self.create_facility(token, {
-            'name': 'phi',
+            'name': data['name'],
             'type': 'PHI',
-            'mobile': '9999999991',
+            'mobile': data['mobile'],
             'email': '',
             'address': 'address',
             'level': 5,
             'typeOfPatientsAdded': 'IndiaTbPublic',
-            'extraData': json.dumps({
-                "DmcNin": "",
-                "HFRegNo": "",
-                "ContactPersonName": "",
-                "ContactPersonDesg": "",
-                "ContactPersonEmail": "",
-                "MobileNo": "9999999991",
-                "Address": "address",
-                "FacilityType": "PHI",
-                "IsAfterLogin": True,
-                "UpdatedBy": "india-all",
-                "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
-            }),
-            'parentId': self.get_hierarchy_id('tu', 4),
+            'extraData': data['extraData'],
+            'parentId': data['parentId'],
             'accessPublicPatients': True,
             'accessPrivatePatients': False
         })
@@ -256,30 +244,18 @@ class NikshayHelper(BaseHelper):
         response = self._api_helper.post(url, payload, headers)
         return json.loads(response['result'])
 
-    def create_single_clinic(self, token):
+    def create_single_clinic(self, token, data):
         return self.create_facility(token, {
-            'name': 'single clinic',
+            'name': data['name'],
             'type': 'HUB',
-            'description': 'single clinic SINGLE Login',
-            'mobile': '9999999990',
+            'description': f"{data['name']} SINGLE Login",
+            'mobile': data['mobile'],
             'email': '',
             'address': 'address',
             'level': 5,
             'typeOfPatientsAdded': 'IndiaTbPrivate',
-            'extraData': json.dumps({
-                "DmcNin": "",
-                "HFRegNo": "",
-                "ContactPersonName": "",
-                "ContactPersonDesg": "",
-                "ContactPersonEmail": "",
-                "MobileNo": "9999999990",
-                "Address": "address",
-                "FacilityType": "SINGLE",
-                "IsAfterLogin": True,
-                "UpdatedBy": "india-all",
-                "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
-            }),
-            'parentId': self.get_hierarchy_id('tu', 4),
+            'extraData': data['extraData'],
+            'parentId': data['parentId'],
             'accessPublicPatients': False,
             'accessPrivatePatients': True
         })
