@@ -133,7 +133,13 @@ if starting_version <= version_map['NikshayTU'] <= ending_version:
     Logger.info('simulate', 'Generating all india token')
     all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
     Logger.info('simulate', 'Creating TU')
-    state_data = nikshay_helper.create_tu(all_india_token)
+    state_data = nikshay_helper.create_tu(all_india_token, {
+        'name': 'tu',
+        'mobile': '9999999994',
+        'email': 'mail.three@gmail.com',
+        'secondaryMobile1': '9999999993',
+        'secondaryMobile2': '9999999992'
+    })
     Logger.info('simulate', 'Adding sidebar permissions')
     registry_helper.add_tu_sidebar_permissions()
     Logger.info('simulate', '-------------------------------------------')
@@ -1485,3 +1491,19 @@ if starting_version <= version_map['NikshayMicroscopyServiceLab'] <= ending_vers
     })
     Logger.info('simulate', '-------------------------------------------')
 
+if starting_version <= version_map['NikshayTribalTU'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating tribal TU')
+    state_data = nikshay_helper.create_tu(all_india_token, {
+        'name': 'tuTribal',
+        'mobile': '9999999945',
+        'email': 'mail.four@gmail.com',
+        'secondaryMobile1': '9999999944',
+        'secondaryMobile2': '9999999943'
+    })
+    Logger.info('simulate', 'Adding associations')
+    registry_helper.add_hierarchy_associations(nikshay_helper.get_hierarchy_id('tuTribal', 4), {
+        'isTribal': 'true'
+    }, registry_helper.get_token(registry_helper.get_client_id()))
+    Logger.info('simulate', '-------------------------------------------')

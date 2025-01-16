@@ -116,7 +116,6 @@ class NikshayHelper(BaseHelper):
             'mobile': '9999999998',
             'email': 'mail.one@gmail.com',
             'pincode': '999999',
-            'phoneOffice': '9999999997',
             'secondaryMobile1': '9999999997',
             'level': 2,
             'typeOfPatientsAdded': 'NONE',
@@ -144,7 +143,6 @@ class NikshayHelper(BaseHelper):
             'mobile': '9999999996',
             'email': 'mail.two@gmail.com',
             'pincode': '999999',
-            'phoneOffice': '9999999995',
             'secondaryMobile1': '9999999995',
             'level': 3,
             'typeOfPatientsAdded': 'IndiaTbPublic,IndiaTbPrivate',
@@ -169,26 +167,25 @@ class NikshayHelper(BaseHelper):
         mssql_helper = MssqlHelper()
         mssql_helper.execute(query, 'nikshay_new')
 
-    def create_tu(self, token):
+    def create_tu(self, token, data):
         return self.create_facility(token, {
-            'name': 'tu',
+            'name': data['name'],
             'type': 'TU',
-            'mobile': '9999999994',
-            'email': 'mail.three@gmail.com',
+            'mobile': data['mobile'],
+            'email': data['email'],
             'pincode': '999999',
-            'phoneOffice': '9999999993',
-            'secondaryMobile1': '9999999993',
-            'secondaryMobile2': '9999999992',
+            'secondaryMobile1': data['secondaryMobile1'],
+            'secondaryMobile2': data['secondaryMobile2'],
             'level': 4,
             'typeOfPatientsAdded': 'IndiaTbPublic,IndiaTbPrivate',
             'extraData': json.dumps({
                 "MotcName": "",
-                "MobileNo": '9999999994',
-                "Email": "mail.three@gmail.com",
+                "MobileNo": data['mobile'],
+                "Email": data['email'],
                 "Sts": "",
-                "MobileSts": "9999999993",
+                "MobileSts": data['secondaryMobile1'],
                 "Stls": "",
-                "MobileStls": "9999999992",
+                "MobileStls": data['secondaryMobile2'],
                 "TuAddress": "",
                 "TuPincode": "999999",
                 "UpdatedBy": "india-all",
