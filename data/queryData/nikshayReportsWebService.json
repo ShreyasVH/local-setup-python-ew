@@ -1,0 +1,31 @@
+[
+  {
+    "version": 2,
+    "name": "create_tables",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table [table-data]( Instance_Code int, Sec_Code int, Ministry_Code int, Dept_Code int, Project_Code bigint, Frequency_Id int, Group_Id int, Datadate date, atmpt int, Lvl1_Code int, Lvl2_Code int, Lvl3_Code int, KPI1_Data decimal(18, 5), KPI2_Data decimal(18, 5), KPI3_Data decimal(18, 5), KPI4_Data decimal(18, 5), KPI5_Data decimal(18, 5), KPI6_Data decimal(18, 5), KPI7_Data decimal(18, 5), KPI8_Data decimal(18, 5));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table [table-log]( Instance_Code int, sec_code int, Ministry_Code int, dept_code int, project_code int, group_id int, Req_Start_dt datetime, Req_End_dt datetime, Msg varchar(1000), Datadt_from date, Datadt_to date, Status int, error_code int, payload nvarchar(max));"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

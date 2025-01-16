@@ -1,0 +1,997 @@
+[
+  {
+    "version": 1,
+    "name": "initial_migrations",
+    "sections": [
+      {
+        "title": "flyway_schema_history",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS flyway_schema_history (installed_rank integer NOT NULL, version character varying(50) COLLATE pg_catalog.\"default\", description character varying(200) COLLATE pg_catalog.\"default\" NOT NULL, type character varying(20) COLLATE pg_catalog.\"default\" NOT NULL, script character varying(1000) COLLATE pg_catalog.\"default\" NOT NULL, checksum integer, installed_by character varying(100) COLLATE pg_catalog.\"default\" NOT NULL, installed_on timestamp without time zone NOT NULL DEFAULT now(), execution_time integer NOT NULL, success boolean NOT NULL, CONSTRAINT flyway_schema_history_pk PRIMARY KEY (installed_rank));"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 2,
+    "name": "create_tables",
+    "sections": [
+      {
+        "title": "iam_adhtech",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_adhtech (id bigint NOT NULL, created_date date, name character varying(255) COLLATE pg_catalog.\"default\", CONSTRAINT iam_adhtech_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_caccess",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_caccess (id bigint NOT NULL, access_token character varying(255) COLLATE pg_catalog.\"default\", created_date timestamp without time zone, event_flow_id bigint, name character varying(255) COLLATE pg_catalog.\"default\", next_refresh bigint, password character varying(255) COLLATE pg_catalog.\"default\", updated_date timestamp without time zone, CONSTRAINT iam_caccess_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_schedule",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_schedule (id bigint NOT NULL, scheduletype_id bigint, value character varying(255) COLLATE pg_catalog.\"default\", CONSTRAINT iam_schedule_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_schedule_type",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_schedule_type (id bigint NOT NULL, created_date date, name character varying(255) COLLATE pg_catalog.\"default\", CONSTRAINT iam_schedule_type_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_access_mapping",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE SEQUENCE IF NOT EXISTS iam_access_mapping_id_seq;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_access_mapping( id bigint NOT NULL DEFAULT nextval('iam_access_mapping_id_seq'::regclass), active boolean, client_id bigint, entity_id character varying(255) COLLATE pg_catalog.\"default\", iam_id bigint, CONSTRAINT iam_access_mapping_pkey PRIMARY KEY (id));"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "create index if not exists iam_access_mapping_iam_id_client_id_active_idx on iam_access_mapping (iam_id, client_id, active);"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_adhstring_log",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE SEQUENCE IF NOT EXISTS iam_adhstring_log_id_seq;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_adhstring_log( id bigint NOT NULL DEFAULT nextval('iam_adhstring_log_id_seq'::regclass), created_date date, iam_id bigint, record_date timestamp without time zone, updated_date timestamp without time zone, value character(1) COLLATE pg_catalog.\"default\", CONSTRAINT iam_adhstring_log_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_call_logs",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE SEQUENCE IF NOT EXISTS iam_call_logs_id_seq;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_call_logs( id bigint NOT NULL DEFAULT nextval('iam_call_logs_id_seq'::regclass), added_on timestamp without time zone, caller character varying(255) COLLATE pg_catalog.\"default\", client_time timestamp without time zone, number_dialled character varying(255) COLLATE pg_catalog.\"default\", post_body character varying(255) COLLATE pg_catalog.\"default\", CONSTRAINT iam_call_logs_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_imei_map",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE SEQUENCE IF NOT EXISTS iam_imei_map_id_seq;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_imei_map( id bigint NOT NULL DEFAULT nextval('iam_imei_map_id_seq'::regclass), created_date timestamp without time zone, iam_id bigint, imei character varying(255) COLLATE pg_catalog.\"default\", start_date timestamp without time zone, stop_date timestamp without time zone, CONSTRAINT iam_imei_map_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_merm_logs",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE SEQUENCE IF NOT EXISTS iam_merm_logs_id_seq;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_merm_logs( id bigint NOT NULL DEFAULT nextval('iam_merm_logs_id_seq'::regclass), client_time timestamp without time zone, created_date timestamp without time zone, imei character varying(255) COLLATE pg_catalog.\"default\", CONSTRAINT iam_merm_logs_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_phone_map",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE SEQUENCE IF NOT EXISTS iam_phone_map_id_seq;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_phone_map( id bigint NOT NULL DEFAULT nextval('iam_phone_map_id_seq'::regclass), added_on timestamp without time zone, iam_id bigint, phone_number character varying(255) COLLATE pg_catalog.\"default\", stop_date timestamp without time zone, CONSTRAINT iam_phone_map_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_registration",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE SEQUENCE IF NOT EXISTS iam_registration_id_seq;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_registration( id bigint NOT NULL DEFAULT nextval('iam_registration_id_seq'::regclass), adtech_id bigint, adh_string text COLLATE pg_catalog.\"default\", created_date timestamp without time zone, end_date timestamp without time zone, last_dosage timestamp without time zone, last_missed_dosage timestamp without time zone, scheduletype_id bigint, start_date timestamp without time zone, unique_identifier character varying(255) COLLATE pg_catalog.\"default\", updated_date timestamp without time zone, CONSTRAINT iam_registration_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_schedule_map",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS iam_schedule_map( id bigint NOT NULL, active boolean, created_date timestamp without time zone, end_date timestamp without time zone, first_dose_offset bigint, iam_id bigint, negative_sensitivity bigint, positive_sensitivity bigint, schedule_id bigint, start_date timestamp without time zone, CONSTRAINT iam_schedule_map_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "video_entity_mapping",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS video_entity_mapping( id bigint NOT NULL, iam_id bigint, status integer, upload_date timestamp without time zone, video_id character varying(255) COLLATE pg_catalog.\"default\", CONSTRAINT video_entity_mapping_pkey PRIMARY KEY (id));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_schedule_time_map",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table if not exists iam_schedule_time_map( id bigserial not null constraint iam_schedule_time_map_pkey primary key, created_date date, active boolean not null default false, schedule_map_id bigint, FOREIGN KEY (schedule_map_id) REFERENCES iam_schedule_map(id), dose_time TIME not null);"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 3,
+    "name": "add_clients",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "iam_caccess",
+                "keyValues": {
+                  "id": 63,
+                  "access_token": "'xH4nKpEini3KP9k8RvbD1qd1AS43umBQ1eBtl0EGyIo='",
+                  "created_date": "NOW()",
+                  "event_flow_id": null,
+                  "name": "'Hub'",
+                  "next_refresh": null,
+                  "password": "'74N1QBEY4JUwoISNGiqe9ANqwYspHzyMPGiWc62BzS0='",
+                  "updated_date": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_caccess",
+                "keyValues": {
+                  "id": 29,
+                  "access_token": "'K/oeUZomwekEGkEO2YLifTOREfKVTvhiF0bUeTZc+3w='",
+                  "created_date": "NOW()",
+                  "event_flow_id": null,
+                  "name": "'Nikshay'",
+                  "next_refresh": null,
+                  "password": "'YIveX8VV+SvefI4GNR6ENj3o/so8FZX6eRXOwgvunIc='",
+                  "updated_date": "NOW()"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 4,
+    "name": "updates",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "ALTER TABLE iam_caccess ADD if not exists external boolean DEFAULT false;"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 23,
+    "name": "updates",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "alter table if exists iam_schedule_time_map add column adh_string TEXT;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "alter table if exists iam_schedule_time_map add column dose_info jsonb;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "alter table if exists iam_schedule_time_map add column end_date timestamp;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "alter table if exists iam_schedule_time_map add column start_date timestamp;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "create sequence hibernate_sequence start 1 increment 1;"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 401,
+    "name": "master_values",
+    "sections": [
+      {
+        "title": "iam_adhtech",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "iam_adhtech",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                  "created_date": "'2019-03-20'",
+                  "name": "'99 Dots'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_adhtech",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                  "created_date": "'2019-03-20'",
+                  "name": "'Video Dots'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_adhtech",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                  "created_date": "'2019-03-20'",
+                  "name": "'MERM Technology'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_adhtech",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                  "created_date": "'2019-03-23'",
+                  "name": "'Operation Asha'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_adhtech",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                  "created_date": "'2019-07-01'",
+                  "name": "'None'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_adhtech",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                  "created_date": "'2021-08-01'",
+                  "name": "'99 Dots Lite'"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_schedule_type",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "iam_schedule_type",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule_type)",
+                  "created_date": "NOW()::date",
+                  "name": "'Daily'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_schedule_type",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule_type)",
+                  "created_date": "NOW()::date",
+                  "name": "'Weekly'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_schedule_type",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule_type)",
+                  "created_date": "NOW()::date",
+                  "name": "'Multi Frequency'"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "iam_schedule",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "iam_schedule",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule)",
+                  "scheduletype_id": "(SELECT id FROM iam_schedule_type WHERE name = 'Weekly')",
+                  "value": "'1000000'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_schedule",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule)",
+                  "scheduletype_id": "(SELECT id FROM iam_schedule_type WHERE name = 'Weekly')",
+                  "value": "'0100000'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_schedule",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule)",
+                  "scheduletype_id": "(SELECT id FROM iam_schedule_type WHERE name = 'Weekly')",
+                  "value": "'0010000'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_schedule",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule)",
+                  "scheduletype_id": "(SELECT id FROM iam_schedule_type WHERE name = 'Weekly')",
+                  "value": "'0001000'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_schedule",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule)",
+                  "scheduletype_id": "(SELECT id FROM iam_schedule_type WHERE name = 'Weekly')",
+                  "value": "'0000100'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_schedule",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule)",
+                  "scheduletype_id": "(SELECT id FROM iam_schedule_type WHERE name = 'Weekly')",
+                  "value": "'0000010'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_schedule",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule)",
+                  "scheduletype_id": "(SELECT id FROM iam_schedule_type WHERE name = 'Weekly')",
+                  "value": "'0000001'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "iam_schedule",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_schedule)",
+                  "value": "'1111111'",
+                  "scheduletype_id": "(SELECT id FROM iam_schedule_type WHERE name = 'Multi Frequency')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "migrations",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 1,
+                  "version": "'1'",
+                  "description": "'<< Flyway Baseline >>'",
+                  "type": "'BASELINE'",
+                  "script": "'<< Flyway Baseline >>'",
+                  "checksum": null,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.471023'",
+                  "execution_time": 0,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 2,
+                  "version": "'1.1'",
+                  "description": "'Insert iam adhtech'",
+                  "type": "'SQL'",
+                  "script": "'V1.1__Insert_iam_adhtech.sql'",
+                  "checksum": -220742341,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.514143'",
+                  "execution_time": 15,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 3,
+                  "version": "'2.0'",
+                  "description": "'Schedule type and schedule values'",
+                  "type": "'SQL'",
+                  "script": "'V2.0__Schedule_type_and_schedule_values.sql'",
+                  "checksum": 410392114,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.550255'",
+                  "execution_time": 18,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 4,
+                  "version": "'2.1'",
+                  "description": "'Set Schedule type id of existing registrations'",
+                  "type": "'SQL'",
+                  "script": "'V2.1__Set_Schedule_type_id_of_existing_registrations.sql'",
+                  "checksum": 268126569,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.591043'",
+                  "execution_time": 9,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 5,
+                  "version": "'2.2'",
+                  "description": "'Indexes on Schedule Map table'",
+                  "type": "'SQL'",
+                  "script": "'V2.2__Indexes_on_Schedule_Map_table.sql'",
+                  "checksum": -1243849024,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.623942'",
+                  "execution_time": 23,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 6,
+                  "version": "'3.0'",
+                  "description": "'AdhStringLog Drop index created date and iamid'",
+                  "type": "'SQL'",
+                  "script": "'V3.0__AdhStringLog_Drop_index_created_date_and_iamid.sql'",
+                  "checksum": -787951713,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.680512'",
+                  "execution_time": 8,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 7,
+                  "version": "'3.1'",
+                  "description": "'AdhStringLog Add index record date and iamid'",
+                  "type": "'SQL'",
+                  "script": "'V3.1__AdhStringLog_Add_index_record_date_and_iamid.sql'",
+                  "checksum": -1948453738,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.690727'",
+                  "execution_time": 10,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 8,
+                  "version": "'3.2'",
+                  "description": "'AdhStringLog Drop index created date iamid updated date'",
+                  "type": "'SQL'",
+                  "script": "'V3.2__AdhStringLog_Drop_index_created_date_iamid_updated_date.sql'",
+                  "checksum": -4092072,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.729533'",
+                  "execution_time": 6,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 9,
+                  "version": "'4.1'",
+                  "description": "'Alter Client Add Matomo Url SiteId'",
+                  "type": "'SQL'",
+                  "script": "'V4.1__Alter_Client_Add_Matomo_Url_SiteId.sql'",
+                  "checksum": 96109300,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.742702'",
+                  "execution_time": 9,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 10,
+                  "version": "'4.2'",
+                  "description": "'Alter Client Add Matomo Url SiteId'",
+                  "type": "'SQL'",
+                  "script": "'V4.2__Alter_Client_Add_Matomo_Url_SiteId.sql'",
+                  "checksum": 1863120965,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.769828'",
+                  "execution_time": 16,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 11,
+                  "version": "'5.0'",
+                  "description": "'Insert 99dots lite adtech'",
+                  "type": "'SQL'",
+                  "script": "'V5.0__Insert_99dots_lite_adtech.sql'",
+                  "checksum": -2065747323,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.804476'",
+                  "execution_time": 5,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 12,
+                  "version": "'5.1'",
+                  "description": "'Alter Adh String Column Type'",
+                  "type": "'SQL'",
+                  "script": "'V5.1__Alter_Adh_String_Column_Type.sql'",
+                  "checksum": 488278698,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.828879'",
+                  "execution_time": 7,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 13,
+                  "version": "'6.0'",
+                  "description": "'Add Last Missed Dosage Column'",
+                  "type": "'SQL'",
+                  "script": "'V6.0__Add_Last_Missed_Dosage_Column.sql'",
+                  "checksum": 1819941028,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.851100'",
+                  "execution_time": 6,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 14,
+                  "version": "'6.2'",
+                  "description": "'Insert IAM AdhTechs If Not Exists'",
+                  "type": "'SQL'",
+                  "script": "'V6.2__Insert_IAM_AdhTechs_If_Not_Exists.sql'",
+                  "checksum": -1574060520,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-11-20 23:34:04.873713'",
+                  "execution_time": 13,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 15,
+                  "version": "'6.4'",
+                  "description": "'Insert new schedule type'",
+                  "type": "'SQL'",
+                  "script": "'V6.4__Insert_new_schedule_type.sql'",
+                  "checksum": 14400956,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-12-24 01:50:17.086803'",
+                  "execution_time": 9,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 16,
+                  "version": "'6.5'",
+                  "description": "'Create Schedule Time Map'",
+                  "type": "'SQL'",
+                  "script": "'V6.5__Create_Schedule_Time_Map.sql'",
+                  "checksum": 648664831,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2022-12-24 01:50:17.119284'",
+                  "execution_time": 19,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 17,
+                  "version": "'6.7'",
+                  "description": "'Update client id GMRI'",
+                  "type": "'SQL'",
+                  "script": "'V6.7__Update_client_id_GMRI.sql'",
+                  "checksum": 2038889691,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2023-03-03 19:15:33.938695'",
+                  "execution_time": 6,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 18,
+                  "version": "'6.8'",
+                  "description": "'Add External flag'",
+                  "type": "'SQL'",
+                  "script": "'V6.8__Add_External_flag.sql'",
+                  "checksum": 428851176,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2023-03-03 19:15:33.954456'",
+                  "execution_time": 7,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 19,
+                  "version": "'6.6'",
+                  "description": "'Update client id 921'",
+                  "type": "'SQL'",
+                  "script": "'V6.6__Update_client_id_921.sql'",
+                  "checksum": -637829403,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2023-03-05 12:42:12.365217'",
+                  "execution_time": 15,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 20,
+                  "version": "'6.9'",
+                  "description": "'Add Index In Access Mapping'",
+                  "type": "'SQL'",
+                  "script": "'V6.9__Add_Index_In_Access_Mapping.sql'",
+                  "checksum": -139082807,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2023-03-05 12:42:12.395719'",
+                  "execution_time": 19,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 21,
+                  "version": "'7.2'",
+                  "description": "'Add Daily Schedule Multi Freq'",
+                  "type": "'SQL'",
+                  "script": "'V7.2__Add_Daily_Schedule_Multi_Freq.sql'",
+                  "checksum": 298443950,
+                  "installed_by": "'postgres'",
+                  "installed_on": "'2023-05-31 13:47:07.497668'",
+                  "execution_time": 7,
+                  "success": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 580,
+    "name": "AddOutcomeAssignedPublicPatient",
+    "sections": [
+      {
+        "title": "Start Treatment",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "iam_registration",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_registration)",
+                  "adtech_id": "(SELECT id FROM iam_adhtech WHERE name = 'None')",
+                  "adh_string": "'666'",
+                  "created_date": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "end_date": null,
+                  "last_dosage": null,
+                  "last_missed_dosage": null,
+                  "scheduletype_id": "(SELECT id FROM iam_schedule_type WHERE name = 'Daily')",
+                  "start_date": "'UTC_DATE_MINUS_2_DAY'",
+                  "unique_identifier": "(SELECT id::text FROM foreign_episode WHERE first_name = 'Outcome' AND last_name = 'Assigned Public')",
+                  "updated_date": "'UTC_DATE_TIME_PLUS_10_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "iam_access_mapping",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_access_mapping)",
+                  "active": true,
+                  "client_id": "(SELECT id FROM iam_caccess WHERE name = 'Nikshay')",
+                  "entity_id": "(SELECT id::text FROM foreign_episode WHERE first_name = 'Outcome' AND last_name = 'Assigned Public')",
+                  "iam_id": "(SELECT MAX(id) FROM iam_registration)"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Close Case",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "UPDATE",
+                "table": "iam_access_mapping",
+                "keyValues": {
+                  "active": false
+                },
+                "filters": {
+                  "id": "(SELECT MAX(id) FROM iam_access_mapping)"
+                }
+              },
+              {
+                "type": "UPDATE",
+                "table": "iam_registration",
+                "keyValues": {
+                  "end_date": "'UTC_DATE_PLUS_0_DAY'",
+                  "adh_string": "'66'"
+                },
+                "filters": {
+                  "id": "(SELECT MAX(id) FROM iam_registration)"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 999,
+    "name": "auto_increment_corrections",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "AUTO_INCREMENT",
+                "table": "iam_registration",
+                "sequenceName": "iam_registration_id_seq"
+              },
+              {
+                "type": "AUTO_INCREMENT",
+                "table": "iam_access_mapping",
+                "sequenceName": "iam_access_mapping_id_seq"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

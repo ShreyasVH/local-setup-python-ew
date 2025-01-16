@@ -1,0 +1,394 @@
+[
+  {
+    "version": 520,
+    "name": "EnableEpisodeReplication",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table transition_new_house_keeping( [schema] nvarchar(max), [table] nvarchar(max), has_update_tracker bit, last_updated_at datetime, update_tracking_column nvarchar(max), has_created_tracker bit, last_created_at datetime, created_tracking_column nvarchar(max), error nvarchar(max));"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "transition_new_house_keeping",
+                "keyValues": {
+                  "[schema]": "N'public'",
+                  "[table]": "N'episode'",
+                  "has_update_tracker": 1,
+                  "last_updated_at": "'DATE_MINUS_90_DAY'",
+                  "update_tracking_column": "N'updated_on'",
+                  "has_created_tracker": 1,
+                  "last_created_at": "'DATE_MINUS_90_DAY'",
+                  "created_tracking_column": "N'created_date'",
+                  "error": null
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Patient( Id bigint not null constraint PK__Patient primary key, Deleted bit, AddedTimestamp datetime, FirstName nvarchar(255), LastName nvarchar(255), Gender nvarchar(20), Language nvarchar(30), Age int, Occupation nvarchar(255), Address nvarchar(2000), PrimaryPhone nvarchar(15), PreARTNumber nvarchar(255), ARTNumber nvarchar(255), EnrollmentDate datetime2, EndDate datetime, HierarchyMapping_Initiation int, HierarchyMapping_Residence int, TypeOfPatient nvarchar(100), CurrentSchedule nvarchar(7), CurrentTags nvarchar(1000), TreatmentOutcome nvarchar(200), AttentionRequired nvarchar(200), AdherenceStatus nvarchar(30), LastDosage datetime, WeightBand int, NewOrPreviouslyTreated nvarchar(255), SiteOfDisease nvarchar(255), EPSite nvarchar(255), TypeOfCase nvarchar(255), HIVTestStatus nvarchar(255), NikshayId nvarchar(255), TBNumber nvarchar(255), TBCategory nvarchar(255), MermId nvarchar(255), DrugRegimen nvarchar(100), TBTreatmentStartDate datetime, AddedBy int, DeploymentCode varchar(10), AdherenceString varchar(2048), RegistrationDate datetime2, FathersName nvarchar(1000), Pincode nvarchar(100), Taluka nvarchar(255), Town nvarchar(255), Ward nvarchar(255), Landmark nvarchar(255), Stage nvarchar(100), DiagnosisDate datetime2, DiagnosisBasis nvarchar(100), MonitoringMethod nvarchar(100), TreatmentType nvarchar(100), DrugSusceptibility nvarchar(300), RefillMonitoring bit, Area nvarchar(100), MaritalStatus nvarchar(64), SocioeconomicStatus nvarchar(64), KeyPopulation varchar(max), ContactPersonName nvarchar(1000), ContactPersonAddress nvarchar(2000), ContactPersonPhone nvarchar(100), MonthsOfTreatment int, MonthsSinceEpisode int, TreatmentSource nvarchar(64), Height int, CPInitiationDate datetime2, RegimenType varchar(128), DrugResistance varchar(32), BeneficiaryId int, HierarchyMapping_Enrollment int, HierarchyMapping_Diagnosed int, HierarchyMapping_Current int, HierarchyMapping_ART int, HierarchyMapping_DRTB int, RemarksOutcome nvarchar(max), MedicalOfficerOutcome nvarchar(255), NotificationTestId int, MigrationStatus nvarchar(20), Latitude real, Longitude real, HierarchyMapping_PVTHUB int, TempNikshayId nvarchar(max), TempMigrationId int, ParentEpisodeId int, IsDuplicate bit, DuplicateStatus nvarchar(255), DuplicateOf int, HierarchyMapping_Outcome int, IsIAMEnabled bit, ForegoBenefits bit default 0, LastActivityDate datetime2(3), TransferId int, Weight int, TypeOfDOT nvarchar(max), HierarchyMapping_PrivateFacility int, TreatmentPhase nvarchar(10), EndOfIp datetime, TreatmentStartTimeStamp datetime, PersonId int, AdherenceDispensationRelation bit, StageStatus varchar(100), Symptom varchar(255), TypeOfCaseFinding nvarchar(50), LastMissedDosage datetime, IsEpisodeEnabled bit, TypeOfTreatment int, TypeOfCase_New varchar(255), UpdatedTimestamp datetime);"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 521,
+    "name": "EnableRegistryHierarchyReplication",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Hierarchy( Id int not null primary key, Level int not null, Name nvarchar(255), Type nvarchar(255), Code nvarchar(255), Sector nvarchar(255), Parent_Id int, Level_1_Id int, Level_1_Name nvarchar(255), Level_1_Type nvarchar(255), Level_1_Code nvarchar(255), Level_2_Id int, Level_2_Name nvarchar(255), Level_2_Type nvarchar(255), Level_2_Code nvarchar(255), Level_3_Id int, Level_3_Name nvarchar(255), Level_3_Type nvarchar(255), Level_3_Code nvarchar(255), Level_4_Id int, Level_4_Name nvarchar(255), Level_4_Type nvarchar(255), Level_4_Code nvarchar(255), Level_5_Id int, Level_5_Name nvarchar(255), Level_5_Type nvarchar(255), Level_5_Code nvarchar(255), Level_6_Id int, Level_6_Name nvarchar(255), Level_6_Type nvarchar(255), Level_6_Code nvarchar(255), Latitude float, Longitude float, SuggestedParent_Id int, SuggestedParent_Name nvarchar(255), SuggestedParent_Type nvarchar(255), SuggestedParent_Code nvarchar(255), DrugRegimen nvarchar(20) not null, HasMERM bit not null, HasChildren bit not null, NikshayId varchar(32), ExtraData nvarchar(max), StartDate date, EndDate date, PfmsAgencyMapping int, HandlePfmsAgencyUpdate bit, IsNotActive bit not null, IsTribal bit not null, BeneficiaryId int, EligibleForIncentive bit not null, GeoLocation geography, PFMSDistrictCode nvarchar(20), PFMSStateCode nvarchar(20), MobileNumber nvarchar(15), HeadquarterPhi int, MermMappingLevel int, MergeStatus nvarchar(50), VILLAGE varchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, GRAMPANCHAYAT varchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, LGDCODE varchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, hipId varchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, lgdDistrictCode nvarchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE registry_new_house_keeping( [schema] nvarchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, [table] nvarchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, has_update_tracker bit NULL, last_updated_at datetime2 NULL, update_tracking_column nvarchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, has_created_tracker bit NULL, last_created_at datetime2 NULL, created_tracking_column nvarchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, error nvarchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL);"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 522,
+    "name": "EnableGenericReplication",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IndexTable( Id bigint IDENTITY(1,1) NOT NULL, DatabaseName nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, IndexType nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, TableName nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, IndexName nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, IndexScript nvarchar(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, CONSTRAINT PK__IndexTable PRIMARY KEY (Id));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE [_Lateral_Login]( ID int IDENTITY(1,1) NOT NULL, UserName nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, Hierarchycode nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, Hierarchy_ID int NOT NULL, H_Type varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, isDeleted int NULL, LastUpdated datetime NULL, CONSTRAINT PK___Lateral__3214EC2780685316 PRIMARY KEY (ID));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE FUNCTION [dbo].[GetLateralUser]( @userName nchar(500)) RETURNS varchar(50) AS BEGIN DECLARE @isExist int if (select (case when count(ID)>0 then 1 else 0 end) from _Lateral_Login where username=@userName)=1 SET @isExist=1 RETURN @isExist END;"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 523,
+    "name": "EnableIamReplication",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE iam_adhtech( id bigint NOT NULL, created_date datetime NULL, name nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, CONSTRAINT PK__iam_adht__3213E83F2172EC14 PRIMARY KEY (id));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                  "type": "INSERT",
+                  "table": "iam_adhtech",
+                  "keyValues": {
+                    "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                    "created_date": "'2019-03-20'",
+                    "name": "'99 Dots'"
+                  }
+                },
+                {
+                  "type": "INSERT",
+                  "table": "iam_adhtech",
+                  "keyValues": {
+                    "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                    "created_date": "'2019-03-20'",
+                    "name": "'Video Dots'"
+                  }
+                },
+                {
+                  "type": "INSERT",
+                  "table": "iam_adhtech",
+                  "keyValues": {
+                    "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                    "created_date": "'2019-03-20'",
+                    "name": "'MERM Technology'"
+                  }
+                },
+                {
+                  "type": "INSERT",
+                  "table": "iam_adhtech",
+                  "keyValues": {
+                    "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                    "created_date": "'2019-03-23'",
+                    "name": "'Operation Asha'"
+                  }
+                },
+                {
+                  "type": "INSERT",
+                  "table": "iam_adhtech",
+                  "keyValues": {
+                    "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                    "created_date": "'2019-07-01'",
+                    "name": "'None'"
+                  }
+                },
+                {
+                  "type": "INSERT",
+                  "table": "iam_adhtech",
+                  "keyValues": {
+                    "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM iam_adhtech)",
+                    "created_date": "'2021-08-01'",
+                    "name": "'99 Dots Lite'"
+                  }
+                }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE function [getAdherenceDoses]( @startDate DATE = NULL, @endDate DATE = NULL, @noOfDays INT = 0, @findString NVARCHAR(10), @adhString NVARCHAR(MAX)) RETURNS INT AS BEGIN DECLARE @totalDoses int SET @totalDoses = ( SELECT CASE WHEN @endDate is not null THEN (LEN(right(@adhString, @noOfDays)) - LEN(REPLACE(right(@adhString, @noOfDays),@findString,''))) ELSE CASE WHEN LEN(@adhString) - DATEDIFF(day,@startDate,GETDATE()) + @noOfDays > 0 THEN LEN(right(@adhString,LEN(@adhString) - DATEDIFF(day,@startDate,GETDATE()) + @noOfDays)) - LEN(REPLACE(right(@adhString,LEN(@adhString) - DATEDIFF(day,@startDate,GETDATE()) + @noOfDays),@findString ,'')) ELSE 0 END END ) RETURN ISNULL(@totalDoses, 0) END;"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 524,
+    "name": "EnableDashboard",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _UserPermissionAPI( ID int identity primary key, UserId int not null, Resource nvarchar(255));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Report_Cache_Notification( ID int identity primary key, Year_Diag int, StateName nvarchar(255) not null, StateId int, DistrictName nvarchar(255), DistrictId int, TbuName nvarchar(255), TbuID int, PhiName nvarchar(255), PhiId int, NotificationCount int, NotificationCount_Pub int, NotificationCount_Pvt int, Type_F nvarchar(255), LastUpdated datetime, Year_Prev_TillDate int);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE PROCEDURE [TB_TS_NPY_Dashboard] @year int AS BEGIN select isnull(sum(RCN.NotificationCount),'') TBNotifiedCases from _Report_Cache_Notification RCN Join _Hierarchy H on H.ID=RCN.StateId where RCN.Year_Diag=@year and Type_F='State' and(RCN.Year_Prev_TillDate=0 or RCN.Year_Prev_TillDate is Null) END;"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE [_Report_Cache_Notification_WIAI]( ID int IDENTITY(1,1) NOT NULL, Year_Diag int NULL, StateName nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, StateId int NULL, DistrictName nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, DistrictId int NULL, TbuName nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, TbuID int NULL, PhiName nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, PhiId int NULL, NotificationCount int NULL, NotificationCount_Pub int NULL, NotificationCount_Pvt int NULL, Type_F nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, LastUpdated datetime NULL, Year_Prev_TillDate int NULL, CONSTRAINT PK___Report___3214EC2787494ED9 PRIMARY KEY (ID));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE PROCEDURE [TB_TS_NPY_Dashboard_WIAI] @year int AS BEGIN select isnull(sum(RCN.NotificationCount),'') TBNotifiedCases from _Report_Cache_Notification_WIAI RCN where RCN.Year_Diag=@year and Type_F='State' and(RCN.Year_Prev_TillDate=0 or RCN.Year_Prev_TillDate is Null) END"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE FUNCTION [GetUserType]( @userName nvarchar(510)) RETURNS varchar(50) AS BEGIN DECLARE @Type Varchar(50) select @Type=type from _Hierarchy join _UserAccess on _UserAccess.HierarchyMapping=_Hierarchy.Id where username=@userName If @Type Is Null set @Type='Country' RETURN @Type END"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE PROCEDURE [rptUserMasterData] @userName nvarchar(200) AS BEGIN CREATE Table #TempUserMasterDataReport( Scode nvarchar(200), Dcode nvarchar(200), Tcode nvarchar(200), [Type] nvarchar(500), [HId] int, [UId] int, [PId] int, HierarchyLevel int, HierarchyName nvarchar(500), Access_IndiaTbPublic nvarchar(100), Access_IndiaTbPrivate nvarchar(100), AccessType nvarchar(100), Level_1_Id int, Level_2_Id int, Level_3_Id int, Level_4_Id int) begin if dbo.GetUserType(@userName)='Country' begin INSERT INTO #TempUserMasterDataReport(Scode, Dcode, Tcode, [Type], [HId], [UId], PId, HierarchyLevel, HierarchyName, Access_IndiaTbPublic, Access_IndiaTbPrivate, AccessType, Level_1_Id, Level_2_Id, Level_3_Id, Level_4_Id) select 0,0,0,h.[type],h.id,u.id,h.Parent_Id,H.Level,H.Name, U.Access_IndiaTbPublic, U.Access_IndiaTbPrivate, U.AccessType, H.Level_1_Id, H.Level_2_Id,H.Level_3_Id, H.Level_4_Id from _hierarchy H Join _UserAccess U on H.ID=U.hierarchymapping where UserName=@userName end else if dbo.GetUserType(@userName)='State' begin INSERT INTO #TempUserMasterDataReport(Scode, Dcode, Tcode, [Type], [HId], [UId], PId, HierarchyLevel, HierarchyName, Access_IndiaTbPublic, Access_IndiaTbPrivate, AccessType, Level_1_Id, Level_2_Id, Level_3_Id, Level_4_Id) select H.code,0,0,h.[type],h.id,u.id,h.Parent_Id,H.Level,H.Name, U.Access_IndiaTbPublic, U.Access_IndiaTbPrivate, U.AccessType, H.Level_1_Id, H.Level_2_Id,H.Level_3_Id, H.Level_4_Id from _hierarchy H Join _UserAccess U on H.ID=U.hierarchymapping where UserName=@userName end else if dbo.GetUserType(@userName)='District' begin INSERT INTO #TempUserMasterDataReport(Scode, Dcode, Tcode, [Type], [HId], [UId], PId, HierarchyLevel, HierarchyName, Access_IndiaTbPublic, Access_IndiaTbPrivate, AccessType, Level_1_Id, Level_2_Id, Level_3_Id, Level_4_Id) select H.Level_2_code,H.Code,0,h.[type],h.id,u.id,h.Parent_Id,H.Level,H.Name, U.Access_IndiaTbPublic, U.Access_IndiaTbPrivate, U.AccessType, H.Level_1_Id, H.Level_2_Id,H.Level_3_Id, H.Level_4_Id from _hierarchy H Join _UserAccess U on H.ID=U.hierarchymapping where UserName=@userName end else if dbo.GetUserType(@userName)='TU' begin INSERT INTO #TempUserMasterDataReport(Scode, Dcode, Tcode, [Type], [HId], [UId], PId, HierarchyLevel, HierarchyName, Access_IndiaTbPublic, Access_IndiaTbPrivate, AccessType, Level_1_Id, Level_2_Id, Level_3_Id, Level_4_Id) select H.Level_2_code,H.Level_3_Code,H.Code,h.[type],h.id,u.id,h.Parent_Id,H.Level,H.Name, U.Access_IndiaTbPublic, U.Access_IndiaTbPrivate, U.AccessType, H.Level_1_Id, H.Level_2_Id,H.Level_3_Id, H.Level_4_Id from _hierarchy H Join _UserAccess U on H.ID=U.hierarchymapping where UserName=@userName end else if (dbo.GetUserType(@userName)='PHI' OR dbo.GetUserType(@userName)='HUB' OR dbo.GetUserType(@userName)='PVTCHEM' OR dbo.GetUserType(@userName)='PVTLAB') begin INSERT INTO #TempUserMasterDataReport(Scode, Dcode, Tcode,[Type], [HId], [UId], PId, HierarchyLevel, HierarchyName, Access_IndiaTbPublic, Access_IndiaTbPrivate, AccessType, Level_1_Id, Level_2_Id, Level_3_Id, Level_4_Id) select H.Level_2_code,H.Level_3_Code,H.Level_4_Code,h.[type],h.id,u.id,h.Parent_Id,H.Level,H.Name, U.Access_IndiaTbPublic, U.Access_IndiaTbPrivate, U.AccessType, H.Level_1_Id, H.Level_2_Id,H.Level_3_Id, H.Level_4_Id from _hierarchy H Join _UserAccess U on H.ID=U.hierarchymapping where UserName=@userName end end select isnull(Scode,'')Scode, isnull(Dcode,'')Dcode, isnull(Tcode,'')Tcode, isnull([Type],'')Type, isnull(HId,'')HId, isnull(UId,'')UId, isnull(PId,'')Pid, isnull(HierarchyLevel,'')HLevel, isnull(HierarchyName,'')HName, isnull(Access_IndiaTbPublic,'')AccessPublic, isnull(Access_IndiaTbPrivate,'')AccessPrivate, isnull(AccessType,'')AccessType, isnull(Level_1_Id,'')Level_1_Id, isnull(Level_2_Id,'')Level_2_Id, isnull(Level_3_Id,'')Level_3_Id, isnull(Level_4_Id,'')Level_4_Id from #TempUserMasterDataReport DROP TABLE #TempUserMasterDataReport END;"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 525,
+    "name": "EnableDirectories",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE procedure [GetSTOsDirectory] as begin SELECT Name as StateName, JSON_VALUE(ExtraData,'$.StoName') AS StoName, JSON_VALUE(ExtraData,'$.Email') AS Email, JSON_VALUE(ExtraData,'$.StoName') AS StoName, JSON_VALUE(ExtraData,'$.PhoneOffice') AS PhoneOffice, JSON_VALUE(ExtraData,'$.PhoneRes') AS PhoneRes, JSON_VALUE(ExtraData,'$.MobileNo') AS MobileNo, JSON_VALUE(ExtraData,'$.StcAddress') AS StcAddress, JSON_VALUE(ExtraData,'$.StcPincode') AS StcPincode FROM _Hierarchy where IsnotActive = 0 and type='state' end;"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE procedure [GetDTOsDirectory] as begin SELECT Level_2_name as StateName, Name as DistrictName, JSON_VALUE(ExtraData,'$.DtoName') AS DtoName, JSON_VALUE(ExtraData,'$.Email') AS Email, JSON_VALUE(ExtraData,'$.PhoneOffice') AS PhoneOffice, JSON_VALUE(ExtraData,'$.MobileNo') AS MobileNo, HQPHI = isnull((SELECT Name FROM _Hierarchy WHERE Id = H.HeadquarterPhi),'Not Assigned') FROM _Hierarchy H where IsnotActive = 0 and type='District' and((Level_2_Code='AP' AND (Code<>'ADB' AND Code<>'BCL' AND Code<>'HYD' AND Code<>'KMR' AND Code<>'KMM' AND Code<>'MBR' AND Code<>'MDK' AND Code<>'NGD' AND Code<>'NZD' AND Code<>'RGY' AND Code<>'WRL')) OR (Level_2_Code='AN' AND (Code<>'ANI')) OR (Level_2_Code='TN' AND (Code<>'CNI')) OR (Level_2_Code='TS' AND (Code<>'WRL')) OR (Level_2_Code='WB' AND (Code<>'CAL')) OR (Level_2_Code='MH' AND (Code<>'BMC' AND Code<>'MZ1' AND Code<>'MZ2' AND Code<>'MZ3' AND Code<>'MZ4' AND Code<>'MZ5' AND Code<>'MZ6')) OR Level_2_Code IN ('AR','AS','BI','CG','CH','DD','DL','DM','DN','GA','GU','HP','HR','JH','JK','KA','KE','LK','MG','MN','MP','MZ','NG','OR','PD','PN','RJ','SK','TR','UP','UR','LD')) order by Level_2_name, name SELECT Name as StateName FROM _Hierarchy where IsnotActive = 0 and type='state' end;"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE procedure [GetTBUnitDirectory] @StateId nvarchar(50)=null, @DistrictId nvarchar(50) = null as begin SELECT Level_2_Name AS StateName,Level_3_Name as DistrictName,Code as TBUnitCode,Name as TBUnitName, isnull(JSON_VALUE(ExtraData,'$.Phone') ,'')AS Phone, isnull(JSON_VALUE(ExtraData,'$.Email'),'') AS Email, isnull(JSON_VALUE(ExtraData,'$.MotcName'),'') AS MOTCName, isnull(JSON_VALUE(ExtraData,'$.MobileNo'),'') AS MobileNo, isnull(JSON_VALUE(ExtraData,'$.Sts'),'') AS STS, isnull(JSON_VALUE(ExtraData,'$.MobileSts'),'') AS MobileSTS, isnull(JSON_VALUE(ExtraData,'$.Stls'),'') AS STLS, isnull(JSON_VALUE(ExtraData,'$.MobileStls'),'') AS MobileSTLS, isnull(JSON_VALUE(ExtraData,'$.TuAddress'),'') AS TU_Address, isnull(JSON_VALUE(ExtraData,'$.TuPincode'),'') AS TU_PinCode, HQPHI = isnull((SELECT Name FROM _Hierarchy WHERE Id = H.HeadquarterPhi),'Not Assigned') FROM _Hierarchy H WHERE Type='TU' AND IsNotActive=0 and((Level_2_Code='AP' AND (Level_3_Code<>'ADB' AND Level_3_Code<>'BCL' AND Level_3_Code<>'HYD' AND Level_3_Code<>'KMR' AND Level_3_Code<>'KMM' AND Level_3_Code<>'MBR' AND Level_3_Code<>'MDK' AND Level_3_Code<>'NGD' AND Level_3_Code<>'NZD' AND Level_3_Code<>'RGY' AND Level_3_Code<>'WRL')) OR (Level_2_Code='AN' AND (Level_3_Code<>'ANI')) OR (Level_2_Code='TN' AND (Level_3_Code<>'CNI')) OR (Level_2_Code='TS' AND (Level_3_Code<>'WRL')) OR (Level_2_Code='WB' AND (Level_3_Code<>'CAL')) OR (Level_2_Code='MH' AND (Level_3_Code<>'BMC' AND Level_3_Code<>'MZ1' AND Level_3_Code<>'MZ2' AND Level_3_Code<>'MZ3' AND Level_3_Code<>'MZ4' AND Level_3_Code<>'MZ5' AND Level_3_Code<>'MZ6')) OR Level_2_Code IN ('AR','AS','BI','CG','CH','DD','DL','DM','DN','GA','GU','HP','HR','JH','JK','KA','KE','LK','MG','MN','MP','MZ','NG','OR','PD','PN','RJ','SK','TR','UP','UR','LD')) and Level_2_Id =@StateId and Level_3_Id =@DistrictId SELECT distinct Level_2_Name AS StateName FROM _Hierarchy WHERE Type='TU' AND IsNotActive=0 and ((Level_2_Code='AP' AND (Level_3_Code<>'ADB' AND Level_3_Code<>'BCL' AND Level_3_Code<>'HYD' AND Level_3_Code<>'KMR' AND Level_3_Code<>'KMM' AND Level_3_Code<>'MBR' AND Level_3_Code<>'MDK' AND Level_3_Code<>'NGD' AND Level_3_Code<>'NZD' AND Level_3_Code<>'RGY' AND Level_3_Code<>'WRL')) OR (Level_2_Code='AN' AND (Level_3_Code<>'ANI')) OR (Level_2_Code='TN' AND (Level_3_Code<>'CNI')) OR (Level_2_Code='TS' AND (Level_3_Code<>'WRL')) OR (Level_2_Code='WB' AND (Level_3_Code<>'CAL')) OR (Level_2_Code='MH' AND (Level_3_Code<>'BMC' AND Level_3_Code<>'MZ1' AND Level_3_Code<>'MZ2' AND Level_3_Code<>'MZ3' AND Level_3_Code<>'MZ4' AND Level_3_Code<>'MZ5' AND Level_3_Code<>'MZ6')) OR Level_2_Code IN ('AR','AS','BI','CG','CH','DD','DL','DM','DN','GA','GU','HP','HR','JH','JK','KA','KE','LK','MG','MN','MP','MZ','NG','OR','PD','PN','RJ','SK','TR','UP','UR','LD')) and Level_2_Id =@StateId and Level_3_Id =@DistrictId SELECT distinct Level_3_Name as DistrictName, Level_2_Name AS StateName FROM _Hierarchy WHERE Type='TU' AND IsNotActive=0 and ((Level_2_Code='AP' AND (Level_3_Code<>'ADB' AND Level_3_Code<>'BCL' AND Level_3_Code<>'HYD' AND Level_3_Code<>'KMR' AND Level_3_Code<>'KMM' AND Level_3_Code<>'MBR' AND Level_3_Code<>'MDK' AND Level_3_Code<>'NGD' AND Level_3_Code<>'NZD' AND Level_3_Code<>'RGY' AND Level_3_Code<>'WRL')) OR (Level_2_Code='AN' AND (Level_3_Code<>'ANI')) OR (Level_2_Code='TN' AND (Level_3_Code<>'CNI')) OR (Level_2_Code='TS' AND (Level_3_Code<>'WRL')) OR (Level_2_Code='WB' AND (Level_3_Code<>'CAL')) OR (Level_2_Code='MH' AND (Level_3_Code<>'BMC' AND Level_3_Code<>'MZ1' AND Level_3_Code<>'MZ2' AND Level_3_Code<>'MZ3' AND Level_3_Code<>'MZ4' AND Level_3_Code<>'MZ5' AND Level_3_Code<>'MZ6')) OR Level_2_Code IN ('AR','AS','BI','CG','CH','DD','DL','DM','DN','GA','GU','HP','HR','JH','JK','KA','KE','LK','MG','MN','MP','MZ','NG','OR','PD','PN','RJ','SK','TR','UP','UR','LD')) and Level_2_Id =@StateId and Level_3_Id =@DistrictId end;"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE procedure [GetPHIDirectory] @StateId nvarchar(50)=null, @DistrictId nvarchar(50) = null, @TuId nvarchar(50) = null as begin SELECT Level_2_Name AS StateName,Level_3_Name as DistrictName,Level_4_Code as TUCode,Level_4_Name as TBUnitName,Code as PHICode,Name as PHIName, isnull(JSON_VALUE(ExtraData,'$.Dmc'),'') AS IsMicroscopy, isnull(JSON_VALUE(ExtraData,'$.Cbnaat'),'') AS IsCbnaat FROM _Hierarchy WHERE Type='PHI' AND IsNotActive=0 and((Level_2_Code='AP' AND (Level_3_Code<>'ADB' AND Level_3_Code<>'BCL' AND Level_3_Code<>'HYD' AND Level_3_Code<>'KMR' AND Level_3_Code<>'KMM' AND Level_3_Code<>'MBR' AND Level_3_Code<>'MDK' AND Level_3_Code<>'NGD' AND Level_3_Code<>'NZD' AND Level_3_Code<>'RGY' AND Level_3_Code<>'WRL')) OR (Level_2_Code='AN' AND (Level_3_Code<>'ANI')) OR (Level_2_Code='TN' AND (Level_3_Code<>'CNI')) OR (Level_2_Code='TS' AND (Level_3_Code<>'WRL')) OR (Level_2_Code='WB' AND (Level_3_Code<>'CAL')) OR (Level_2_Code='MH' AND (Level_3_Code<>'BMC' AND Level_3_Code<>'MZ1' AND Level_3_Code<>'MZ2' AND Level_3_Code<>'MZ3' AND Level_3_Code<>'MZ4' AND Level_3_Code<>'MZ5' AND Level_3_Code<>'MZ6')) OR Level_2_Code IN ('AR','AS','BI','CG','CH','DD','DL','DM','DN','GA','GU','HP','HR','JH','JK','KA','KE','LK','MG','MN','MP','MZ','NG','OR','PD','PN','RJ','SK','TR','UP','UR','LD')) and Level_2_Id =@StateId and Level_3_Id =@DistrictId and Level_4_Id =@TuId ORDER BY Level_2_Name ASC SELECT distinct Level_2_Name AS StateName FROM _Hierarchy WHERE Type='PHI' AND IsNotActive=0 and ((Level_2_Code='AP' AND (Level_3_Code<>'ADB' AND Level_3_Code<>'BCL' AND Level_3_Code<>'HYD' AND Level_3_Code<>'KMR' AND Level_3_Code<>'KMM' AND Level_3_Code<>'MBR' AND Level_3_Code<>'MDK' AND Level_3_Code<>'NGD' AND Level_3_Code<>'NZD' AND Level_3_Code<>'RGY' AND Level_3_Code<>'WRL')) OR (Level_2_Code='AN' AND (Level_3_Code<>'ANI')) OR (Level_2_Code='TN' AND (Level_3_Code<>'CNI')) OR (Level_2_Code='TS' AND (Level_3_Code<>'WRL')) OR (Level_2_Code='WB' AND (Level_3_Code<>'CAL')) OR (Level_2_Code='MH' AND (Level_3_Code<>'BMC' AND Level_3_Code<>'MZ1' AND Level_3_Code<>'MZ2' AND Level_3_Code<>'MZ3' AND Level_3_Code<>'MZ4' AND Level_3_Code<>'MZ5' AND Level_3_Code<>'MZ6')) OR Level_2_Code IN ('AR','AS','BI','CG','CH','DD','DL','DM','DN','GA','GU','HP','HR','JH','JK','KA','KE','LK','MG','MN','MP','MZ','NG','OR','PD','PN','RJ','SK','TR','UP','UR','LD')) and Level_2_Id =@StateId and Level_3_Id =@DistrictId and Level_4_Id =@TuId ORDER BY Level_2_Name ASC SELECT distinct Level_3_Name as DistrictName, Level_2_Name AS StateName FROM _Hierarchy WHERE Type='PHI' AND IsNotActive=0 and ((Level_2_Code='AP' AND (Level_3_Code<>'ADB' AND Level_3_Code<>'BCL' AND Level_3_Code<>'HYD' AND Level_3_Code<>'KMR' AND Level_3_Code<>'KMM' AND Level_3_Code<>'MBR' AND Level_3_Code<>'MDK' AND Level_3_Code<>'NGD' AND Level_3_Code<>'NZD' AND Level_3_Code<>'RGY' AND Level_3_Code<>'WRL')) OR (Level_2_Code='AN' AND (Level_3_Code<>'ANI')) OR (Level_2_Code='TN' AND (Level_3_Code<>'CNI')) OR (Level_2_Code='TS' AND (Level_3_Code<>'WRL')) OR (Level_2_Code='WB' AND (Level_3_Code<>'CAL')) OR (Level_2_Code='MH' AND (Level_3_Code<>'BMC' AND Level_3_Code<>'MZ1' AND Level_3_Code<>'MZ2' AND Level_3_Code<>'MZ3' AND Level_3_Code<>'MZ4' AND Level_3_Code<>'MZ5' AND Level_3_Code<>'MZ6')) OR Level_2_Code IN ('AR','AS','BI','CG','CH','DD','DL','DM','DN','GA','GU','HP','HR','JH','JK','KA','KE','LK','MG','MN','MP','MZ','NG','OR','PD','PN','RJ','SK','TR','UP','UR','LD')) and Level_2_Id =@StateId and Level_3_Id =@DistrictId and Level_4_Id =@TuId ORDER BY Level_2_Name ASC SELECT distinct Level_4_Name as TBUnitName, Level_2_Name AS StateName,Level_3_Name as DistrictName FROM _Hierarchy WHERE Type='PHI' AND IsNotActive=0 and ((Level_2_Code='AP' AND (Level_3_Code<>'ADB' AND Level_3_Code<>'BCL' AND Level_3_Code<>'HYD' AND Level_3_Code<>'KMR' AND Level_3_Code<>'KMM' AND Level_3_Code<>'MBR' AND Level_3_Code<>'MDK' AND Level_3_Code<>'NGD' AND Level_3_Code<>'NZD' AND Level_3_Code<>'RGY' AND Level_3_Code<>'WRL')) OR (Level_2_Code='AN' AND (Level_3_Code<>'ANI')) OR (Level_2_Code='TN' AND (Level_3_Code<>'CNI')) OR (Level_2_Code='TS' AND (Level_3_Code<>'WRL')) OR (Level_2_Code='WB' AND (Level_3_Code<>'CAL')) OR (Level_2_Code='MH' AND (Level_3_Code<>'BMC' AND Level_3_Code<>'MZ1' AND Level_3_Code<>'MZ2' AND Level_3_Code<>'MZ3' AND Level_3_Code<>'MZ4' AND Level_3_Code<>'MZ5' AND Level_3_Code<>'MZ6')) OR Level_2_Code IN ('AR','AS','BI','CG','CH','DD','DL','DM','DN','GA','GU','HP','HR','JH','JK','KA','KE','LK','MG','MN','MP','MZ','NG','OR','PD','PN','RJ','SK','TR','UP','UR','LD')) and Level_2_Id =@StateId and Level_3_Id =@DistrictId and Level_4_Id =@TuId ORDER BY Level_2_Name ASC end;"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 531,
+    "name": "EnableAdherenceRegister",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "#@HFsector int, --{0: ALL, 1: Public, 2: Private}"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "#@Gender int, --{All : 0, Male : 1, Female : 2, Transgender:3}"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "#@Age int, --{All : 0, <15 : 1, >= 15 : 2}"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "#@TBCaseTypes int, --{All: 0, DS-TB:1, DRTB:2, TPT:3}"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "#@SiteOfDisease int, --{All: 0, Others:1, Extra pulmonary:2, Pulmonary:3}"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "#@ViewBy int, --{1: Notification, 2: Current}"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "#@DateType int, --{9: Enrollment Date}, {11: Notification Date}, {14:Treatment Start Date}"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "#@ValidateDate datetime = '2000-01-01'"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE PROCEDURE [dbo].[AdherenceRegister] @startdate date, @Enddate date, @HFsector int, @Gender int, @Age int, @TBCaseTypes int, @SiteOfDisease int, @StateID int, @DistrictID int, @TbuID int, @HFID int, @userName nvarchar(200), @ViewBy int, @DateType int, @ValidateDate datetime = '2000-01-01' as BEGIN DECLARE @lateralLogin INT SET @lateralLogin = ISNULL(dbo.GetLateralUser(@userName),0); BEGIN SELECT P.Id [Patient ID], IIR.Id,(CASE WHEN P.ParentEpisodeId IS NULL THEN P.Id ELSE P.ParentEpisodeId END) [Episode ID], P.FirstName+' '+P.LastName [Name], P.PrimaryPhone, P.Age, P.Gender, P.[Address], HC.Level_2_Name [Current Facility - State], HC.Level_3_Name [Current Facility - District], HC.Level_4_Name [Current Facility - TU], HC.[Name] [Current Facility - PHI/ HF], HD.Level_2_Name [Diagnosed Facility - State], HD.Level_3_Name [Diagnosed Facility - District], HD.Level_4_Name [Diagnosed Facility - TU], HD.[Name] [Diagnosed Facility - PHI/ HF], ISNULL(HR.Level_2_Name, '') [Residence Facility - State], ISNULL(HR.Level_3_Name, '') [Residence Facility - District], ISNULL(HR.Level_4_Name, '') [Residence Facility - TU], P.TypeOfPatient [Health facility Sector Type], P.TypeOfCase [Type of Treatment], P.Stage [Patient Status(Treatment Not Started/On Treatment)], CAST(P.TBTreatmentStartDate AS Date) [Treatment initiation Date], IIA.name [AdherenceTech], ISNULL(P.TreatmentOutcome,'') [TreatmentOutcome], CAST(P.EndDate AS Date) [Treatment Outcome Date], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'0','')) AS [QUIET], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'1','')) AS [ENDED], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'2','')) AS [MISSED], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'3','')) AS [UNVALIDATED], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'4','')) AS [RECEIVED], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'5','')) AS [RECEIVED_UNSURE], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'6','')) AS [NO_INFO], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'7','')) AS [BLANK], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'8','')) AS [ENROLLMENT], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'9','')) AS [MANUAL], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'A','')) AS [TFN_REPEAT_RECEIVED], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'B','')) AS [TFN_REPEAT_RECEIVED_UNSURE], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'C','')) AS [RECEIVED_UNSCHEDULED], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'D','')) AS [PATIENT_MANUAL], LEN(IIR.adh_string) - LEN(REPLACE(IIR.adh_string,'E','')) AS [PATIENT_MISSED], ( [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 3, 8, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 3, 4, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 3, 5, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 3, 1, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 3, 'A', IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 3, 'B', IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 3, 3, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 3, 'C', IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 3, 9, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 3, 'D', IIR.adh_string)) [Doses taken last 3 days(Tech + Manual)], ( [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 7, 8, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 7, 4, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 7, 5, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 7, 1, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 7, 'A', IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 7, 'B', IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 7, 3, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 7, 'C', IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 7, 9, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 7, 'D', IIR.adh_string) ) [Doses taken last 7 days(Tech + Manual)], ( [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 30, 8, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 30, 4, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 30, 5, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 30, 1, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 30, 'A', IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 30, 'B', IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 30, 3, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 30, 'C', IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 30, 9, IIR.adh_string) + [dbo].[getAdherenceDoses](IIR.start_date, IIR.end_date, 30, 'D', IIR.adh_string) ) [Doses taken last 30 days(Tech + Manual)], IIR.adh_string [Adhererence string (day wise data)], calledDoses=0, calledAndManualDoses =0, total = 0, MissedDoses = 0, ManualDoses =0 INTO #Temp_ARD FROM _Patient P JOIN _Hierarchy H on H.Level=5 and P.Deleted=0 AND H.Id = IIF(@viewBy = 1,P.HierarchyMapping_Diagnosed,P.HierarchyMapping_Current) LEFT JOIN _Hierarchy HD ON HD.Id = P.HierarchyMapping_Diagnosed LEFT JOIN _Hierarchy HC ON HC.Id = P.HierarchyMapping_Current LEFT JOIN _Hierarchy HR ON HR.Id = P.HierarchyMapping_Residence LEFT JOIN Iam_Access_Mapping IAM on iam.entity_id=P.Id LEFT JOIN iam_imei_map IIM on IIM.iam_id=IAM.iam_id LEFT JOIN Iam_registration IIR on IIR.id = IAM.iam_id LEFT JOIN iam_adhtech IIA on IIA.id = IIR.adtech_id WHERE P.Stage in ('DIAGNOSED_ON_TREATMENT','DIAGNOSED_OUTCOME_ASSIGNED') And P.Deleted=0 AND ( (@HFsector=0) OR (@HFsector=1 and H.Type in ('PHI','ART')) OR (@HFsector=2 and H.Type in ('HUB','PVTLAB','PVTCHEM')) ) AND ( (@DateType=9 and cast(P.RegistrationDate AS date) between @startdate and @Enddate) OR (@DateType=11 and cast(P.DiagnosisDate AS date) between @startdate and @Enddate) OR (@DateType=14 and cast(P.TBTreatmentStartDate AS date) between @startdate and @Enddate) ) AND ( (@Gender=0 ) OR (@Gender=1 and P.Gender='Male') OR (@Gender=2 and P.Gender='Female') OR (@Gender=3 and P.Gender='Transgender') ) AND ( (@Age=0) OR (@Age=1 and P.Age<15) OR (@Age=2 and P.Age>=15) ) AND ( (@TBCaseTypes=0) OR (@TBCaseTypes=1 and (P.TypeOfCASE is Null OR P.TypeOfCASE in ('New','Retreatment: Others','Retreatment: Recurrent','Retreatment: Treatment after failure','Retreatment: Treatment after lost to follow up'))) OR (@TBCaseTypes=2 and P.TypeOfCase='PMDT') OR (@TBCaseTypes=3 and P.TypeOfCase like '%TPT%') ) AND ( (@SiteOfDisease=0) OR (@SiteOfDisease=1 and (P.SiteOfDisease is Null OR P.TypeOfCase='New')) OR (@SiteOfDisease=2 and P.SiteOfDisease='Extra Pulmonary') OR (@SiteOfDisease=3 and P.SiteOfDisease='Pulmonary') ) AND ( (@lateralLogin = 0 AND ( (@StateID=0 and @DistrictID=0 and @TbuID=0 and @HFID=0) OR (@StateID<>0 and @DistrictID=0 and @TbuID=0 and @HFID=0 and H.Level_2_Id=@StateID) OR (@StateID<>0 and @DistrictID<>0 and @TbuID=0 and @HFID=0 and H.Level_3_Id=@DistrictID) OR (@StateID<>0 and @DistrictID<>0 and @TbuID<>0 and @HFID=0 and H.Level_4_Id=@TbuID) OR (@StateID<>0 and @DistrictID<>0 and @TbuID<>0 and @HFID<>0 and H.Id=@HFID) ) ) OR (@lateralLogin = 1 AND ( (H.Level_2_ID in (select Hierarchy_ID from _Lateral_Login where H_Type='state'and Username=@Username)) and ( (@DistrictID=0 and H.Level_3_Id in (select Hierarchy_ID from _Lateral_Login where H_Type='District'and Username=@Username)) OR ( (@DistrictID<>0 and H.level_3_ID=@DistrictID and H.Level_3_Id in (select Hierarchy_ID from _Lateral_Login where H_Type='District'and Username=@Username)) and (@TbuID=0 or (@TbuID<>0 and H.Level_4_Id=@TbuID)) and (@HFID=0 or (@HFID<>0 and H.ID=@HFID)) ) ) ) ) ) AND ( ((H.Level_2_Code='AP' AND (H.Level_3_Code<>'ADB' AND H.Level_3_Code<>'BCL' AND H.Level_3_Code<>'HYD' AND H.Level_3_Code<>'KMR' AND H.Level_3_Code<>'KMM' AND H.Level_3_Code<>'MBR' AND H.Level_3_Code<>'MDK' AND H.Level_3_Code<>'NGD' AND H.Level_3_Code<>'NZD' AND H.Level_3_Code<>'RGY' AND H.Level_3_Code<>'WRL')) OR (H.Level_2_Code='AN' AND (H.Level_3_Code<>'ANI')) OR (H.Level_2_Code='TN' AND (H.Level_3_Code<>'CNI')) OR (H.Level_2_Code='TS' AND (H.Level_3_Code<>'WRL')) OR (H.Level_2_Code='WB' AND (H.Level_3_Code<>'CAL')) OR (H.Level_2_Code='MH' AND (H.Level_3_Code<>'BMC' AND H.Level_3_Code<>'MZ1' AND H.Level_3_Code<>'MZ2' AND H.Level_3_Code<>'MZ3' AND H.Level_3_Code<>'MZ4' AND H.Level_3_Code<>'MZ5' AND H.Level_3_Code<>'MZ6')) OR H.Level_2_Code IN ('AR','AS','BI','CG','CH','DD','DL','DM','DN','GA','GU','HP','HR','JH','JK','KA','KE','LK','MG','MN','MP','MZ','NG','OR','PD','PN','RJ','SK','TR','UP','UR','LD')) ) OPTION (RECOMPILE) END BEGIN Update #Temp_ARD SET calledDoses=ISNULL(TT.calledDoses,0), calledAndManualDoses =ISNULL(TT.calledAndManualDoses,0), total = ISNULL(TT.total,0), MissedDoses = ISNULL(TT.MissedDoses,0), ManualDoses =ISNULL(TT.ManualDoses,0) FROM #Temp_ARD TARD JOIN ( SELECT T.[Patient ID], T.Id [IIRId], calledDoses = (T.ENROLLMENT + T.RECEIVED + T.RECEIVED_UNSURE + T.ENDED + T.TFN_REPEAT_RECEIVED + T.TFN_REPEAT_RECEIVED_UNSURE + T.UNVALIDATED + T.RECEIVED_UNSCHEDULED), calledAndManualDoses = ((T.ENROLLMENT + T.RECEIVED + T.RECEIVED_UNSURE + T.ENDED + T.TFN_REPEAT_RECEIVED + T.TFN_REPEAT_RECEIVED_UNSURE + T.UNVALIDATED + T.RECEIVED_UNSCHEDULED) + T.MANUAL + T.PATIENT_MANUAL), total = (((T.ENROLLMENT + T.RECEIVED + T.RECEIVED_UNSURE + T.ENDED + T.TFN_REPEAT_RECEIVED + T.TFN_REPEAT_RECEIVED_UNSURE + T.UNVALIDATED + T.RECEIVED_UNSCHEDULED) + T.MANUAL + T.PATIENT_MANUAL) + T.MISSED + T.NO_INFO), MissedDoses = T.MISSED + T.NO_INFO + T.PATIENT_MISSED, ManualDoses = T.MANUAL + T.PATIENT_MANUAL FROM #Temp_ARD T ) AS TT ON TT.[Patient ID]=TARD.[Patient ID] and TT.[IIRId]=TARD.id END BEGIN SELECT T1.id [AdherenceId], T1.[Patient ID], T1.[Episode ID], T1.[Name], T1.PrimaryPhone, T1.Age, T1.Gender, T1.[Address], T1.[Current Facility - State], T1.[Current Facility - District], T1.[Current Facility - TU], T1.[Current Facility - PHI/ HF], T1.[Diagnosed Facility - State], T1.[Diagnosed Facility - District], T1.[Diagnosed Facility - TU], T1.[Diagnosed Facility - PHI/ HF], T1.[Health facility Sector Type], CASE WHEN (T1.[Type of Treatment] is Null OR T1.[Type of Treatment] in ('New','Retreatment: Others','Retreatment: Recurrent','Retreatment: Treatment after failure','Retreatment: Treatment after lost to follow up')) THEN 'DSTB' WHEN (T1.[Type of Treatment]='PMDT') THEN 'DRTB' WHEN (T1.[Type of Treatment] like '%TPT%') THEN 'TPT (TB Prevention Therapy)' END [Type of Treatment], T1.[Patient Status(Treatment Not Started/On Treatment)], T1.[Treatment initiation Date], T1.[AdherenceTech], T1.[TreatmentOutcome], T1.[Treatment Outcome Date], T1.[Residence Facility - State], T1.[Residence Facility - District], T1.[Residence Facility - TU], T1.total [TotalDoses], [Total number of Doses missed] = (T1.MISSED + T1.NO_INFO + T1.PATIENT_MISSED), [Total Number of doses taken] = (T1.total - (T1.MISSED + T1.NO_INFO + T1.PATIENT_MISSED)), [Average Adherence (Manual)] =FORMAT((CASE WHEN T1.ManualDoses=0 THEN 0.0 ELSE (T1.ManualDoses )*1.0/T1.total END),'P1'), AdherencePercentageManualMissed =FORMAT((CASE WHEN T1.MISSED=0 THEN 0.0 ELSE (T1.MISSED )*1.0/T1.total END),'P1'), [Unreported adherence] = FORMAT((CASE WHEN T1.NO_INFO=0 THEN 0.0 ELSE (T1.NO_INFO )*1.0/T1.total END),'P1'), [Average Adherence Tech] = FORMAT((CASE WHEN T1.calledDoses=0 THEN 0.0 ELSE (T1.calledDoses )*1.0/T1.total END),'P1'), [Average Adherence(Tech + Manual)] = FORMAT((CASE WHEN T1.calledAndManualDoses=0 THEN 0.0 ELSE (T1.calledAndManualDoses)*1.0/T1.total END),'P1'), [Doses taken last 3 days(Tech + Manual)] = T1.[Doses taken last 3 days(Tech + Manual)], [Doses taken last 7 days(Tech + Manual)] = T1.[Doses taken last 7 days(Tech + Manual)], [Doses taken last 30 days(Tech + Manual)] = T1.[Doses taken last 30 days(Tech + Manual)], [Adhererence string (day wise data)] = T1.[Adhererence string (day wise data)] FROM #Temp_ARD T1 ORDER BY T1.[Patient ID],T1.id END DROP TABLE #Temp_ARD END"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

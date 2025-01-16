@@ -1,0 +1,1139 @@
+[
+  {
+    "version": 1,
+    "name": "initial_migrations",
+    "sections": [
+      {
+        "title": "flyway_schema_history",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table flyway_schema_history( installed_rank integer not null constraint flyway_schema_history_pk primary key, version varchar(50), description varchar(200) not null, type varchar(20) not null, script varchar(1000) not null, checksum integer, installed_by varchar(100) not null, installed_on timestamp default now() not null, execution_time integer not null, success boolean not null);"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 2,
+    "name": "create_tables",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table hierarchy_benefit_status (id  bigserial not null, hierarchyId int4 not null, lastBenefitGeneratedAt timestamp, schemeCode varchar(255), primary key (id));"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "create table hierarchy_benefit_status_AUD (id int8 not null, REV int4 not null, REVTYPE int2, hierarchyId int4, lastBenefitGeneratedAt timestamp, schemeCode varchar(255), primary key (id, REV));"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "create table REVINFO (REV int4 not null, REVTSTMP int8, primary key (REV));"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "create table x_client (id  bigserial not null, EventFlowId int8, createdDate timestamp, name varchar(255), password varchar(255), primary key (id));"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "create sequence hibernate_sequence start 1 increment 1;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "alter table hierarchy_benefit_status_AUD add constraint FKpf3af228kiou8sicf1idctil1 foreign key (REV) references REVINFO;"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 3,
+    "name": "add_clients",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "x_client",
+                "keyValues": {
+                  "id": "29",
+                  "eventflowid": null,
+                  "createddate": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "name": "'Nikshay'",
+                  "password": "'$2a$10$BJZ1a5evUzOb8zOQNU.PQ.XSHhPT.km4cZJiZ3KyeeytSeaWgMiXy'"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 22,
+    "name": "updates",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE TABLE IF NOT EXISTS benefit_archive( id bigserial not null PRIMARY KEY, benefit_id BIGINT, beneficiary_id BIGINT, hierarchy_mapping BIGINT, scheme VARCHAR(255), incentive_number BIGINT, status VARCHAR(255), amount FLOAT, log TEXT, created_at TIMESTAMP, last_updated_manually_at DATE, last_updated_manually_by BIGINT, processing_account_no VARCHAR(255), processing_ifsc_code VARCHAR(255), processing_agency_code VARCHAR(255), purpose VARCHAR(255), episode_id BIGINT, is_deleted BOOLEAN, archived_at TIMESTAMP, archival_reason VARCHAR(255));"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "create table if not exists config( id bigserial not null primary key, name varchar, default_value varchar, created_at timestamp, updated_at timestamp);"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "create table if not exists scheme( id bigserial not null primary key, code varchar, name varchar, version bigint, start_date timestamp, end_date timestamp, created_at timestamp, updated_at timestamp);"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "create table if not exists scheme_config_map( id bigserial not null primary key, config_mapping_id bigint, scheme_id bigint, value varchar, created_at timestamp, updated_at timestamp);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "ALTER TABLE hierarchy_benefit_status RENAME COLUMN schemecode TO scheme_code;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "ALTER TABLE hierarchy_benefit_status RENAME COLUMN lastbenefitgeneratedat TO last_benefit_generated_at;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "ALTER TABLE hierarchy_benefit_status RENAME COLUMN hierarchyid TO hierarchy_id;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "ALTER TABLE hierarchy_benefit_status_aud RENAME COLUMN schemecode TO scheme_code;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "ALTER TABLE hierarchy_benefit_status_aud RENAME COLUMN lastbenefitgeneratedat TO last_benefit_generated_at;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "ALTER TABLE hierarchy_benefit_status_aud RENAME COLUMN hierarchyid TO hierarchy_id;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "ALTER TABLE x_client RENAME COLUMN eventflowid TO event_flow_id;"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "ALTER TABLE x_client RENAME COLUMN createddate TO created_date;"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE INDEX IF NOT EXISTS idx_hierarchyBenefitStatus_schemeCode on hierarchy_benefit_status(scheme_code);"
+              },
+              {
+                "type": "DEFAULT",
+                "query": "CREATE INDEX IF NOT EXISTS idx_hierarchyBenefitStatus_lastBenefitGeneratedAt on hierarchy_benefit_status(last_benefit_generated_at);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "ALTER TABLE hierarchy_benefit_status ADD COLUMN version bigint;"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "CREATE INDEX IF NOT EXISTS idx_hierarchyBenefitStatus_scheme_code_version on hierarchy_benefit_status(scheme_code, version);"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 23,
+    "name": "updates",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "alter table hierarchy_benefit_status_aud add column version int8;"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 401,
+    "name": "master_values",
+    "sections": [
+      {
+        "title": "config",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'GeneratePeriodicBenefits'",
+                  "default_value": false,
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'FIRST_BENEFIT_ONLY_STAGES'",
+                  "default_value": "'DIAGNOSED_NOT_ON_TREATMENT'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'RECURRENT_BENEFIT_STAGES'",
+                  "default_value": "'DIAGNOSED_ON_TREATMENT_PUBLIC,DIAGNOSED_ON_TREATMENT_PRIVATE'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'SETTLEMENT_BENEFIT_STAGES'",
+                  "default_value": "'DIAGNOSED_OUTCOME_ASSIGNED'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'SCHEME_INTERVAL_DAYS'",
+                  "default_value": "'28'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'SCHEME_INTERVAL_INCENTIVE_AMOUNT'",
+                  "default_value": "'500'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'SCHEME_INCENTIVE_GROUPING_DURATION'",
+                  "default_value": "'6'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'SCHEME_INCENTIVE_GROUPING_FACTOR'",
+                  "default_value": "'3'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'GENERATE_BENEFIT_FILES_ELIGIBLE_SCHEMES'",
+                  "default_value": "'NS,TS,TSS,PSN'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'MAX_BENEFIT_AMOUNT_LIMIT'",
+                  "default_value": "'100000.0'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'MAX_ALLOWED_BENEFIT_BATCH_LIMIT'",
+                  "default_value": "'9999'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'BENEFIT_REQUEST_SOURCE_FOLDER_PATH'",
+                  "default_value": "'dbttestfiles'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'VALIDATE_BENEFICIARY'",
+                  "default_value": "'false'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'BENEFIT_STATUS_DESTINATION_FOLDER_PATH'",
+                  "default_value": "'dbttestfiles\\PaymentStatusData\\FromCPSMS'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'BENEFIT_ACK_DESTINATION_FOLDER_PATH'",
+                  "default_value": "'dbttestfiles\\PaymentData\\FromCPSMS'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'SCHEME_REVISION_ENABLED'",
+                  "default_value": false,
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'SCHEME_REVISION_DATE'",
+                  "default_value": "'UTC_DATE_MINUS_50_DAY'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "config",
+                "keyValues": {
+                  "name": "'SCHEME_REVISION_AMOUNT'",
+                  "default_value": "'1000'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "scheme",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "scheme",
+                "keyValues": {
+                  "code": "'NPY'",
+                  "name": "'Ni-kshay Poshan Yojana'",
+                  "version": 1,
+                  "start_date": "'2018-03-31 18:30:00'",
+                  "end_date": "'UTC_DATE_MINUS_75_DAY'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme",
+                "keyValues": {
+                  "code": "'NPY'",
+                  "name": "'Ni-kshay Poshan Yojana'",
+                  "version": 2,
+                  "start_date": "'UTC_DATE_MINUS_75_DAY'",
+                  "end_date": "'UTC_DATE_MINUS_50_DAY'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme",
+                "keyValues": {
+                  "code": "'NPY'",
+                  "name": "'Ni-kshay Poshan Yojana'",
+                  "version": 3,
+                  "start_date": "'UTC_DATE_MINUS_50_DAY'",
+                  "end_date": null,
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "scheme_config_map",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'FIRST_BENEFIT_ONLY_STAGES')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 1)",
+                  "value": "'DIAGNOSED_NOT_ON_TREATMENT'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'RECURRENT_BENEFIT_STAGES')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 1)",
+                  "value": "'DIAGNOSED_ON_TREATMENT_PUBLIC,DIAGNOSED_ON_TREATMENT_PRIVATE'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SETTLEMENT_BENEFIT_STAGES')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 1)",
+                  "value": "'DIAGNOSED_OUTCOME_ASSIGNED'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INTERVAL_DAYS')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 1)",
+                  "value": "'28'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INTERVAL_INCENTIVE_AMOUNT')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 1)",
+                  "value": "'500'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INCENTIVE_GROUPING_DURATION')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 1)",
+                  "value": "'2'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INCENTIVE_GROUPING_FACTOR')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 1)",
+                  "value": "'2'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'GeneratePeriodicBenefits')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 1)",
+                  "value": true,
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'VALIDATE_BENEFICIARY')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 1)",
+                  "value": true,
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_REVISION_ENABLED')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 1)",
+                  "value": true,
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'FIRST_BENEFIT_ONLY_STAGES')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 2)",
+                  "value": "'DIAGNOSED_NOT_ON_TREATMENT'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'RECURRENT_BENEFIT_STAGES')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 2)",
+                  "value": "'DIAGNOSED_ON_TREATMENT_PUBLIC,DIAGNOSED_ON_TREATMENT_PRIVATE'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SETTLEMENT_BENEFIT_STAGES')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 2)",
+                  "value": "'DIAGNOSED_OUTCOME_ASSIGNED'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INTERVAL_DAYS')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 2)",
+                  "value": "'28'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INTERVAL_INCENTIVE_AMOUNT')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 2)",
+                  "value": "'500'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INCENTIVE_GROUPING_DURATION')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 2)",
+                  "value": "'6'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INCENTIVE_GROUPING_FACTOR')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 2)",
+                  "value": "'3'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'GeneratePeriodicBenefits')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 2)",
+                  "value": true,
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'VALIDATE_BENEFICIARY')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 2)",
+                  "value": true,
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_REVISION_ENABLED')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 2)",
+                  "value": true,
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'FIRST_BENEFIT_ONLY_STAGES')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3)",
+                  "value": "'DIAGNOSED_NOT_ON_TREATMENT'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'RECURRENT_BENEFIT_STAGES')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3)",
+                  "value": "'DIAGNOSED_ON_TREATMENT_PUBLIC,DIAGNOSED_ON_TREATMENT_PRIVATE'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SETTLEMENT_BENEFIT_STAGES')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3)",
+                  "value": "'DIAGNOSED_OUTCOME_ASSIGNED'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INTERVAL_DAYS')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3)",
+                  "value": "'28'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INTERVAL_INCENTIVE_AMOUNT')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3)",
+                  "value": "'1000'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INCENTIVE_GROUPING_DURATION')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3)",
+                  "value": "'6'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_INCENTIVE_GROUPING_FACTOR')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3)",
+                  "value": "'3'",
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'GeneratePeriodicBenefits')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3)",
+                  "value": true,
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'VALIDATE_BENEFICIARY')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3)",
+                  "value": true,
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "scheme_config_map",
+                "keyValues": {
+                  "config_mapping_id": "(select id from config WHERE name = 'SCHEME_REVISION_ENABLED')",
+                  "scheme_id": "(select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3)",
+                  "value": true,
+                  "created_at": "NOW()",
+                  "updated_at": "NOW()"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "flyway_schema_history",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 1,
+                  "version": "'1.1'",
+                  "description": "'Create Client'",
+                  "type": "'SQL'",
+                  "script": "'V1.1__Create_Client.sql'",
+                  "checksum": -1824415831,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.125975'",
+                  "execution_time": 30,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 2,
+                  "version": "'1.2'",
+                  "description": "'Create hierarchy benefit status map'",
+                  "type": "'SQL'",
+                  "script": "'V1.2__Create_hierarchy_benefit_status_map.sql'",
+                  "checksum": 104265578,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.178217'",
+                  "execution_time": 3,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 3,
+                  "version": "'202302131529'",
+                  "description": "'Add Benefit archive column'",
+                  "type": "'SQL'",
+                  "script": "'V202302131529__Add_Benefit_archive_column.sql'",
+                  "checksum": -133527845,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.198936'",
+                  "execution_time": 14,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 4,
+                  "version": "'202402121636'",
+                  "description": "'Create config tables'",
+                  "type": "'SQL'",
+                  "script": "'V202402121636__Create_config_tables.sql'",
+                  "checksum": -15360457,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.226169'",
+                  "execution_time": 20,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 5,
+                  "version": "'202402132207'",
+                  "description": "'Update column names'",
+                  "type": "'SQL'",
+                  "script": "'V202402132207__Update_column_names.sql'",
+                  "checksum": 1874136779,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.256692'",
+                  "execution_time": 29,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 6,
+                  "version": "'202402132220'",
+                  "description": "'Create Idx schemeCode lastBenefitGeneratedAd'",
+                  "type": "'SQL'",
+                  "script": "'V202402132220__Create_Idx_schemeCode_lastBenefitGeneratedAd.sql'",
+                  "checksum": -1500730105,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.294795'",
+                  "execution_time": 9,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 7,
+                  "version": "'202402191434'",
+                  "description": "'Add scheme config'",
+                  "type": "'SQL'",
+                  "script": "'V202402191434__Add_scheme_config.sql'",
+                  "checksum": -1985008217,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.312892'",
+                  "execution_time": 3,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 8,
+                  "version": "'202402211730'",
+                  "description": "'Add generate periodic benefits config'",
+                  "type": "'SQL'",
+                  "script": "'V202402211730__Add_generate_periodic_benefits_config.sql'",
+                  "checksum": 2000609724,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.324127'",
+                  "execution_time": 4,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 9,
+                  "version": "'202402281635'",
+                  "description": "'Add scheme configs second incentive'",
+                  "type": "'SQL'",
+                  "script": "'V202402281635__Add_scheme_configs_second_incentive.sql'",
+                  "checksum": -1169116475,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.343220'",
+                  "execution_time": 6,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 10,
+                  "version": "'202406121303'",
+                  "description": "'Add version column'",
+                  "type": "'SQL'",
+                  "script": "'V202406121303__Add_version_column.sql'",
+                  "checksum": -416518858,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.356400'",
+                  "execution_time": 8,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 11,
+                  "version": "'202407081444'",
+                  "description": "'Add scheme and config v1 generate benefit'",
+                  "type": "'SQL'",
+                  "script": "'V202407081444__Add_scheme_and_config_v1_generate_benefit.sql'",
+                  "checksum": 566551798,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-08-22 15:32:00.373986'",
+                  "execution_time": 5,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 12,
+                  "version": "'202407131649'",
+                  "description": "'Add Benefit files job configs'",
+                  "type": "'SQL'",
+                  "script": "'V202407131649__Add_Benefit_files_job_configs.sql'",
+                  "checksum": -2078994524,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-11-25 05:21:14.838403'",
+                  "execution_time": 26,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 13,
+                  "version": "'202409161400'",
+                  "description": "'Add dbt files directoryPath config'",
+                  "type": "'SQL'",
+                  "script": "'V202409161400__Add_dbt_files_directoryPath_config.sql'",
+                  "checksum": -599193436,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-11-25 05:21:14.883464'",
+                  "execution_time": 4,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 14,
+                  "version": "'202410111025'",
+                  "description": "'Add Beneficiary validation'",
+                  "type": "'SQL'",
+                  "script": "'V202410111025__Add_Beneficiary_validation.sql'",
+                  "checksum": -2050349512,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-11-25 05:21:14.906653'",
+                  "execution_time": 6,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 15,
+                  "version": "'202410151307'",
+                  "description": "'NPY V3 generate benefit'",
+                  "type": "'SQL'",
+                  "script": "'V202410151307__NPY_V3_generate_benefit.sql'",
+                  "checksum": -99816470,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-11-25 05:21:14.932267'",
+                  "execution_time": 14,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 16,
+                  "version": "'202410242019'",
+                  "description": "'Add dbt benefit files read directoryPath config'",
+                  "type": "'SQL'",
+                  "script": "'V202410242019__Add_dbt_benefit_files_read_directoryPath_config.sql'",
+                  "checksum": 2104138201,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-11-25 05:21:14.960069'",
+                  "execution_time": 5,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 17,
+                  "version": "'202411131220'",
+                  "description": "'Add benefit revision configs'",
+                  "type": "'SQL'",
+                  "script": "'V202411131220__Add_benefit_revision_configs.sql'",
+                  "checksum": -647817899,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-11-25 05:21:14.981417'",
+                  "execution_time": 8,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 18,
+                  "version": "'202412051658'",
+                  "description": "'Enable npy scheme revision v1'",
+                  "type": "'SQL'",
+                  "script": "'V202412051658__Enable_npy_scheme_revision_v1.sql'",
+                  "checksum": 152689505,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-12-31 07:17:08.630452'",
+                  "execution_time": 21,
+                  "success": true
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "flyway_schema_history",
+                "keyValues": {
+                  "installed_rank": 19,
+                  "version": "'202412051703'",
+                  "description": "'Enable scheme revision V2'",
+                  "type": "'SQL'",
+                  "script": "'V202412051703__Enable_scheme_revision_V2.sql'",
+                  "checksum": -78908086,
+                  "installed_by": "'shreyas'",
+                  "installed_on": "'2024-12-31 07:17:08.665457'",
+                  "execution_time": 3,
+                  "success": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 999,
+    "name": "auto_increment_corrections",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "AUTO_INCREMENT",
+                "table": "x_client",
+                "sequenceName": "x_client_id_seq"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

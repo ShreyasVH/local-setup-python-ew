@@ -1,0 +1,487 @@
+[
+  {
+    "version": 1,
+    "name": "initial_migrations",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table SchemaVersions( Id int identity constraint PK_SchemaVersions_Id primary key, ScriptName nvarchar(255) not null, Applied datetime not null);"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 2,
+    "name": "create_tables",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _AuditLog( Id int identity constraint [PK_dbo._AuditLog] primary key, EntityTypeName nvarchar(255) not null, EntityId nvarchar(31), PropertyName nvarchar(255) not null, OldValue nvarchar(max), NewValue nvarchar(max), CreatedBy nvarchar(255) not null, UtcTimestamp datetime2 not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Hierarchy( Id int identity primary key, Level int not null, Name nvarchar(255), Type nvarchar(255), Code nvarchar(255), Sector nvarchar(255), Parent_Id int, Level_1_Id int, Level_1_Name nvarchar(255), Level_1_Type nvarchar(255), Level_1_Code nvarchar(255), Level_2_Id int, Level_2_Name nvarchar(255), Level_2_Type nvarchar(255), Level_2_Code nvarchar(255), Level_3_Id int, Level_3_Name nvarchar(255), Level_3_Type nvarchar(255), Level_3_Code nvarchar(255), Level_4_Id int, Level_4_Name nvarchar(255), Level_4_Type nvarchar(255), Level_4_Code nvarchar(255), Level_5_Id int, Level_5_Name nvarchar(255), Level_5_Type nvarchar(255), Level_5_Code nvarchar(255), Level_6_Id int, Level_6_Name nvarchar(255), Level_6_Type nvarchar(255), Level_6_Code nvarchar(255), Latitude float, Longitude float, SuggestedParent_Id int, SuggestedParent_Name nvarchar(255), SuggestedParent_Type nvarchar(255), SuggestedParent_Code nvarchar(255), DrugRegimen nvarchar(20) constraint DF_drugregimen default 'UNKNOWN' not null, HasMERM bit default 0 not null, HasChildren bit default 0 not null, ExternalId1 varchar(32), ExtraData nvarchar(max), StartDate date, EndDate date, HasVOT bit default 0 not null, PatientSMS nvarchar(max), StaffSMS nvarchar(max), Has99DOTS bit default 0 not null, HasNONE bit default 0 not null, Has99DOTSLite bit default 0 not null);"
+              },
+              {
+                "type": "INSERT",
+                "table": "_Hierarchy",
+                "keyValues": {
+                  "Level": 1,
+                  "Name": "N'DemoCountry'",
+                  "Type": "N'COUNTRY'",
+                  "Code": "N'DEMOC'",
+                  "Sector": "N'ALL'",
+                  "Parent_Id": null,
+                  "Level_1_Id": null,
+                  "Level_1_Name": null,
+                  "Level_1_Type": null,
+                  "Level_1_Code": null,
+                  "Level_2_Id": null,
+                  "Level_2_Name": null,
+                  "Level_2_Type": null,
+                  "Level_2_Code": null,
+                  "Level_3_Id": null,
+                  "Level_3_Name": null,
+                  "Level_3_Type": null,
+                  "Level_3_Code": null,
+                  "Level_4_Id": null,
+                  "Level_4_Name": null,
+                  "Level_4_Type": null,
+                  "Level_4_Code": null,
+                  "Level_5_Id": null,
+                  "Level_5_Name": null,
+                  "Level_5_Type": null,
+                  "Level_5_Code": null,
+                  "Level_6_Id": null,
+                  "Level_6_Name": null,
+                  "Level_6_Type": null,
+                  "Level_6_Code": null,
+                  "Latitude": null,
+                  "Longitude": null,
+                  "SuggestedParent_Id": null,
+                  "SuggestedParent_Name": null,
+                  "SuggestedParent_Type": null,
+                  "SuggestedParent_Code": null,
+                  "DrugRegimen": "N'FDC'",
+                  "HasMERM": 1,
+                  "HasChildren": 1,
+                  "ExternalId1": null,
+                  "ExtraData": null,
+                  "StartDate": null,
+                  "EndDate": null,
+                  "HasVOT": 1,
+                  "PatientSMS": null,
+                  "StaffSMS": null,
+                  "Has99DOTS": 1,
+                  "HasNONE": 1,
+                  "Has99DOTSLite": 1
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Config( Id int identity constraint [_HierarchyConfig] primary key, Name nvarchar(255) not null, DefaultValue nvarchar(255), Type nvarchar(255) default 'string' not null, unique (Name, DefaultValue));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _HierarchyConfigMap( Id int identity constraint [PK_dbo._HierarchyConfigMap] primary key, HierarchyId int not null constraint [FK__HierarchyConfigMap.HierarchyId] references _Hierarchy, ConfigMappingId int not null constraint [FK__HierarchyConfigMap.ConfigMappingId] references _Config, Value nvarchar(max), Active bit default 1 not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _FieldStaff( Id int identity primary key, Name nvarchar(255) not null, Designation nvarchar(255), PrimaryNumber nvarchar(15), SecondaryNumber nvarchar(64), EmailAddress nvarchar(255), AddedBy int not null, AddedTimestamp datetime not null, Status nvarchar(15) not null, isActive bit, ReceiveSMS bit, SMSFrequency varchar(7), ReceiveEmail bit, EmailFrequency varchar(7), HierarchyMapping int not null references _Hierarchy, AlertFrequency nvarchar(20) default 'NONE', ReceiveWeeklySummary bit default 0, ReceiveARTAdditionUpdate bit default 1 not null, ReceiveRNTCPAdditionUpdate bit default 1 not null, LinkSomePatients bit default 0 not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _UserAccess( Id int identity primary key, HierarchyMapping int not null references _Hierarchy, Description nvarchar(1000), PrimaryNumber nvarchar(100), SecondaryNumber nvarchar(100), EmailAddress nvarchar(300), AddedBy int not null, AddedOn datetime not null, Username nvarchar(255) not null unique, Salt nvarchar(255) not null, Hash nvarchar(64) not null, NumberLogins int, LastLogin datetime, TypeOfPatientsAdded nvarchar(100) not null, Access_RNTCP int default 0, Access_Private int default 0, Access_PublicPrivatePartnership int default 0, Access_CommunityDOTS int default 0, Access_ART int default 0, tempOldUserId int, ViewOnly bit default 0 not null, CanDeletePatients bit default 1 not null, AccessType varchar(20) default 'TB', PasswordLastRefreshedOn datetime2 default getdate() not null, SSOUserId int);"
+              },
+              {
+                "type": "INSERT",
+                "table": "_UserAccess",
+                "keyValues": {
+                  "HierarchyMapping": 1,
+                  "Description": "N'DemoCountry Login'",
+                  "PrimaryNumber": "N''",
+                  "SecondaryNumber": "N''",
+                  "EmailAddress": "N''",
+                  "AddedBy": 0,
+                  "AddedOn": "getdate()",
+                  "Username": "N'democountrylogin'",
+                  "Salt": "N'democountrylogin'",
+                  "Hash": "N'a1W8YWComV/WN3DCQFyncoIEm9RZkhvw49ZBOr4I97M='",
+                  "NumberLogins": 0,
+                  "LastLogin": "getdate()",
+                  "TypeOfPatientsAdded": "N'RNTCP'",
+                  "Access_RNTCP": 1,
+                  "Access_Private": 0,
+                  "Access_PublicPrivatePartnership": 1,
+                  "Access_CommunityDOTS": 0,
+                  "Access_ART": 1,
+                  "tempOldUserId": null,
+                  "ViewOnly": 0,
+                  "CanDeletePatients": 1,
+                  "AccessType": "N'TB'",
+                  "PasswordLastRefreshedOn": "getdate()",
+                  "SSOUserId": 2
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _UserPermission( Id int identity constraint [PK_dbo._UserPermission] primary key, UserId int not null constraint [FK__UserPermission.UserId] references _UserAccess, Resource nvarchar(100) not null, ResourceType varchar(100), Operation varchar(100));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Patient( Id int identity constraint PK_Master_Patient primary key, Deleted bit, AddedTimestamp datetime, FirstName nvarchar(255), LastName nvarchar(255), Gender nvarchar(20), Language nvarchar(30), Age int, Occupation nvarchar(255), Address nvarchar(2000), PrimaryPhone nvarchar(15), ExternalId2 nvarchar(255), ExternalId3 nvarchar(255), EnrollmentDate datetime2, EndDate datetime, HierarchyMapping_Initiation int not null references _Hierarchy, HierarchyMapping_Residence int not null references _Hierarchy, TypeOfPatient nvarchar(100), CurrentSchedule nvarchar(7), CurrentTags nvarchar(1000), TreatmentOutcome nvarchar(200), AttentionRequired nvarchar(200), AdherenceStatus nvarchar(30), LastDosage datetime, WeightBand int, NewOrPreviouslyTreated nvarchar(255), SiteOfDisease nvarchar(255), EPSite nvarchar(255), TypeOfCase nvarchar(255), SputumTestDate1 datetime, SputumTestNameOfLab1 nvarchar(255), SputumTestLabNumber1 nvarchar(255), SputumTestSmearResult1 nvarchar(255), SputumTestDate2 datetime, SputumTestNameOfLab2 nvarchar(255), SputumTestLabNumber2 nvarchar(255), SputumTestSmearResult2 nvarchar(255), SputumTestDate3 datetime, SputumTestNameOfLab3 nvarchar(255), SputumTestLabNumber3 nvarchar(255), SputumTestSmearResult3 nvarchar(255), HIVTestDate datetime, HIVTestNameOfLab nvarchar(255), HIVTestLabPIDNumber nvarchar(255), HIVTestStatus nvarchar(255), HIVCPTInitiationDate datetime, HIVARTInitiationDate datetime, RBSTestDate datetime, RBSTestNameOfLab nvarchar(255), RBSTestLabNumber nvarchar(255), RBSTestCount nvarchar(255), CultureTestDate datetime, CultureTestNameOfLab nvarchar(255), CultureTestLabNumber nvarchar(255), CultureTestResult nvarchar(255), ExternalId1 nvarchar(255), TBCategory nvarchar(255), DimagiId nvarchar(255), MermId nvarchar(255), DrugRegimen nvarchar(100), TBTreatmentStartDate datetime, AddedBy int references _UserAccess, EnikshayId varchar(255), DeploymentCode varchar(10) default 'UNKNOWN' not null, AdherenceString varchar(2048), RegistrationDate datetime2, RegisteredBy nvarchar(100), FathersName nvarchar(100), Pincode nvarchar(100), Taluka nvarchar(100), Town nvarchar(100), Ward nvarchar(100), Landmark nvarchar(100), Stage nvarchar(100) not null, DiagnosisDate datetime2, DiagnosisBasis nvarchar(100), MonitoringMethod nvarchar(100), TreatmentType nvarchar(100), DrugSusceptibility nvarchar(300), RefillMonitoring bit, Area nvarchar(64) default 'Unknown', MaritalStatus nvarchar(64) default 'Unknown', SocioeconomicStatus nvarchar(64) default 'Unknown', KeyPopulation nvarchar(64) default 'Not Applicable', ContactPersonName nvarchar(64), ContactPersonAddress nvarchar(64), ContactPersonPhone nvarchar(64), PredominantSymptom nvarchar(64), SymptomDuration int, HCPVisited int, MonthsOfTreatment int, MonthsSinceEpisode int, TreatmentSource nvarchar(64), Height int, CPInitiationDate datetime2, AddedFrom nvarchar(255), LastIvrStatus nvarchar(100) default NULL, IsIamEnabled bit default 0 not null, ScheduleType nvarchar(100), ScheduleString nvarchar(100), HierarchyMapping_PrivateFacility int constraint FK_Hierarchy_PrivateFacility references _Hierarchy, PhoneNetwork varchar(255), PatientHistory varchar(100), LastMissedDosage datetime);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Comorbidity( Id int identity primary key, PatientId int not null references _Patient, HIVTestingDate datetime2, PIDNumber nvarchar(200), CPTDeliveredDate datetime2, ARTReferralDate datetime2, ARTInitiated nvarchar(20), ARTInitiationDate datetime2, CD4Count nvarchar(200), DiabetesStatus nvarchar(20), RBS nvarchar(200), FBS nvarchar(200), IPEnd nvarchar(200), TreatmentEnd nvarchar(200), AntiDiabeticInitiated nvarchar(20), AntiDiabeticInitiationDate datetime2, OtherComorbidity nvarchar(200), CurrentTobaccoUser nvarchar(20), TobaccoType nvarchar(20), LinkedForCessation nvarchar(20), StatusAtTobaccoTreatmentEnd nvarchar(20), HoAlcoholIntake nvarchar(20), LinkedForDeaddiction nvarchar(20), Covid19Status nvarchar(50), PregnancyStatus nvarchar(50), TbStatus nvarchar(50), RCHID nvarchar(200), HIVStatus nvarchar(50));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _PatientLog( Id int identity primary key, Category nvarchar(255), UserId int not null, PatientId int not null references _Patient, ActionTaken nvarchar(4000), Comments nvarchar(max), Timestamp datetime not null, SubCategory varchar(max), DateOfAction datetime2);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _PatientTag( Id int identity constraint PK__PatientTag primary key, PatientId int not null references _Patient, Tag nvarchar(255) not null, Timestamp datetime not null, TagDate date not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Form( Id int identity primary key, FormLabel varchar(100), FormName varchar(100), SaveEndpoint varchar(255), SaveText varchar(255));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _FormPart( Id int identity primary key, PartName varchar(50), PartLabel varchar(100), PartType varchar(50), Rows int, Columns int, Position int, AllowRowOpen bit, AllowRowDelete bit, ListItemTitle varchar(100), ItemDescriptionField varchar(100));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Field( Id int identity primary key, FieldName varchar(50), Label varchar(100), Component varchar(50), IsDisabled int, IsVisible int, IsRequired int, DefaultValue varchar(255), FieldOptions varchar(max), ValidationList varchar(100), RowNumber int, ColumnNumber int, RemoteUrl varchar(255), Config varchar(max));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _FieldCustomizations( Id int identity primary key, FieldId int, AttributeName varchar(50), AttributeValue varchar(max));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _FieldDependency( Id int identity primary key, Type varchar(50), FormPartId int, FieldId int not null, Lookups varchar(max), PropertyAndValues text default NULL);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _FormItemsMap( Id int identity primary key, DeploymentCode varchar(50), FormName varchar(50), ItemType varchar(50), ItemId int, ParentType varchar(50), ParentId int);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _DefaultEngagement( Id int identity primary key, HierarchyId int not null unique, DefaultLang int not null, DoseTimings varchar(255), DefaultTime varchar(255), Languages varchar(255), ConsentMandatory bit, NotificationType int, DisabledLanguages varchar(255));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _IvrLog( Id int identity primary key, EntityId int not null, PhoneNumber nvarchar(20) not null, FirstAttemptTimestamp datetime2 not null, LastAttemptTimestamp datetime2, NumAttempts int not null, Response nvarchar(100), LastSessionId nvarchar(1000), IsActive bit default 1 not null, DeploymentCode varchar(20) constraint df_Default default '' not null, EntityType nvarchar(50) default 'PATIENT' not null, IvrType nvarchar(50), Status nvarchar(50), DurationInSeconds int);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Merm( Id int identity primary key, IMEI varchar(20) not null unique, LastBattery varchar(10), LastSeen datetime, LastOpened datetime);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _MermManagement( Id int identity primary key, IMEI varchar(20), LastBattery varchar(10), LastSeen datetime, LastOpened datetime, IsActive bit default 0 not null, DeactivatedOn datetime, AlarmEnabled bit default 0 not null, AlarmTime time, RefillAlarmEn bit default 0 not null, RefillDate datetime, RTHours int default 1 not null, HierarchyMapping int, LidFeedback int default 1 not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _MermPatientMap( Id int identity primary key, MermId int references _Merm, PatientId int references _Patient, IsActive bit not null, Merm_ActivatedOn datetime not null, Merm_DeactivatedOn datetime, Merm_AlarmEnabled bit default 0 not null, Merm_AlarmTime time, Merm_RefillAlarmEn bit default 0 not null, Merm_RefillDate datetime, Merm_RTHours int default 0 not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _NikshayIdValidation( Id int identity constraint [PK_dbo._NikshayIdValidation] primary key, PatientId int not null constraint [FK__NikshayIdValidation.PatientId] references _Patient, ValidatedNikshayId nvarchar(100), IsValid bit default 1 not null, LastValidatedBy int not null constraint [FK__NikshayIdValidation.LastValidatedAt] references _UserAccess, LastValidatedAt datetime not null, ValidationResponse text not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _PatientAppConfig( Id int identity, Technology nvarchar(100) not null, Deployment nvarchar(100) not null, AllowDoseMarking bit default 0 not null, ValidationRequired bit default 0 not null, BackdateddoseAllowed bit default 0 not null, BackdatedLimit int not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _PatientEngagementConfig( Id int identity primary key, PatientId int not null constraint [FK__PatientEngagementConfig.PatientId] references _Patient, Type nvarchar(40) not null, Active bit not null, TimeOfDay datetime2 not null, Language nvarchar(40));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _PatientFieldStaffMap( Id int identity primary key, FieldStaffId int not null references _FieldStaff, PatientId int not null references _Patient, AddedOn datetime not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _PhoneMap( Id int identity constraint PK__PhoneMap primary key, PhoneNumber nchar(15) not null, PatientId int not null references _Patient, isPrimary bit not null, Timestamp datetime not null, PhoneBelongsTo nvarchar(150), StopDateTime datetime, DeploymentCode varchar(10) default 'UNKNOWN' not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Refill( Id int identity constraint [PK_dbo._Refill] primary key, RefillId nvarchar(16), PatientId int not null constraint [FK__Refill.PatientId] references _Patient, ProductType1 nvarchar(100), AdultOrPediatric1 nvarchar(100), ProductName1 nvarchar(100), WeightBand1 nvarchar(100), NumberOfDays1 int, NumberOfUnits1 int, ProductType2 nvarchar(100), AdultOrPediatric2 nvarchar(100), ProductName2 nvarchar(100), WeightBand2 nvarchar(100), NumberOfDays2 int, NumberOfUnits2 int, ProductType3 nvarchar(100), AdultOrPediatric3 nvarchar(100), ProductName3 nvarchar(100), WeightBand3 nvarchar(100), NumberOfDays3 int, NumberOfUnits3 int, ChemistId nvarchar(200), ValidationDate datetime2, Remarks nvarchar(max), Amount decimal(9, 2), AddedBy int not null constraint [FK__Refill.AddedBy] references _UserAccess, InitiationHierarchy int not null constraint [FK__Refill.InitiationHierarchy] references _Hierarchy, ExtraData nvarchar(max));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _RefillReminderLog( Id int identity primary key, RefillId int not null constraint [FK__RefillReminderLog.RefillId] references _Refill, DeploymentCode nvarchar(20) not null, PatientId int not null constraint [FK__RefillReminderLog.PatientId] references _Patient, PhoneNumber nvarchar(20) not null, FirstAttemptTimestamp datetime2 not null, LastAttemptTimestamp datetime2, NumAttempts int default 0 not null, HasReachedMaxRetries bit default 0 not null, IsNotified bit default 0 not null, LastSessionId nvarchar(500));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _RefillReminderMap( Id int identity primary key, RefillId int not null references _Refill, IvrLogId int references _IvrLog);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Regimen( Id int identity primary key, Name nvarchar(255) not null, Disease nvarchar(255) not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _ScheduleMap( Id int identity constraint PK__ScheduleMap primary key, Schedule nvarchar(7) not null, PatientId int not null references _Patient, StartDate datetime not null, TimeStamp datetime not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _SmsBlacklist( Id int identity primary key, PhoneNumber nvarchar(20) not null, DeploymentCode nvarchar(20) not null, StartDateTime datetime2 not null, EndDateTime datetime2);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _TeleconsultationLinks( Id int identity primary key, PatientId int not null, InviteLink nvarchar(255) not null, Timestamp datetime2 not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _TestResult( Id int identity primary key, PatientId int not null references _Patient, Type nvarchar(200) not null, Specimen nvarchar(200) not null, VisualAppearanceSputum nvarchar(100), ReportedBy nvarchar(200), DateTested datetime2, DateReported datetime2 not null, HierarchyMapping int references _Hierarchy, TestingFacilityName nvarchar(200), TestData text not null, Valid bit not null, Positive bit, AddedBy int not null references _UserAccess, LastUpdatedBy int not null references _UserAccess, AddedOn datetime not null, LastUpdatedOn datetime not null, Stage nvarchar(100) default '' not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _ThirdPartyToken( Name nvarchar(40) not null constraint [_ThirdPartyTokens] primary key, Token text not null, Type nvarchar(40), FetchedAtUtc datetime not null, ValidForSeconds int not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _Trigger( Id int identity primary key, HierarchyId int not null references _Hierarchy, TriggerId int not null, DefaultTemplateId int not null, TemplateIds nvarchar(255), CronTime nvarchar(50), EventName nvarchar(150) not null, FunctionName nvarchar(150) not null, Mandatory bit default 0, EntityTimeRelated bit default 0, IsActive bit default 1 not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table _UgandaRefillLog( Id int identity primary key, PatientId int not null constraint [FK__UgandaRefillLog.PatientId] references _Patient, FrontCover int not null, InsideCover int not null, RefillDate datetime2 not null, ExcessPillsRemaining int not null, DaysOfMedicationGiven int not null, Comments nvarchar(max));"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table CallLog( EventId int identity primary key, PatientId int not null, NumberDialled varchar(30), Post varchar(511), AddedTimestamp datetime not null, Who varchar(20), ClientDateTime datetime, UtcDateTime datetime default '1900-01-01 00:00:00' not null, DeploymentCode varchar(10) default 'UNKNOWN' not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table IndiaIvrLog( Id int identity constraint [PK_dbo.IndiaIvrLog] primary key, PatientId int not null, Message varchar(20) not null, Language varchar(20) not null, TimestampIst datetime2 not null, TransId varchar(256) not null);"
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "DEFAULT",
+                "query": "create table MermLog( Id int identity primary key, EventType varchar(15), QueryString varchar(100), PostBody varchar(400), Timestamp datetime, ResponseCode int, ReponseSuccess bit default 0 not null);"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
