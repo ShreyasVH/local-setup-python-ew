@@ -211,14 +211,14 @@ class NikshayHelper(BaseHelper):
             'accessPrivatePatients': False
         })
 
-    def create_pfms_agency(self, token):
+    def create_pfms_agency(self, token, data):
         endpoint = self._api_helper.get_endpoint('nikshay')
         url = endpoint + '/api/ApiAutomatedUpdate/UpdatePfmsAgencyMappings'
 
-        agency_name = 'Agency Name'
-        agency_code = 'AGC'
+        agency_name = data['name']
+        agency_code = data['code']
 
-        hierarchy_name = 'tu'
+        hierarchy_name = data['tuName']
         hierarchy_level = 4
         state_code = self.get_state_code(hierarchy_name, hierarchy_level)
         district_code = self.get_district_code(hierarchy_name, hierarchy_level)

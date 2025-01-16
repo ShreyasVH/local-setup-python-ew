@@ -148,7 +148,11 @@ if starting_version <= version_map['NikshayPfmsAgency'] <= ending_version:
     Logger.info('simulate', 'Generating all india token')
     all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
     Logger.info('simulate', 'Creating PFMS Agency')
-    state_data = nikshay_helper.create_pfms_agency(all_india_token)
+    state_data = nikshay_helper.create_pfms_agency(all_india_token, {
+        'name': 'Agency Name',
+        'code': 'AGC',
+        'tuName': 'tu'
+    })
     Logger.info('simulate', '-------------------------------------------')
 
 if starting_version <= version_map['NikshayPHI'] <= ending_version:
@@ -1506,4 +1510,15 @@ if starting_version <= version_map['NikshayTribalTU'] <= ending_version:
     registry_helper.add_hierarchy_associations(nikshay_helper.get_hierarchy_id('tuTribal', 4), {
         'isTribal': 'true'
     }, registry_helper.get_token(registry_helper.get_client_id()))
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayPfmsAgencyTribal'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating PFMS Agency')
+    state_data = nikshay_helper.create_pfms_agency(all_india_token, {
+        'name': 'Tribal Agency',
+        'code': 'TGC',
+        'tuName': 'tuTribal'
+    })
     Logger.info('simulate', '-------------------------------------------')
