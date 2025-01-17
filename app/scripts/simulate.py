@@ -1522,3 +1522,27 @@ if starting_version <= version_map['NikshayPfmsAgencyTribal'] <= ending_version:
         'tuName': 'tuTribal'
     })
     Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayTribalPhi'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating tribal PHI')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'tribal phi',
+        'mobile': '9999999941',
+        'parentId': nikshay_helper.get_hierarchy_id('tuTribal', 4),
+        'extraData': json.dumps({
+            "DmcNin": "",
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "MobileNo": "9999999941",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
