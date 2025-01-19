@@ -1,0 +1,64 @@
+# python 3.12.1 path
+# export PATH=$HOME/programs/python/3.12.1/bin:$PATH
+
+export PYTHONPATH=$(pwd)
+
+export HAPROXY_VERSION=2.8.2
+
+export POSTGRES_VERSION=15.4
+export POSTGRES_IP=
+export POSTGRES_PORT=
+export POSTGRES_USER=
+export POSTGRES_PASSWORD=
+
+export REDIS_VERSION=7.0.12
+export REDIS_IP=
+export REDIS_PORT=
+
+export RMQ_VERSION=3.12.2
+export RMQ_IP=
+export RMQ_PORT=
+export RMQ_USER=
+export RMQ_PASSWORD=
+export RMQ_VHOST=/
+
+export ELASTIC_VERSION=7.16.3
+export ELASTIC_IP=
+export ELASTIC_PORT=
+export ELASTIC_PROTOCOL=
+
+export MSSQL_IP=
+export MSSQL_PORT=
+export MSSQL_USER=
+export MSSQL_PASSWORD=
+
+export POSTGRES_SSO_DB=sso_new
+export POSTGRES_DATA_GATEWAY_DB=gateway_new
+export POSTGRES_IAM_DB=adherence_new
+export POSTGRES_PERSON_DB=user_service_new
+export POSTGRES_INS_DB=ins_new
+export POSTGRES_DISPENSATION_DB=dispensation_new
+export POSTGRES_DIAGNOSTICS_DB=diagnostics_new
+export POSTGRES_TRANSITION_DB=transition_new
+export POSTGRES_REGISTRY_DB=registry_new
+export POSTGRES_DBT_DB=dbt_new
+export POSTGRES_KPI_DB=kpi_new
+
+export MSSQL_NIKSHAY_DB=nikshay_new
+export MSSQL_NIKSHAY_ARCHIVAL_DB=nikshay_archival_new
+export MSSQL_NIKSHAY_REPORTS_DB=nikshay_reports_new
+export MSSQL_NIKSHAY_REPORTS_WEBSERVICE_DB=nikshay_reports_webservice_new
+export MSSQL_HUB_DB=hub_new
+
+export MYSQL_PORT=
+export MYSQL_VERSION=9.0.1
+
+export MONGO_VERSION=6.0.6
+export MONGO_PORT=
+
+export SSH_VERSION=9.7
+export SSH_PORT=
+
+export USER_PASSWORD=
+
+export AES_KEY="d"
