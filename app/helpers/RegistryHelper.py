@@ -52,9 +52,8 @@ class RegistryHelper(BaseHelper):
         query = f"INSERT INTO module_permission (deployment_id, designation, item_id, is_active, hierarchy_type, item_type, view, add, edit, delete) VALUES ((select id from deployment where code = '{data['deploymentCode']}'), '{data['designation']}', {data['itemId']}, True, '{data['hierarchyType']}', '{data['itemType']}', {json.dumps(data['view'])}, {json.dumps(data['add'])}, {json.dumps(data['edit'])}, {json.dumps(data['delete'])})"
         postgres_helper.execute(query, 'registry_new')
 
-    def add_sidebar_permissions(self, hierarchy_type, permission_names):
+    def add_sidebar_permissions(self, hierarchy_type, designation, permission_names):
         item_type = 'sidebar'
-        designation = 'ADMIN'
         deployment_code = 'IND'
 
         postgres_helper = PostgresHelper()
@@ -109,7 +108,7 @@ class RegistryHelper(BaseHelper):
             'MY_CONTRACTS'
         ]
 
-        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+        self.add_sidebar_permissions(hierarchy_type, 'ADMIN', sidebar_permissions)
 
     def add_hierarchy_config(self, hierarchy_id, config_name, value, token):
         api_helper = ApiHelper()
@@ -204,7 +203,7 @@ class RegistryHelper(BaseHelper):
             'TBMP_REPORT'
         ]
 
-        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+        self.add_sidebar_permissions(hierarchy_type, 'ADMIN', sidebar_permissions)
 
     def add_district_configs(self):
         client_id = self.get_client_id()
@@ -296,7 +295,7 @@ class RegistryHelper(BaseHelper):
             'SearchSample'
         ]
 
-        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+        self.add_sidebar_permissions(hierarchy_type, 'ADMIN', sidebar_permissions)
 
     def add_phi_sidebar_permissions(self):
         hierarchy_type = 'PHI'
@@ -329,7 +328,7 @@ class RegistryHelper(BaseHelper):
             'UserManagement'
         ]
 
-        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+        self.add_sidebar_permissions(hierarchy_type, 'ADMIN', sidebar_permissions)
 
     def add_patient_tab_permissions(self, hierarchy_type, permissions):
         item_type = 'patient_tab'
@@ -425,7 +424,7 @@ class RegistryHelper(BaseHelper):
             'UserManagement'
         ]
 
-        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+        self.add_sidebar_permissions(hierarchy_type, 'ADMIN', sidebar_permissions)
 
     def add_single_clinic_patient_tab_permissions(self):
         hierarchy_type = 'HUB'
@@ -498,7 +497,7 @@ class RegistryHelper(BaseHelper):
             'UserManagement'
         ]
 
-        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+        self.add_sidebar_permissions(hierarchy_type, 'ADMIN', sidebar_permissions)
 
     def add_private_lab_patient_tab_permissions(self):
         hierarchy_type = 'PVTLAB'
@@ -564,7 +563,7 @@ class RegistryHelper(BaseHelper):
             'UserManagement'
         ]
 
-        self.add_sidebar_permissions(hierarchy_type, sidebar_permissions)
+        self.add_sidebar_permissions(hierarchy_type, 'ADMIN', sidebar_permissions)
 
     def add_private_chemist_patient_tab_permissions(self):
         hierarchy_type = 'PVTCHEM'
@@ -603,3 +602,26 @@ class RegistryHelper(BaseHelper):
         }
 
         self.add_patient_tab_permissions(hierarchy_type, sidebar_permissions)
+
+    def add_dbt_checker_sidebar_permissions(self):
+        hierarchy_type = 'DISTRICT'
+
+        sidebar_permissions = [
+            'DBT',
+            'AdverseEventReportingSystem',
+            'TaskListStats',
+            'EVRIMED_METRICS'
+        ]
+
+        self.add_sidebar_permissions(hierarchy_type, 'DBT Checker', sidebar_permissions)
+
+    def add_dbt_maker_sidebar_permissions(self):
+        hierarchy_type = 'TU'
+
+        sidebar_permissions = [
+            'DBT',
+            'AdverseEventReportingSystem',
+            'TaskListStats'
+        ]
+
+        self.add_sidebar_permissions(hierarchy_type, 'DBT Maker', sidebar_permissions)

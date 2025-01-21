@@ -1522,3 +1522,64 @@ if starting_version <= version_map['NikshayPfmsAgencyTribal'] <= ending_version:
         'tuName': 'tuTribal'
     })
     Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayTribalPhi'] <= ending_version:
+    Logger.info('simulate', 'Generating all india token')
+    all_india_token = nikshay_helper.get_token('india-all', 'Test@123')
+    Logger.info('simulate', 'Creating PHI Tribal')
+    state_data = nikshay_helper.create_phi(all_india_token, {
+        'name': 'tribal phi',
+        'mobile': '9999999941',
+        'parentId': nikshay_helper.get_hierarchy_id('tuTribal', 4),
+        'extraData': json.dumps({
+            "DmcNin": "",
+            "HFRegNo": "",
+            "ContactPersonName": "",
+            "ContactPersonDesg": "",
+            "ContactPersonEmail": "",
+            "MobileNo": "9999999941",
+            "Address": "address",
+            "FacilityType": "PHI",
+            "IsAfterLogin": True,
+            "UpdatedBy": "india-all",
+            "UpdatedDate": replace_time_strings('DATE_TIME_PLUS_0_DAY')
+        })
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayDBTChecker'] <= ending_version:
+    Logger.info('simulate', 'Generating state token')
+    state_token = nikshay_helper.get_token('sto-ka', 'Test@123')
+    Logger.info('simulate', 'Creating DBT Checker')
+    state_data = nikshay_helper.add_dbt_checker(state_token, {
+        'hierarchyName': 'Dharwad',
+        'mobile': '9999999947',
+        'name': 'DBT Checker'
+    })
+    Logger.info('simulate', 'Adding sidebar permissions')
+    registry_helper.add_dbt_checker_sidebar_permissions()
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayDBTMaker'] <= ending_version:
+    Logger.info('simulate', 'Generating district token')
+    district_token = nikshay_helper.get_token('dto-kadha', 'Test@123')
+    Logger.info('simulate', 'Creating DBT Maker')
+    state_data = nikshay_helper.add_dbt_maker(district_token, {
+        'hierarchyName': 'tu',
+        'mobile': '9999999938',
+        'name': 'DBT Maker'
+    })
+    Logger.info('simulate', 'Adding sidebar permissions')
+    registry_helper.add_dbt_maker_sidebar_permissions()
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayDBTMakerTribal'] <= ending_version:
+    Logger.info('simulate', 'Generating district token')
+    district_token = nikshay_helper.get_token('dto-kadha', 'Test@123')
+    Logger.info('simulate', 'Creating DBT Maker')
+    state_data = nikshay_helper.add_dbt_maker(district_token, {
+        'hierarchyName': 'tuTribal',
+        'mobile': '9999999934',
+        'name': 'DBT Maker Tribal'
+    })
+    Logger.info('simulate', '-------------------------------------------')

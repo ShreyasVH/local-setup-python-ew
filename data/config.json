@@ -435,7 +435,7 @@
   "nikshay_webapp": {
     "port": 58227,
     "internalPort": 58227,
-    "host": "host.docker.internal",
+    "host": "nikshay.local.everwell.org",
     "protocol": "http",
     "databases":  []
   }

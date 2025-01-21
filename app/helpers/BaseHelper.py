@@ -44,3 +44,21 @@ class BaseHelper:
     def get_district_code(self, hierarchy_name, hierarchy_level):
         return self.get_district_details(hierarchy_name, hierarchy_level).get('code')
 
+    def get_state_mobile(self, hierarchy_name, hierarchy_level):
+        postgres_helper = PostgresHelper()
+
+        state_id = self.get_state_id(hierarchy_name, hierarchy_level)
+
+        query = f"SELECT ha.value from hierarchy_associations ha INNER JOIN associations_master am ON am.id = ha.association_id WHERE ha.hierarchy_id = {state_id} AND am.type = 'mobileNumber'"
+        rows = postgres_helper.select(query, 'registry_new')
+        return rows[0]['value']
+
+    def get_district_mobile(self, hierarchy_name, hierarchy_level):
+        postgres_helper = PostgresHelper()
+
+        district_id = self.get_district_id(hierarchy_name, hierarchy_level)
+
+        query = f"SELECT ha.value from hierarchy_associations ha INNER JOIN associations_master am ON am.id = ha.association_id WHERE ha.hierarchy_id = {district_id} AND am.type = 'mobileNumber'"
+        rows = postgres_helper.select(query, 'registry_new')
+        return rows[0]['value']
+

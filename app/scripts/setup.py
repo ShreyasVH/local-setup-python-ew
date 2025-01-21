@@ -68,17 +68,23 @@ elastic_helper.create_documents()
 
 # Create cache values
 if mode == 'FULL':
+    Logger.info('setup', 'Clearing data state')
     subprocess.run(['python3', 'app/scripts/clearDataState.py'])
+    Logger.info('setup', 'Getting current data state')
     subprocess.run(['python3', 'app/scripts/getCurrentDataState.py'])
 
     dbt_helper = DbtHelper()
     # Clear old dbt files and add new ones
+    Logger.info('setup', 'Clearing dbt files')
     dbt_helper.clear_files()
+    Logger.info('setup', 'Adding dbt files')
     dbt_helper.add_files(False)
 
     # Start servers
     Logger.info('setup', 'Starting Servers')
     server_helper.start_servers()
 
+Logger.info('setup', 'Getting current data state')
 subprocess.run(['python3', 'app/scripts/getCurrentDataState.py'])
+Logger.info('setup', 'Getting data diff')
 subprocess.run(['python3', 'app/scripts/getDataDiff.py'])

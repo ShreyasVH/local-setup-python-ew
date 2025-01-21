@@ -893,9 +893,9 @@ otp_fields = {
             'message': {
                 'additionalData': {
                     'regex': [
-                        '/(.*) is the OTP for - Add Field Staff under (.*) . Treat this as confidential. Do not share the OTP with anyone for security reasons. CTD -MoHFW www.nikshay.in/',
-                        '/(.*) is the OTP for - DBT Checker Approval for benefit . Treat this as confidential. Do not share the OTP with anyone for security reasons. CTD -MoHFW www.nikshay.in/',
-                        '/(.*) is the OTP for - Approval of Private Provider Beneficiaries . Treat this as confidential. Do not share the OTP with anyone for security reasons. CTD -MoHFW www.nikshay.in/'
+                        r"(.*) is the OTP for - Add Field Staff under (.*) . Treat this as confidential. Do not share the OTP with anyone for security reasons. CTD -MoHFW www.nikshay.in",
+                        r"(.*) is the OTP for - DBT Checker Approval for benefit . Treat this as confidential. Do not share the OTP with anyone for security reasons. CTD -MoHFW www.nikshay.in",
+                        r"(.*) is the OTP for - Approval of Private Provider Beneficiaries . Treat this as confidential. Do not share the OTP with anyone for security reasons. CTD -MoHFW www.nikshay.in"
                     ]
                 }
             }
@@ -1033,7 +1033,7 @@ def is_otp_field(database_name, table_name, column, old_value, new_value, old_ro
         regex_list = additional_fields['regex']
         for regex in regex_list:
             matches = re.findall(regex, new_value)
-            otp_field = len(matches) > 1
+            otp_field = len(matches) >= 1
             if otp_field:
                 break
 

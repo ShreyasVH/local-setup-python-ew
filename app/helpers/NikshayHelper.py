@@ -5,6 +5,7 @@ from app.utils.Utils import replace_time_strings
 from app.helpers.MssqlHelper import MssqlHelper
 from app.helpers.BaseHelper import BaseHelper
 from app.helpers.PostgresHelper import PostgresHelper
+import re
 
 class NikshayHelper(BaseHelper):
     def __init__(self):
@@ -338,3 +339,98 @@ class NikshayHelper(BaseHelper):
             'accessPublicPatients': False,
             'accessPrivatePatients': True
         })
+
+    def read_otp(self, mobile_number):
+        postgres_helper = PostgresHelper()
+
+        query = f"SELECT message FROM ins_sms_logs WHERE phone_number = '{mobile_number}' ORDER BY id desc LIMIT 1"
+
+        rows = postgres_helper.select(query, 'ins_new')
+        text = rows[0]['message']
+        pattern = r"(.*) is the OTP for (.*)"
+        return (re.search(pattern, text)).group(1)
+
+    def add_staff(self, token, data):
+        endpoint = self._api_helper.get_endpoint('nikshay')
+        url = endpoint + '/api/FieldStaff/Add'
+        payload = {
+            "Name": data['name'],
+            "Type": data['type'],
+            "Designation": data['designation'],
+            "PrimaryNumber": data['mobile'],
+            "SecondaryNumber": None,
+            "Email": None,
+            "AllowLogin": data['allowLogin'],
+            "Username": data['userName'],
+            "Id": 0,
+            "StaffId": 0,
+            "HierarchyMapping": data['hierarchyId'],
+            "Otp": data['otp'],
+            "AddedPatientIds": [],
+            "RemovedPatientIds": []
+        }
+
+        headers = {
+            'Authorization': f"Bearer {token}"
+        }
+
+        response = self._api_helper.post(url, payload, headers, {})
+        return json.loads(response.get('result'))
+
+    def add_dbt_checker(self, token, data):
+        hierarchy_name = data['hierarchyName']
+
+        hierarchy_id = self.get_hierarchy_id(hierarchy_name, 3)
+
+        endpoint = self._api_helper.get_endpoint('nikshay')
+        url = f"{endpoint}/api/FieldStaff/GenerateAndSendOtpFor/{hierarchy_id}/Add"
+
+        headers = {
+            'Authorization': f"Bearer {token}"
+        }
+
+        self._api_helper.get(url, {}, headers)
+
+        otp = self.read_otp(self.get_state_mobile(hierarchy_name, 3))
+
+        payload = {
+            'name': data['name'],
+            'type': 'PublicAndPrivate',
+            'designation': 'DBT Checker',
+            'mobile': data['mobile'],
+            'allowLogin': True,
+            'userName': data['mobile'],
+            'hierarchyId': hierarchy_id,
+            'otp': otp
+        }
+        response = self.add_staff(token, payload)
+        return response
+
+    def add_dbt_maker(self, token, data):
+        hierarchy_name = data['hierarchyName']
+        hierarchy_id = self.get_hierarchy_id(hierarchy_name, 4)
+
+        endpoint = self._api_helper.get_endpoint('nikshay')
+        url = f"{endpoint}/api/FieldStaff/GenerateAndSendOtpFor/{hierarchy_id}/Add"
+
+        headers = {
+            'Authorization': f"Bearer {token}"
+        }
+
+        response = self._api_helper.get(url, {}, headers)
+
+        otp = self.read_otp(self.get_district_mobile(hierarchy_name, 4))
+
+        payload = {
+            'name': data['name'],
+            'type': 'PublicAndPrivate',
+            'designation': 'DBT Maker',
+            'mobile': data['mobile'],
+            'allowLogin': True,
+            'userName': data['mobile'],
+            'hierarchyId': hierarchy_id,
+            'otp': otp
+        }
+
+        response = self.add_staff(token, payload)
+        return response
