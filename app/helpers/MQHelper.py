@@ -96,19 +96,16 @@ class MQHelper:
                 for exchange in exchanges:
                     self.delete_exchange(exchange['name'])
 
-    def publish_message(self, queue_name, message, properties=None, headers=None):
-        if properties is None:
-            properties = {}
+    def publish_message(self, queue_name, message, headers=None):
         if headers is None:
             headers = {}
 
-        properties['application_headers'] = headers
         channel = self._get_channel()
         channel.basic_publish(
             exchange='',
             routing_key=queue_name,
             body=message,
             properties=pika.BasicProperties(
-                headers=properties
+                headers=headers
             )
         )

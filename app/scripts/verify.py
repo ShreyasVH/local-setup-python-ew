@@ -116,7 +116,7 @@ for version in range(starting_version, ending_version + 1):
 
 Logger.info('verify', 'Restoring documents')
 for document_id in document_ids:
-    file_path = documents_folder_path + '/' + document_id + '.json'
+    file_path = f"{documents_folder_path}/{document_id}.json"
     shell_exec_with_immediate_output('git checkout ' + file_path)
 
 Logger.info('verify', 'Setting up db queries')

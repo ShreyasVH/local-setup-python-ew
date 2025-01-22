@@ -67,9 +67,17 @@ class ApiHelper:
 
         default_headers = {}
         headers = {**default_headers, **additional_headers}
+        is_basic_auth = additional_headers.get('isBasicAuth', False)
+        username = additional_headers.get('username', '')
+        password = additional_headers.get('password', '')
+        if is_basic_auth:
+            del headers['isBasicAuth']
+            del headers['username']
+            del headers['password']
+
         formatted_headers = [f"{key}: {value}" for key, value in headers.items()]
 
-        response = requests.get(api_url, headers=headers, params=payload, timeout=30)
+        response = requests.get(api_url, headers=headers, params=payload, auth=HTTPBasicAuth(username, password) if is_basic_auth else None, timeout=30)
 
         result = self._execute_api(response)
         if self.is_error_status(result):

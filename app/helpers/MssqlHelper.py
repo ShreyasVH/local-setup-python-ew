@@ -150,5 +150,9 @@ class MssqlHelper:
         connection = self.connect(options)
         cursor = connection.cursor()
         cursor.execute(query)
-        values = [row for row in cursor.fetchall()]
+        columns = [column[0] for column in cursor.description]
+
+        values = []
+        for row in cursor.fetchall():
+            values.append(dict(zip(columns, row)))
         return values

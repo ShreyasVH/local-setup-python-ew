@@ -5,6 +5,8 @@ from app.helpers.ApiHelper import ApiHelper
 from app.helpers.FileHelper import FileHelper
 from app.utils.Utils import replace_time_strings, array2xml
 from app.scripts.commonDefinitions import APP_PATH
+from app.helpers.PostgresHelper import PostgresHelper
+from app.helpers.MssqlHelper import MssqlHelper
 
 class DbtHelper:
     def __init__(self):
@@ -169,17 +171,19 @@ class DbtHelper:
         self.trigger_job_runner_job('generate-NPY-benefits-V1', 3)
 
     def delete_logs_for_benefits(self):
+        postgres_helper = PostgresHelper()
         queries = [
             'DELETE FROM hierarchy_benefit_status_aud',
             'DELETE FROM hierarchy_benefit_status',
             'DELETE FROM revinfo'
         ]
         for query in queries:
-            self.postgres_helper.execute(query, 'dbt_new')
+            postgres_helper.execute(query, 'dbt_new')
 
     def delete_logs_for_benefits_nikshay(self):
+        mssql_helper = MssqlHelper()
         query = 'DELETE FROM _HierarchyBenefitStatusMap'
-        self.mssql_helper.execute(query, 'nikshay_new')
+        mssql_helper.execute(query, 'nikshay_new')
 
     def trigger_hangfire_job(self, token, job_name, success_count_difference):
         headers = {

@@ -62,3 +62,26 @@ class BaseHelper:
         rows = postgres_helper.select(query, 'registry_new')
         return rows[0]['value']
 
+    def get_ancestors(self, hierarchy_id):
+        postgres_helper = PostgresHelper()
+
+        query = f"SELECT level_1_id, level_2_id, level_3_id, level_4_id, level_5_id, id FROM hierarchy WHERE id = {hierarchy_id}"
+        rows = postgres_helper.select(query, 'registry_new')
+        ancestor_ids = rows[0]
+        return list(filter(lambda id: id is not None, [
+            ancestor_ids['level_1_id'],
+            ancestor_ids['level_2_id'],
+            ancestor_ids['level_3_id'],
+            ancestor_ids['level_4_id'],
+            ancestor_ids['level_5_id'],
+            ancestor_ids['id'],
+        ]))
+
+    def get_tu_details(self, hierarchy_name, hierarchy_level):
+        postgres_helper = PostgresHelper()
+        query = f"SELECT CASE WHEN level_4_id IS null THEN id ELSE level_4_id END as id, CASE WHEN level_4_name IS null THEN name ELSE level_4_name END as name, CASE WHEN level_4_code IS null THEN code ELSE level_4_code END as code FROM hierarchy WHERE name = '{hierarchy_name}' AND level = {hierarchy_level}"
+        rows = postgres_helper.select(query, 'registry_new')
+        return rows[0]
+
+    def get_tu_id(self, hierarchy_name, hierarchy_level):
+        return self.get_tu_details(hierarchy_name, hierarchy_level).get('id')

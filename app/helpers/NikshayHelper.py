@@ -1,3 +1,6 @@
+import os
+import sys
+
 from app.helpers.ApiHelper import ApiHelper
 from app.enums.Server import Server
 import json
@@ -6,6 +9,11 @@ from app.helpers.MssqlHelper import MssqlHelper
 from app.helpers.BaseHelper import BaseHelper
 from app.helpers.PostgresHelper import PostgresHelper
 import re
+from app.utils.Logger import Logger
+from app.helpers.ElasticHelper import ElasticHelper
+from datetime import datetime
+from app.helpers.MQHelper import MQHelper
+import time
 
 class NikshayHelper(BaseHelper):
     def __init__(self):
@@ -433,4 +441,394 @@ class NikshayHelper(BaseHelper):
         }
 
         response = self.add_staff(token, payload)
+        return response
+
+    def add_patient(self, token, data):
+        selected_hierarchy_name = data['selectedHierarchyName']
+        selected_hierarchy_id = self.get_hierarchy_id(selected_hierarchy_name, 5)
+
+        residence_hierarchy_name = data['residenceHierarchyName']
+        residence_hierarchy_level = data['residenceHierarchyLevel']
+
+        residence_hierarchy_id = self.get_hierarchy_id(residence_hierarchy_name, residence_hierarchy_level)
+
+        payload = {
+            "TypeOfPatient": data['typeOfEpisode'],
+            "Stage": "PRESUMPTIVE_OPEN",
+            "RegistrationDate": data['enrollmentDate'],
+            "SelectedHierarchyId": selected_hierarchy_id,
+            "FirstName": data['firstName'],
+            "LastName": data['lastName'],
+            "FathersName": None,
+            "Age": data['age'],
+            "Gender": data['gender'],
+            "PrimaryPhone": data['mobile'],
+            "SecondaryPhone1": None,
+            "SecondaryPhone2": None,
+            "SecondaryPhone3": None,
+            "Address": data['address'],
+            "Ward": None,
+            "Taluka": None,
+            "Landmark": None,
+            "ResidenceHierarchyId": residence_hierarchy_id,
+            "ResidenceHierarchyAll": self.get_ancestors(residence_hierarchy_id),
+            "Pincode": data['pincode'],
+            "Area": data['area'],
+            "MaritalStatus": data['maritalStatus'],
+            "Occupation": data['occupation'],
+            "SocioeconomicStatus": data['socioEconomicStatus'],
+            "KeyPopulation": data['keyPopulation'],
+            "VaccinationDate": data.get('vaccinationDate', None),
+            "Symptom": data['symptom'],
+            "HIVStatus": data['hivStatus'],
+            "ContactPersonPhone": None,
+            "ContactPersonName": None,
+            "ContactPersonAddress": None,
+            "parentEpisodeId": None,
+            "IsPossibleDuplicate": None,
+            "Source": None,
+            "SourcePatientId": None,
+            "TypeOfCaseFinding": data['typeOfCaseFinding'],
+            "InformantId": data.get('informantId', None),
+            "DateOfBirth": data['dateOfBirth'],
+            "FollowUpsDone": [],
+            "TbWinReferenceId": data.get('tbWinReferenceId', None)
+        }
+
+        endpoint = self._api_helper.get_endpoint('nikshay')
+        url = f"{endpoint}/api/patients/AddIndiaTB"
+
+        headers = {
+            'Authorization': f"Bearer {token}"
+        }
+
+        response = self._api_helper.post(url, payload, headers)
+        return response
+
+    def add_test(self, token, data):
+        postgres_helper = PostgresHelper()
+        test_facility_name = data['testFacilityName']
+        query = f"SELECT id, level_2_id, level_2_name, level_3_name, level_3_id FROM hierarchy WHERE level = 5 AND name = '{test_facility_name}'"
+        rows = postgres_helper.select(query, 'registry_new')
+        test_facility_data = rows[0]
+        test_facility_id = test_facility_data['id']
+        test_facility_state_name = test_facility_data['level_2_name']
+        test_facility_state_id = test_facility_data['level_2_id']
+        test_facility_district_name = test_facility_data['level_3_name']
+        test_facility_district_id = test_facility_data['level_3_id']
+
+        sample_collection_facility_name = data['sampleCollectionFacilityName']
+        query = f"SELECT id, level_2_id, level_2_name, level_3_name, level_3_id FROM hierarchy WHERE level = 5 AND name = '{sample_collection_facility_name}'"
+        rows = postgres_helper.select(query, 'registry_new')
+        sample_collection_facility_data = rows[0]
+        sample_collection_facility_id = sample_collection_facility_data['id']
+        sample_collection_facility_state_name = sample_collection_facility_data['level_2_name']
+        sample_collection_facility_state_id = sample_collection_facility_data['level_2_id']
+        sample_collection_facility_district_name = sample_collection_facility_data['level_3_name']
+        sample_collection_facility_district_id = sample_collection_facility_data['level_3_id']
+
+        episode_id = data['episodeId']
+
+        payload = {
+            "ReasonForTesting": data['reason'],
+             "PredominantSymptom": None,
+            "PredominantSymptomDuration": None,
+            "HCPVisits": None,
+            "TypeOfCase": data['typeOfCase'],
+           "MonthsOfTreatment": None,
+            "MonthsSinceEpisode": None,
+            "DiagnosisOfTB": [],
+            "FollowUpReasonDSTB": None,
+            "TypeOfPresumptiveDRTB": [],
+            "CulturePositiveMonth": None,
+            "FollowUpReasonDRTB": None,
+            "FollowUpReasonDRTBMonth": None,
+            "TestType": data['type'],
+            "TestingFacilityState": {
+                "Value": test_facility_state_name,
+                "Key": test_facility_state_id,
+                "Level": 5
+            },
+            "TestingFacilityDistrict": {
+                "Value": test_facility_district_name,
+                "Key": test_facility_district_id,
+                "Level": 5
+            },
+            "TestingFacility": {
+                "Value": data['testFacilityName'],
+                "Key": test_facility_id
+            },
+            "SampleAvailability": "Present",
+            "ResultAvailability": "Present",
+            "TestSampleDetails": [
+                {
+                    "SampleMappingOption": "Add New Sample",
+                    "SampleSpecimenType": data['sampleSpecimenType'],
+                    "SampleSpecimenTypeIfOther": None,
+                    "SampleSputumCollectionDetail": data['sampleSputumCollectionDetail'],
+                    "SampleDescription": data['sampleDescription'],
+                    "SampleCollectionDate": data['sampleCollectionDate'],
+                    "SampleCollectionTime": "00:00",
+                    "SampleCollectionSiteState": {
+                        "Value": sample_collection_facility_state_name,
+                        "Key": sample_collection_facility_state_id,
+                        "Level": 5
+                    },
+                    "SampleCollectionSiteDistrict": {
+                        "Value": sample_collection_facility_district_name,
+                        "Key": sample_collection_facility_district_id,
+                        "Level": 5
+                    },
+                    "SampleCollectionSite": {
+                        "Value": data['sampleCollectionFacilityName'],
+                        "Key": sample_collection_facility_id,
+                        "Level": 5
+                    },
+                    "SampleReferralDate": None,
+                    "SampleReferralSiteState": None,
+                    "SampleReferralSiteDistrict": None,
+                    "SampleReferralSite": None,
+                    "SampleSerialId": None,
+                    "SampleQrCode": None,
+                    "MappedSampleId": None,
+                    "MappedSampleSpecimenType": None,
+                    "MappedSampleSpecimenTypeIfOther": None,
+                    "MappedSampleSputumCollectionDetail": None,
+                    "MappedSampleDescription": None,
+                    "MappedSampleCollectionDate": None,
+                    "MappedSampleCollectionTime": None,
+                    "MappedSampleCollectionSiteState": None,
+                    "MappedSampleCollectionSiteDistrict": None,
+                    "MappedSampleCollectionSite": None,
+                    "MappedSampleReferralDate": None,
+                    "MappedSampleReferralSiteState": None,
+                    "MappedSampleReferralSiteDistrict": None,
+                    "MappedSampleReferralSite": None,
+                    "MappedSampleSerialId": None,
+                    "MappedSampleQrCode": None
+                }
+            ],
+            "LabSerialNumber": None,
+            "ResultSampleId": {
+                "Key": "1",
+                "Value": "Sample-1",
+                "Label": "Sample-1",
+                "ValueKey": "Sample1"
+            },
+            "IndurationSize": None,
+            "ResultDateTested": None,
+            "ResultDateReported": data['diagnosisDate'],
+            "ResultReportedBy": None,
+            "FLLPA_AddMutationDetails": "Skip",
+            "SLLPA_AddMutationDetails": "Skip",
+            "FLLPASample": None,
+            "FLLPA_TUB_BAND": None,
+            "FLLPA_Rpob_Locus_Control": None,
+            "FLLPA_RpoB_WT1": None,
+            "FLLPA_RpoB_WT2": None,
+            "FLLPA_WT3": None,
+            "FLLPA_WT4": None,
+            "FLLPA_WT5": None,
+            "FLLPA_WT6": None,
+            "FLLPA_WT7": None,
+            "FLLPA_WT8": None,
+            "FLLPA_MUT1_D516V": None,
+            "FLLPA_MUT2A_H526Y": None,
+            "FLLPA_MUT2B_H526D": None,
+            "FLLPA_MUT3_S513L": None,
+            "FLLPA_KAT_G": None,
+            "FLLPA_KAT_WT1": None,
+            "FLLPA_KAT_MUT1": None,
+            "FLLPA_KAT_MUT2": None,
+            "FLLPA_INH_A": None,
+            "FLLPA_INH_WT1": None,
+            "FLLPA_INH_WT2": None,
+            "FLLPA_INH_MUT1": None,
+            "FLLPA_INH_MUT2": None,
+            "FLLPA_MUT3A": None,
+            "FLLPA_MUT3B": None,
+            "GYR_A_Locus_Control": None,
+            "SLLPA_WT1_85_90": None,
+            "SLLPA_WT2_89_93": None,
+            "SLLPA_WT3_92_97": None,
+            "SLLPA_MUT1_A90V": None,
+            "SLLPA_MUT2_S91P": None,
+            "SLLPA_MUT3A_D94A": None,
+            "SLLPA_MUT3B_D94N": None,
+            "SLLPA_MUT3C_D94G": None,
+            "SLLPA_MUT3D_D94H": None,
+            "GYR_B_Locus_Control": None,
+            "SLLPA_WT1_536_541": None,
+            "SLLPA_MUT1_N538D": None,
+            "SLLPA_MUT2_E540V": None,
+            "RRS_Locus_Control": None,
+            "SLLPA_WT1_1401_02": None,
+            "SLLPA_WT2_1484": None,
+            "SLLPA_MUT1_A1401G": None,
+            "SLLPA_MUT2_G148T": None,
+            "EIS_Locus_Control": None,
+            "SLLPA_WT1_37": None,
+            "SLLPA_WT2_14_12_10": None,
+            "SLLPA_WT3_2": None,
+            "SLLPA_MUT1_C_14T": None,
+            "TextResult": None,
+            "CultureType": None,
+            "DSTToDrug": None,
+            "ResistanceStatus": None,
+            "FLLPA_Result": None,
+            "SLLPA_Result": None,
+            "PathodetectResult": None,
+            "ResistanceToRifampicin": None,
+            "HighLevelResistanceToIsoniazid": None,
+            "LowLevelResistanceToIsoniazid": None,
+            "ResistanceToFluoroquinolones": None,
+            "ResistanceToSecondLineInjectableDrugs": None,
+            "ResistanceToSecondLineInjectableDrugsLowLevel": None,
+            "FinalInterpretation": data['finalInterpretation'],
+            "Remarks": None,
+            "PatientId": episode_id
+        }
+
+        endpoint = self._api_helper.get_endpoint('nikshay')
+        url = f"{endpoint}/API/TestResults/AddDiagnosticsTest"
+
+        headers = {
+            'Authorization': f"Bearer {token}"
+        }
+
+        response = self._api_helper.post(url, payload, headers)
+        self.ensure_stage_transitioned(episode_id, 'DIAGNOSED_NOT_ON_TREATMENT')
+
+        return response
+
+    def ensure_stage_transitioned(self, episode_id, expected_stage, is_retry=False):
+        Logger.info('nikshay', 'Ensuring stage transition')
+        elastic_helper = ElasticHelper()
+        stage_transitioned = False
+        start = time.time()
+        buffer_time = 120
+        while not stage_transitioned:
+            Logger.info('nikshay', f"Ensuring stage transitions for {episode_id}")
+            document = elastic_helper.get_document('episode', episode_id)
+            stage_transitioned = expected_stage == document['stageKey']
+            if (time.time() - start) > buffer_time:
+                break
+        if not is_retry and not stage_transitioned:
+            mq_helper = MQHelper()
+            data = {
+                'EventName': 'q.episode.update_elastic_document',
+                'Field': {
+                    'episodeId': episode_id,
+                    'clientId': 29,
+                    'isUpdate': True
+                }
+            }
+
+            headers = {
+                'clientId': 29
+            }
+
+            mq_helper.publish_message('q.episode.update_elastic_document', json.dumps(data), headers)
+            self.ensure_stage_transitioned(episode_id, expected_stage, True)
+
+    def get_dbt_maker_user_name(self, hierarchy_name, hierarchy_level):
+        postgres_helper = PostgresHelper()
+        tu_id = self.get_tu_id(hierarchy_name, hierarchy_level)
+
+        query = f"select ua.username from user_access ua inner join staff s on s.id = ua.staff_id where s.designation = 'DBT Maker' and ua.hierarchy_id = {tu_id}"
+        rows = postgres_helper.select(query, os.getenv('POSTGRES_REGISTRY_DB'))
+        return rows[0]['username']
+
+    def update_benefit_status(self, token, scheme, payload):
+        endpoint = self._api_helper.get_endpoint('nikshay')
+        url = f"{endpoint}/api/Dbt/UpdateBenefits/{scheme}/PENDING"
+
+        headers = {
+            'Authorization': f"Bearer {token}"
+        }
+
+        response = self._api_helper.put(url, payload, headers)
+        return response
+
+    def remove_benefits(self, token, episode_id, scheme):
+        mssql_helper = MssqlHelper()
+        query = f"SELECT Id FROM _Benefit WHERE EpisodeId = {episode_id} AND Scheme = '{scheme}'"
+        rows = mssql_helper.select(query, os.getenv('MSSQL_NIKSHAY_DB'))
+
+        benefit_list = [
+            {
+                "BenefitId": row['Id'],
+                "TransactionDate": None,
+                "TransactionId": None,
+                "PrimaryAction": {
+                    "Action": "REMOVE",
+                    "Comment": "Removing"
+                }
+            }
+            for row in rows
+        ]
+
+        payload = {
+            'Benefits': benefit_list
+        }
+
+        return self.update_benefit_status(token, scheme, payload)
+
+    def start_treatment(self, token, data):
+        episode_id = data['episodeId']
+        expected_stage = 'DIAGNOSED_ON_TREATMENT_PUBLIC' if data['typeOfEpisode'] == 'IndiaTbPublic' else 'DIAGNOSED_ON_TREATMENT_PRIVATE'
+
+        payload = {
+            "EpisodeId": episode_id,
+            "TypeOfTreatment": {
+                "Value": data['typeOfTreatment'],
+                "Key": data['typeOfTreatment']
+            },
+            "InitialWeight": data['weight'],
+            "SiteOfDisease": data['siteOfDisease'],
+            "ExtraPulmonarySite": "",
+            "Height": data['height'],
+            "DateOfTBTreatmentInitiation": data['startDate'],
+            "TreatmentPhase": data['treatmentPhase'],
+            "EndOfIP": "",
+            "DateofTPTInitiation": "",
+            "HasDSTBTest": data['hasDstbTest'],
+            "DateOfDSTBDiagnosis": data['diagnosisDate'],
+            "BasisOfDSTBDiagnosis": data['testType'],
+            "HasDRTBTest": data['hasDrtbTest'],
+            "DateOfDRTBDiagnosis": "",
+            "BasisOfDRTBDiagnosis": "",
+            "HasLTBITest": data['hasLtbiTest'],
+            "DateOfLTBIDiagnosis": "",
+            "BasisOfLTBIDiagnosis": "",
+            "DSTBNotificationTestId": None,
+            "DRTBNotificationTestId": None,
+            "LTBINotificationTestId": None,
+            "AdherenceTechnology": {
+                "Value": data['monitoringMethod'],
+                "Key": data['monitoringMethod']
+            },
+            "MermSerialNoObj": None,
+            "AdherenceDispensationCorrelation": "True",
+            "TypeOfDot": "",
+            "LastSeen": None,
+            "BatteryLevel": None,
+            "DSTBRegimen": {
+                "Key": data['regimen'],
+                "Value": data['regimen']
+            },
+            "DRTBRegimen": "",
+            "TPTRegimen": ""
+        }
+
+        endpoint = self._api_helper.get_endpoint('nikshay')
+        url = f"{endpoint}/api/Patients/TreatmentDetails?patientId={episode_id}"
+
+        headers = {
+            'Authorization': f"Bearer {token}"
+        }
+
+        response = self._api_helper.post(url, payload, headers)
+
+        self.ensure_stage_transitioned(episode_id, expected_stage)
         return response

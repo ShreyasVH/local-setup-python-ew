@@ -54,7 +54,7 @@ try:
                             replacement_query = re.sub(r'^#UPDATE', 'UPDATE', replacement_query)
                             replacement_query = re.sub(r'^#SET', 'SET', replacement_query)
 
-                        final_query = final_queries.append(replacement_query)
+                        final_query = final_queries.append(query.replace(trimmed_query, replacement_query))
 
                     # Writing the modified content back to the file
                     with open(file_path, 'w') as f:

@@ -12,6 +12,7 @@ from app.helpers.RedisHelper import RedisHelper
 from app.helpers.EpisodeHelper import EpisodeHelper
 from app.helpers.IamHelper import IamHelper
 import json
+from datetime import datetime
 
 if len(sys.argv) > 2:
     starting_version = int(sys.argv[1])
@@ -69,7 +70,7 @@ version_map = {
     'NikshayAddDiagnosedOutcomeAssignedPublic': 580,
     'NikshayAddDiagnosedOutcomeAssignedPrivate': 581,
     'NikshayAddDirectTreatmentPrivate': 582,
-    'NIkshayAddSystemIdentifiedDuplicatePatient': 583,
+    'NikshayAddSystemIdentifiedDuplicatePatient': 583,
     'NikshayAddUserConfirmedDuplicatePatient': 584,
     'NikshayAddUserConfirmedUniquePatient': 585,
     'NikshayAddVaccinationFollowupOnePatient': 586,
@@ -1582,4 +1583,176 @@ if starting_version <= version_map['NikshayDBTMakerTribal'] <= ending_version:
         'mobile': '9999999934',
         'name': 'DBT Maker Tribal'
     })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayAddPublicPatient'] <= ending_version:
+    Logger.info('simulate', 'Generating phi token')
+    token = nikshay_helper.get_token('phi-kadha01-001', 'Test@123')
+    Logger.info('simulate', 'Adding patient')
+    nikshay_helper.add_patient(token, {
+        'typeOfEpisode': 'IndiaTbPublic',
+        'enrollmentDate': 'DATE_TIME_PLUS_0_DAY_DATE_FIRST',
+        'firstName': 'Public',
+        'lastName': 'Patient',
+        'age': int(datetime.now().strftime('%Y')) - 2000,
+        'dateOfBirth': '01-01-2000',
+        'gender': 'Male',
+        'mobile': 9999999961,
+        'address': 'Address',
+        'pincode': 999999,
+        'area': 'Unknown',
+        'maritalStatus': 'Unknown',
+        'occupation': 'Unknown',
+        'socioEconomicStatus': 'Unknown',
+        'keyPopulation': 'Not Applicable',
+        'symptom': 'Asymptomatic,',
+        'hivStatus': 'Unknown',
+        'typeOfCaseFinding': 'Passive (Routine programme)',
+        'selectedHierarchyName': 'phi',
+        'residenceHierarchyName': 'phi',
+        'residenceHierarchyLevel': 5
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayAddPrivatePatient'] <= ending_version:
+    Logger.info('simulate', 'Generating single clinic token')
+    token = nikshay_helper.get_token('6', 'Test@123')
+    Logger.info('simulate', 'Adding patient')
+    nikshay_helper.add_patient(token, {
+        'typeOfEpisode': 'IndiaTbPrivate',
+        'enrollmentDate': 'DATE_TIME_PLUS_0_DAY_DATE_FIRST',
+        'firstName': 'Private',
+        'lastName': 'Patient',
+        'age': int(datetime.now().strftime('%Y')) - 2000,
+        'dateOfBirth': '01-01-2000',
+        'gender': 'Male',
+        'mobile': 9999999960,
+        'address': 'Address',
+        'pincode': 999999,
+        'area': 'Unknown',
+        'maritalStatus': 'Unknown',
+        'occupation': 'Unknown',
+        'socioEconomicStatus': 'Unknown',
+        'keyPopulation': 'Not Applicable',
+        'symptom': 'Asymptomatic,',
+        'hivStatus': 'Unknown',
+        'typeOfCaseFinding': 'Passive (Routine programme)',
+        'selectedHierarchyName': 'single clinic',
+        'residenceHierarchyName': 'single clinic',
+        'residenceHierarchyLevel': 5
+    })
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayAddDiagnosedNotOnTreatmentPublic'] <= ending_version:
+    Logger.info('simulate', 'Generating phi token')
+    token = nikshay_helper.get_token('phi-kadha01-001', 'Test@123')
+    Logger.info('simulate', 'Adding patient')
+    first_name = 'Diagnosed'
+    last_name = 'Not on Treatment Public'
+    facility_name = 'phi'
+    nikshay_helper.add_patient(token, {
+        'typeOfEpisode': 'IndiaTbPublic',
+        'enrollmentDate': 'DATE_TIME_PLUS_0_DAY_DATE_FIRST',
+        'firstName': first_name,
+        'lastName': last_name,
+        'age': int(datetime.now().strftime('%Y')) - 2000,
+        'dateOfBirth': '01-01-2000',
+        'gender': 'Male',
+        'mobile': 9999999959,
+        'address': 'Address',
+        'pincode': 999999,
+        'area': 'Unknown',
+        'maritalStatus': 'Unknown',
+        'occupation': 'Unknown',
+        'socioEconomicStatus': 'Unknown',
+        'keyPopulation': 'Not Applicable',
+        'symptom': 'Asymptomatic,',
+        'hivStatus': 'Unknown',
+        'typeOfCaseFinding': 'Passive (Routine programme)',
+        'selectedHierarchyName': facility_name,
+        'residenceHierarchyName': facility_name,
+        'residenceHierarchyLevel': 5
+    })
+
+    Logger.info('verify', 'Adding test')
+    nikshay_helper.add_test(token, {
+        'reason': 'Diagnosis of TB',
+        'typeOfCase': 'New',
+        'type': 'Microscopy ZN',
+        'testFacilityName': 'dmc lab',
+        'sampleCollectionFacilityName': facility_name,
+        'sampleCollectionDate': replace_time_strings('DATE_ONLY_MINUS_4_DAY'),
+        'diagnosisDate': replace_time_strings('DATE_ONLY_MINUS_3_DAY'),
+        'finalInterpretation': 'Positive',
+        'sampleDescription': 'Mucopurulent',
+        'sampleSputumCollectionDetail': 'Early Morning',
+        'sampleSpecimenType': 'Sputum',
+        'episodeId': episode_helper.get_episode_id(first_name, last_name)
+    })
+
+    Logger.info('verify', 'Initializing benefits')
+    dbt_helper.initiate_v3_benefits()
+    redis_helper.delete_all_keys()
+    dbt_helper.delete_logs_for_benefits()
+    dbt_maker_token = nikshay_helper.get_token(nikshay_helper.get_dbt_maker_user_name(facility_name, 5), 'Test@123')
+    Logger.info('verify', 'Removing benefits')
+    nikshay_helper.remove_benefits(dbt_maker_token, episode_helper.get_episode_id(first_name, last_name), 'NS')
+    
+    Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayAddDiagnosedNotOnTreatmentPrivate'] <= ending_version:
+    Logger.info('simulate', 'Generating single clinic token')
+    token = nikshay_helper.get_token('6', 'Test@123')
+    Logger.info('simulate', 'Adding patient')
+    first_name = 'Diagnosed'
+    last_name = 'Not on Treatment Private'
+    facility_name = 'single clinic'
+    nikshay_helper.add_patient(token, {
+        'typeOfEpisode': 'IndiaTbPrivate',
+        'enrollmentDate': 'DATE_TIME_PLUS_0_DAY_DATE_FIRST',
+        'firstName': first_name,
+        'lastName': last_name,
+        'age': int(datetime.now().strftime('%Y')) - 2000,
+        'dateOfBirth': '01-01-2000',
+        'gender': 'Male',
+        'mobile': 9999999958,
+        'address': 'Address',
+        'pincode': 999999,
+        'area': 'Unknown',
+        'maritalStatus': 'Unknown',
+        'occupation': 'Unknown',
+        'socioEconomicStatus': 'Unknown',
+        'keyPopulation': 'Not Applicable',
+        'symptom': 'Asymptomatic,',
+        'hivStatus': 'Unknown',
+        'typeOfCaseFinding': 'Passive (Routine programme)',
+        'selectedHierarchyName': facility_name,
+        'residenceHierarchyName': facility_name,
+        'residenceHierarchyLevel': 5
+    })
+
+    Logger.info('verify', 'Adding test')
+    nikshay_helper.add_test(token, {
+        'reason': 'Diagnosis of TB',
+        'typeOfCase': 'New',
+        'type': 'Microscopy ZN',
+        'testFacilityName': 'dmc lab',
+        'sampleCollectionFacilityName': facility_name,
+        'sampleCollectionDate': replace_time_strings('DATE_ONLY_MINUS_4_DAY'),
+        'diagnosisDate': replace_time_strings('DATE_ONLY_MINUS_3_DAY'),
+        'finalInterpretation': 'Positive',
+        'sampleDescription': 'Mucopurulent',
+        'sampleSputumCollectionDetail': 'Early Morning',
+        'sampleSpecimenType': 'Sputum',
+        'episodeId': episode_helper.get_episode_id(first_name, last_name)
+    })
+
+    Logger.info('verify', 'Initializing benefits')
+    dbt_helper.initiate_v3_benefits()
+    redis_helper.delete_all_keys()
+    dbt_helper.delete_logs_for_benefits()
+    dbt_maker_token = nikshay_helper.get_token(nikshay_helper.get_dbt_maker_user_name(facility_name, 5), 'Test@123')
+    Logger.info('verify', 'Removing benefits')
+    nikshay_helper.remove_benefits(dbt_maker_token, episode_helper.get_episode_id(first_name, last_name), 'NS')
+
     Logger.info('simulate', '-------------------------------------------')

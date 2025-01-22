@@ -794,7 +794,7 @@ json_fields = {
                 'additionalData': {
                     'Timestamp': {
                         'type': 'date_time',
-                        'format': '%Y-%m-%d %H:%M:%S'
+                        'format': '%Y-%m-%dT%H:%M:%S'
                     },
                     'timestamp': {
                         'type': 'date_time',
@@ -1014,9 +1014,7 @@ def is_date_time_field(database_name, table_name, column, old_value, new_value, 
 def is_json_field(database_name, table_name, column, old_value, new_value):
     global json_fields
 
-    if database_name in json_fields and \
-       table_name in json_fields[database_name] and \
-       column in json_fields[database_name][table_name]:
+    if database_name in json_fields and table_name in json_fields[database_name] and column in json_fields[database_name][table_name]:
         additional_data = json_fields[database_name][table_name][column]['additionalData']
         for key in additional_data.keys():
             if (old_value and key in old_value) or (new_value and key in new_value):
