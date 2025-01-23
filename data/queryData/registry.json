@@ -8993,6 +8993,1638 @@
                 }
               }
             ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'TypeOfPatient'",
+                  "label": "'patient_sector'",
+                  "component": "'app-radio'",
+                  "field_options": "'[{\"Key\":\"IndiaTbPublic\", \"Value\":\"Public Sector\"}, {\"Key\":\"IndiaTbPrivate\", \"Value\":\"Private Sector\"}]'",
+                  "disabled": "True",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "1",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'TypeOfPatient' AND component = 'app-radio' AND label = 'patient_sector')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'PatientSector' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'TypeOfCaseFinding'",
+                  "label": "'TypeOfCaseFinding'",
+                  "component": "'app-radio'",
+                  "field_options": "'[{\"Key\":\"Passive (Routine programme)\", \"Value\":\"Passive (Routine programme)\"}, {\"Key\":\"Active (Active Case Finding)\", \"Value\":\"Active (Active Case Finding)\"}]'",
+                  "disabled": "False",
+                  "visible": "False",
+                  "required": "True",
+                  "default_value": "'Passive (Routine programme)'",
+                  "validation_list": "null",
+                  "row_number": "2",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'TypeOfCaseFinding' AND component = 'app-radio' AND label = 'TypeOfCaseFinding')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'PatientSector' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'IsPossibleDuplicate'",
+                  "label": "'IsPossibleDuplicate'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "False",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "3",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'IsPossibleDuplicate' AND component = 'app-input-field' AND label = 'IsPossibleDuplicate')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'PatientSector' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'UserLevel'",
+                  "label": "'UserLevel'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "False",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "4",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'UserLevel' AND component = 'app-input-field' AND label = 'UserLevel')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'PatientSector' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'parentEpisodeId'",
+                  "label": "'parentEpisodeId'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "False",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "5",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'parentEpisodeId' AND component = 'app-input-field' AND label = 'parentEpisodeId')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'PatientSector' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Source'",
+                  "label": "'Source'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "False",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "6",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Source' AND component = 'app-input-field' AND label = 'Source')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'PatientSector' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'SourcePatientId'",
+                  "label": "'SourcePatientId'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "False",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "7",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'SourcePatientId' AND component = 'app-input-field' AND label = 'SourcePatientId')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'PatientSector' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'SelectedHierarchyId'",
+                  "label": "'public_facility'",
+                  "component": "'app-hierarchy-selection-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "1",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "'{\"HierarchySelectionConfig\": [{\"Types\": [\"STATE\"], \"Label\": \"STATE\", \"Level\": 2, \"Order\": 1, \"OptionDisplayKeys\": [\"Name\", \"Id\", \"Code\"], \"Options\": [], \"RemoteUrl\": \"/api/Hierarchy/getHierarchiesByTypeParent\"},  {\"Types\": [\"DISTRICT\"], \"Label\": \"DISTRICT\", \"Level\": 3, \"Order\": 2, \"OptionDisplayKeys\": [\"Name\", \"Id\", \"Code\"], \"Options\": [], \"RemoteUrl\": \"/api/Hierarchy/getHierarchiesByTypeParent\"},  {\"Types\": [\"TU\"], \"Label\": \"TU\", \"Level\": 4, \"Order\": 3, \"OptionDisplayKeys\": [\"Name\", \"Id\", \"Code\"], \"Options\": [], \"RemoteUrl\": \"/api/Hierarchy/getHierarchiesByTypeParent\"},  {\"Types\": [\"PHI\"], \"Label\": \"PHI\", \"Level\": 5, \"Order\": 4, \"OptionDisplayKeys\": [\"Name\", \"Id\", \"Code\"], \"Options\": [], \"RemoteUrl\": \"/api/Hierarchy/getHierarchiesByTypeParent\"}]}'",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'SelectedHierarchyId' AND component = 'app-hierarchy-selection-field' AND label = 'public_facility')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'SelectedHierarchyId'",
+                  "label": "'private_facility'",
+                  "component": "'app-hierarchy-selection-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "False",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "1",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "'{\"HierarchySelectionConfig\": [{\"Types\": [\"STATE\"], \"Label\": \"STATE\", \"Level\": 2, \"Order\": 1, \"OptionDisplayKeys\": [\"Name\", \"Id\", \"Code\"], \"Options\": [], \"RemoteUrl\": \"/api/Hierarchy/getHierarchiesByTypeParent\"},  {\"Types\": [\"DISTRICT\"], \"Label\": \"DISTRICT\", \"Level\": 3, \"Order\": 2, \"OptionDisplayKeys\": [\"Name\", \"Id\", \"Code\"], \"Options\": [], \"RemoteUrl\": \"/api/Hierarchy/getHierarchiesByTypeParent\"},  {\"Types\": [\"TU\"], \"Label\": \"TU\", \"Level\": 4, \"Order\": 3, \"OptionDisplayKeys\": [\"Name\", \"Id\", \"Code\"], \"Options\": [], \"RemoteUrl\": \"/api/Hierarchy/getHierarchiesByTypeParent\"},  {\"Types\": [\"HUB,PVTCHEM,PVTLAB\"], \"Label\": \"Facility\", \"Level\": 5, \"Order\": 4, \"OptionDisplayKeys\": [\"Name\", \"Id\", \"Code\"], \"Options\": [], \"RemoteUrl\": \"/api/Hierarchy/getHierarchiesByTypeParent\"}]}'",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'SelectedHierarchyId' AND component = 'app-hierarchy-selection-field' AND label = 'private_facility')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'FirstName'",
+                  "label": "'FirstName'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyAlphabetAndSpaceAllowed'",
+                  "row_number": "2",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'FirstName' AND component = 'app-input-field' AND label = 'FirstName')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'LastName'",
+                  "label": "'MiddleNameLastName'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyAlphabetAndSpaceAllowed'",
+                  "row_number": "3",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'LastName' AND component = 'app-input-field' AND label = 'MiddleNameLastName')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'FathersName'",
+                  "label": "'FatherNameHusbandName'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "'OnlyAlphabetAndSpaceAllowed'",
+                  "row_number": "4",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'FathersName' AND component = 'app-input-field' AND label = 'FatherNameHusbandName')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Age'",
+                  "label": "'Age'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'Age'",
+                  "row_number": "5",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Age' AND component = 'app-input-field' AND label = 'Age')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Gender'",
+                  "label": "'Gender'",
+                  "component": "'app-select'",
+                  "field_options": "'[{\"Value\" : \"Male\", \"Key\" : \"Male\"}, {\"Value\":\"Female\", \"Key\":\"Female\"}, {\"Value\":\"Transgender\", \"Key\":\"Transgender\"}]'",
+                  "disabled": "True",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "6",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Gender' AND component = 'app-select' AND label = 'Gender')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'PrimaryPhone'",
+                  "label": "'PrimaryPhone'",
+                  "component": "'app-input-field-group'",
+                  "field_options": "null",
+                  "disabled": "True",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'PhoneNumberNotStartingWithZero'",
+                  "row_number": "7",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'PrimaryPhone' AND component = 'app-input-field-group' AND label = 'PrimaryPhone')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'SecondaryPhone1'",
+                  "label": "'phone_2'",
+                  "component": "'app-input-field-group'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "'PhoneNumberNotStartingWithZero'",
+                  "row_number": "8",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'SecondaryPhone1' AND component = 'app-input-field-group' AND label = 'phone_2')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'SecondaryPhone2'",
+                  "label": "'phone_3'",
+                  "component": "'app-input-field-group'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "'PhoneNumberNotStartingWithZero'",
+                  "row_number": "9",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'SecondaryPhone2' AND component = 'app-input-field-group' AND label = 'phone_3')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'SecondaryPhone3'",
+                  "label": "'phone_4'",
+                  "component": "'app-input-field-group'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "'PhoneNumberNotStartingWithZero'",
+                  "row_number": "10",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'SecondaryPhone3' AND component = 'app-input-field-group' AND label = 'phone_4')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'BasicDetailsNikshay' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Address'",
+                  "label": "'Address'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'AddressWithLimit'",
+                  "row_number": "1",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Address' AND component = 'app-input-field' AND label = 'Address')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ResidenceDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Taluka'",
+                  "label": "'_taluka'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "2",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Taluka' AND component = 'app-input-field' AND label = '_taluka')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ResidenceDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Landmark'",
+                  "label": "'_landmark'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "3",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Landmark' AND component = 'app-input-field' AND label = '_landmark')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ResidenceDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'State'",
+                  "label": "'State'",
+                  "component": "'app-search-select'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "4",
+                  "column_number": "null",
+                  "remote_url": "'/api/Hierarchy/GetHierarchyChildrenKeyValue?id=1&onlyActiveHierarchies=true'",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'State' AND component = 'app-search-select' AND label = 'State')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ResidenceDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'District'",
+                  "label": "'District'",
+                  "component": "'app-search-select'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "5",
+                  "column_number": "null",
+                  "remote_url": "'/api/Hierarchy/GetHierarchyChildrenKeyValue'",
+                  "config": "'{\"RemoteUpdateConfig\": [{ \"Url\": \"/api/Hierarchy/GetHierarchyChildrenKeyValue?onlyActiveHierarchies=true\",\"FormPart\": \"ResidenceDetails\",\"Field\": \"District\",\"ResponsePath\": [\"Data\"],\"ConditionalCall\": \"true\",\"ValueDependency\": [{\"CheckNotNull\": \"false\",\"FormPart\": \"ResidenceDetails\", \"Field\": \"State\"}],\"UrlVariables\": {\"Id\": [\"ResidenceDetails\",\"State\",\"Key\"]}}]}'",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'District' AND component = 'app-search-select' AND label = 'District')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ResidenceDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'TU'",
+                  "label": "'tu'",
+                  "component": "'app-search-select'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "6",
+                  "column_number": "null",
+                  "remote_url": "'/api/Hierarchy/GetHierarchyChildrenKeyValue'",
+                  "config": "'{\"RemoteUpdateConfig\": [{ \"Url\": \"/api/Hierarchy/GetHierarchyChildrenKeyValue?onlyActiveHierarchies=true\",\"FormPart\": \"ResidenceDetails\",\"Field\": \"TU\",\"ResponsePath\": [\"Data\"],\"ConditionalCall\": \"true\",\"ValueDependency\": [{\"CheckNotNull\": \"false\",\"FormPart\": \"ResidenceDetails\", \"Field\": \"District\"}],\"UrlVariables\": {\"Id\": [\"ResidenceDetails\",\"District\",\"Key\"]}}]}'",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'TU' AND component = 'app-search-select' AND label = 'tu')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ResidenceDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'PHI'",
+                  "label": "'phi'",
+                  "component": "'app-search-select'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "7",
+                  "column_number": "null",
+                  "remote_url": "'/api/Hierarchy/GetHierarchyChildrenKeyValue'",
+                  "config": "'{\"RemoteUpdateConfig\": [{ \"Url\": \"/api/Hierarchy/GetHierarchyChildrenKeyValue?onlyActiveHierarchies=true&type=PHI\",\"FormPart\": \"ResidenceDetails\",\"Field\": \"PHI\",\"ResponsePath\": [\"Data\"],\"ConditionalCall\": \"true\",\"ValueDependency\": [{\"CheckNotNull\": \"false\",\"FormPart\": \"ResidenceDetails\", \"Field\": \"TU\"}],\"UrlVariables\": {\"Id\": [\"ResidenceDetails\",\"TU\",\"Key\"]}}]}'",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'PHI' AND component = 'app-search-select' AND label = 'phi')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ResidenceDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'PHI'",
+                  "label": "'pvthf'",
+                  "component": "'app-search-select'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "False",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "7",
+                  "column_number": "null",
+                  "remote_url": "'/api/Hierarchy/GetHierarchyChildrenKeyValue'",
+                  "config": "'{\"RemoteUpdateConfig\": [{ \"Url\": \"/api/Hierarchy/GetHierarchyChildrenKeyValue?onlyActiveHierarchies=true&type=HUB,PVTCHEM,PVTLAB\",\"FormPart\": \"ResidenceDetails\",\"Field\": \"PHI\",\"ResponsePath\": [\"Data\"],\"ConditionalCall\": \"true\",\"ValueDependency\": [{\"CheckNotNull\": \"false\",\"FormPart\": \"ResidenceDetails\", \"Field\": \"TU\"}],\"UrlVariables\": {\"Id\": [\"ResidenceDetails\",\"TU\",\"Key\"]}}]}'",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'PHI' AND component = 'app-search-select' AND label = 'pvthf')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ResidenceDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Village'",
+                  "label": "'village'",
+                  "component": "'app-search-select'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "8",
+                  "column_number": "null",
+                  "remote_url": "'/api/Hierarchy/GetHierarchyChildrenKeyValue'",
+                  "config": "'{\"RemoteUpdateConfig\": [{ \"Url\": \"/api/Hierarchy/GetHierarchyChildrenKeyValue?onlyActiveHierarchies=true&type=VILLAGE&fromAssociation=true\",\"FormPart\": \"ResidenceDetails\",\"Field\": \"Village\",\"ResponsePath\": [\"Data\"],\"ConditionalCall\": \"true\",\"ValueDependency\": [{\"CheckNotNull\": \"false\",\"FormPart\": \"ResidenceDetails\", \"Field\": \"PHI\"}],\"UrlVariables\": {\"Id\": [\"ResidenceDetails\",\"PHI\",\"Key\"]}}]}'",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Village' AND component = 'app-search-select' AND label = 'village')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ResidenceDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Pincode'",
+                  "label": "'_pincode'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'Pincode'",
+                  "row_number": "9",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Pincode' AND component = 'app-input-field' AND label = '_pincode')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ResidenceDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Area'",
+                  "label": "'_area'",
+                  "component": "'app-radio'",
+                  "field_options": "'[{\"Key\":\"Tribal\", \"Value\":\"Tribal\"}, {\"Key\":\"Rural\", \"Value\":\"Rural\"}, {\"Key\":\"Urban\", \"Value\":\"Urban\"}, {\"Key\":\"Urban Slum\", \"Value\":\"Urban Slum\"}, {\"Key\":\"Unknown\", \"Value\":\"Unknown\"}]'",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "1",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Area' AND component = 'app-radio' AND label = '_area')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'DemographicDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'MaritalStatus'",
+                  "label": "'marital_status'",
+                  "component": "'app-radio'",
+                  "field_options": "'[{\"Key\":\"Single\", \"Value\":\"Single\"}, {\"Key\":\"Married\", \"Value\":\"Married\"}, {\"Key\":\"Unknown\", \"Value\":\"Unknown\"}]'",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "2",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'MaritalStatus' AND component = 'app-radio' AND label = 'marital_status')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'DemographicDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Occupation'",
+                  "label": "'_occupation '",
+                  "component": "'app-select'",
+                  "field_options": "'[{\"Value\" : \"Legislators and Senior officials\", \"Key\" : \"Legislators and Senior officials\"}, {\"Value\":\"Corporate Manager\", \"Key\":\"Corporate Manager\"}, {\"Value\":\"General Manager\", \"Key\":\"General Manager\"}, {\"Value\":\"Physical, mathematical and engineering science professional\", \"Key\":\"Physical, mathematical and engineering science professional\"}, {\"Value\":\"Life sciences and health professional\", \"Key\":\"Life sciences and health professional\"}, {\"Value\":\"Teaching professional\", \"Key\":\"Teaching professional\"}, {\"Value\":\"Other professional\", \"Key\":\"Other professional\"}, {\"Value\":\"Office Clerk\", \"Key\":\"Office Clerk\"}, {\"Value\":\"Customer Services Clerks\", \"Key\":\"Customer Services Clerks\"}, {\"Value\":\"Personal Protective Service Providers\", \"Key\":\"Personal Protective Service Providers\"}, {\"Value\":\"Models, Sales Persons and Demonstrators\", \"Key\":\"Models, Sales Persons and Demonstrators\"}, {\"Value\":\"Market oriented skilled agriculutre and fishery workers\", \"Key\":\"Market oriented skilled agriculutre and fishery workers\"}, {\"Value\":\"Subsitence agriculture and fishery workers\", \"Key\":\"Subsitence agriculture and fishery workers\"}, {\"Value\":\"Extraction and building trade workers\", \"Key\":\"Extraction and building trade workers\"}, {\"Value\":\"Metal, Machinery and related trades workers\", \"Key\":\"Metal, Machinery and related trades workers\"}, {\"Value\":\"Precision, handicraft, printing and related trade workers\", \"Key\":\"Precision, handicraft, printing and related trade workers\"}, {\"Value\":\"Other Craft and related traders and workers\", \"Key\":\"Other Craft and related traders and workers\"}, {\"Value\":\"Stationary Plant and related Operators\", \"Key\":\"Stationary Plant and related Operators\"}, {\"Value\":\"Machine Operators and Assembler\", \"Key\":\"Machine Operators and Assembler\"}, {\"Value\":\"Drivers and Mobile Plant Operators\", \"Key\":\"Drivers and Mobile Plant Operators\"}, {\"Value\":\"Sales and Services elementry occupations\", \"Key\":\"Sales and Services elementry occupations\"}, {\"Value\":\"Agriculture, fishery and related labour\", \"Key\":\"Agriculture, fishery and related labour\"}, {\"Value\":\"Laborers in mining, construction, manufecturing and transport\", \"Key\":\"Laborers in mining, construction, manufecturing and transport\"}, {\"Value\":\"New Workers seeking employment\", \"Key\":\"New Workers seeking employment\"}, {\"Value\":\"Workers reporting occupation unidentifiable or inadequately\", \"Key\":\"Workers reporting occupation unidentifiable or inadequately\"}, {\"Value\":\"Workers no reporting any occupation\", \"Key\":\"Workers no reporting any occupation\"}, {\"Value\":\"House Wife\", \"Key\":\"House Wife\"}, {\"Value\":\"Unknown\", \"Key\":\"Unknown\"}]'",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "3",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Occupation' AND component = 'app-select' AND label = '_occupation ')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'DemographicDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'SocioeconomicStatus'",
+                  "label": "'socioeconomic_status'",
+                  "component": "'app-radio'",
+                  "field_options": "'[{\"Key\":\"APL\", \"Value\":\"APL\"}, {\"Key\":\"BPL\", \"Value\":\"BPL\"}, {\"Key\":\"Unknown\", \"Value\":\"Unknown\"}]'",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "4",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'SocioeconomicStatus' AND component = 'app-radio' AND label = 'socioeconomic_status')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'DemographicDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'Symptom'",
+                  "label": "'_symptoms'",
+                  "component": "'app-multiselect-select'",
+                  "field_options": "'[{\"Value\" : \"Asymptomatic\", \"Key\" : \"Asymptomatic\"}, {\"Value\":\"Cough for more than 2 weeks\", \"Key\":\"Cough for more than 2 weeks\"}, {\"Value\":\"Coughing up blood\", \"Key\":\"Coughing up blood\"}, {\"Value\":\"Fever\", \"Key\":\"Fever\"}, {\"Value\":\"Night sweat\", \"Key\":\"Night sweat\"}, {\"Value\":\"Weight loss\", \"Key\":\"Weight loss\"}, {\"Value\":\"Chest pain\", \"Key\":\"Chest pain\"}, {\"Value\":\"Shortness of breath\", \"Key\":\"Shortness of breath\"}, {\"Value\":\"Fatigue\", \"Key\":\"Fatigue\"}, {\"Value\":\"Failure to gain weight (in children)\", \"Key\":\"Failure to gain weight (in children)\"}, {\"Value\":\"Decreased activity or playfulness (in children)\", \"Key\":\"Decreased activity or playfulness (in children)\"}, {\"Value\":\"Others\", \"Key\":\"Others\"}]'",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "1",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'Symptom' AND component = 'app-multiselect-select' AND label = '_symptoms')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'SymptomsAndRiskFactors' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'OtherSymptom'",
+                  "label": "'other_symptom'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "False",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyAlphabetAndSpaceAllowed'",
+                  "row_number": "2",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'OtherSymptom' AND component = 'app-input-field' AND label = 'other_symptom')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'SymptomsAndRiskFactors' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'KeyPopulation'",
+                  "label": "'key_population'",
+                  "component": "'app-multiselect-select'",
+                  "field_options": "'[{\"Value\" : \"Anti-TNF treatment\", \"Key\" : \"Anti-TNF treatment\"}, {\"Value\":\"Bronchial Asthma\", \"Key\":\"Bronchial Asthma\"}, {\"Value\":\"Cancer\", \"Key\":\"Cancer\"}, {\"Value\":\"Cardiovascular Disorder\", \"Key\":\"Cardiovascular Disorder\"}, {\"Value\":\"Contact of Known TB Patients\", \"Key\":\"Contact of Known TB Patients\"}, {\"Value\":\"COPD\", \"Key\":\"COPD\"}, {\"Value\":\"COVID recovered patients\", \"Key\":\"COVID recovered patients\"}, {\"Value\":\"Diabetes\", \"Key\":\"Diabetes\"}, {\"Value\":\"Dialysis\", \"Key\":\"Dialysis\"}, {\"Value\":\"Health Care Worker\", \"Key\":\"Health Care Worker\"}, {\"Value\":\"Hypertensive\", \"Key\":\"Hypertensive\"}, {\"Value\":\"Lactating mother\", \"Key\":\"Lactating mother\"}, {\"Value\":\"Liver Impairment\", \"Key\":\"Liver Impairment\"}, {\"Value\":\"Migrant\", \"Key\":\"Migrant\"}, {\"Value\":\"Miner\", \"Key\":\"Miner\"}, {\"Value\":\"Palliative Care\", \"Key\":\"Palliative Care\"}, {\"Value\":\"Patient on immunosuppressants\", \"Key\":\"Patient on immunosuppressants\"}, {\"Value\":\"Pregnancy\", \"Key\":\"Pregnancy\"}, {\"Value\":\"Prison\", \"Key\":\"Prison\"}, {\"Value\":\"Illegal Immigrant\", \"Key\":\"Illegal Immigrant\"}, {\"Value\":\"Renal Impairment\", \"Key\":\"Renal Impairment\"}, {\"Value\":\"Silicosis\", \"Key\":\"Silicosis\"}, {\"Value\":\"Tobacco\", \"Key\":\"Tobacco\"}, {\"Value\":\"Transplantation\", \"Key\":\"Transplantation\"}, {\"Value\":\"Urban Slum\", \"Key\":\"Urban Slum\"}]'",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "3",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'KeyPopulation' AND component = 'app-multiselect-select' AND label = 'key_population')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'SymptomsAndRiskFactors' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'HIVStatus'",
+                  "label": "'hiv_status'",
+                  "component": "'app-radio'",
+                  "field_options": "'[{\"Key\":\"Positive\", \"Value\":\"Positive\"}, {\"Key\":\"Reactive\", \"Value\":\"Reactive\"}, {\"Key\":\"Non-Reactive\", \"Value\":\"Non Reactive / Negative\"}, {\"Key\":\"Unknown\", \"Value\":\"Unknown\"}]'",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "4",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'HIVStatus' AND component = 'app-radio' AND label = 'hiv_status')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'SymptomsAndRiskFactors' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'ContactPersonName'",
+                  "label": "'contact_person_name'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "1",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'ContactPersonName' AND component = 'app-input-field' AND label = 'contact_person_name')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ContactPersonDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'ContactPersonPhone'",
+                  "label": "'contact_person_phone'",
+                  "component": "'app-input-field-group'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "'PhoneNumberNotStartingWithZero'",
+                  "row_number": "2",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'ContactPersonPhone' AND component = 'app-input-field-group' AND label = 'contact_person_phone')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ContactPersonDetails' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'ContactPersonAddress'",
+                  "label": "'contact_person_address'",
+                  "component": "'app-input-field'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "False",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "3",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'ContactPersonAddress' AND component = 'app-input-field' AND label = 'contact_person_address')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'ContactPersonDetails' AND part_type = 'vertical-form-part')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'PrimaryPhone' AND component = 'app-input-field-group' AND label = 'PrimaryPhone')",
+                  "attribute_name": "'AddOn'",
+                  "attribute_value": "'+91'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'PrimaryPhone' AND f.component = 'app-input-field-group' AND f.label = 'PrimaryPhone' AND fc.attribute_name = 'AddOn' AND fc.attribute_value = '+91')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'PrimaryPhone' AND component = 'app-input-field-group' AND label = 'PrimaryPhone')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'SecondaryPhone1' AND component = 'app-input-field-group' AND label = 'phone_2')",
+                  "attribute_name": "'AddOn'",
+                  "attribute_value": "'+91'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'SecondaryPhone1' AND f.component = 'app-input-field-group' AND f.label = 'phone_2' AND fc.attribute_name = 'AddOn' AND fc.attribute_value = '+91')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'SecondaryPhone1' AND component = 'app-input-field-group' AND label = 'phone_2')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'SecondaryPhone2' AND component = 'app-input-field-group' AND label = 'phone_3')",
+                  "attribute_name": "'AddOn'",
+                  "attribute_value": "'+91'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'SecondaryPhone2' AND f.component = 'app-input-field-group' AND f.label = 'phone_3' AND fc.attribute_name = 'AddOn' AND fc.attribute_value = '+91')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'SecondaryPhone2' AND component = 'app-input-field-group' AND label = 'phone_3')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'SecondaryPhone3' AND component = 'app-input-field-group' AND label = 'phone_4')",
+                  "attribute_name": "'AddOn'",
+                  "attribute_value": "'+91'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'SecondaryPhone3' AND f.component = 'app-input-field-group' AND f.label = 'phone_4' AND fc.attribute_name = 'AddOn' AND fc.attribute_value = '+91')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'SecondaryPhone3' AND component = 'app-input-field-group' AND label = 'phone_4')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'ContactPersonPhone' AND component = 'app-input-field-group' AND label = 'contact_person_phone')",
+                  "attribute_name": "'AddOn'",
+                  "attribute_value": "'+91'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'ContactPersonPhone' AND f.component = 'app-input-field-group' AND f.label = 'contact_person_phone' AND fc.attribute_name = 'AddOn' AND fc.attribute_value = '+91')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'ContactPersonPhone' AND component = 'app-input-field-group' AND label = 'contact_person_phone')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "field_dependency",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_dependency)",
+                  "type": "'VISIBILITY'",
+                  "form_part_id": "(SELECT id FROM form_part WHERE part_name = 'PatientSector' AND part_type = 'vertical-form-part')",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'SelectedHierarchyId' AND component = 'app-hierarchy-selection-field' AND label = 'public_facility')",
+                  "lookups": "'[{\"FormPart\": \"PatientSector\", \"Field\": \"TypeOfPatient\", \"ExpectedValues\": [\"IndiaTbPublic\"]}]'",
+                  "property_and_values": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'DEPENDENCY'",
+                  "item_id": "(SELECT fd.id FROM field_dependency fd INNER JOIN field f ON f.id = fd.field_id AND f.field_name = 'SelectedHierarchyId' AND f.component = 'app-hierarchy-selection-field' AND f.label = 'public_facility' INNER JOIN form_part fp ON fp.id = fd.form_part_id AND fp.part_name = 'PatientSector' AND fp.part_type = 'vertical-form-part' AND fd.lookups = '[{\"FormPart\": \"PatientSector\", \"Field\": \"TypeOfPatient\", \"ExpectedValues\": [\"IndiaTbPublic\"]}]')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'SelectedHierarchyId' AND component = 'app-hierarchy-selection-field' AND label = 'public_facility')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_dependency",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_dependency)",
+                  "type": "'VISIBILITY'",
+                  "form_part_id": "(SELECT id FROM form_part WHERE part_name = 'PatientSector' AND part_type = 'vertical-form-part')",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'SelectedHierarchyId' AND component = 'app-hierarchy-selection-field' AND label = 'private_facility')",
+                  "lookups": "'[{\"FormPart\": \"PatientSector\", \"Field\": \"TypeOfPatient\", \"ExpectedValues\": [\"IndiaTbPrivate\"]}]'",
+                  "property_and_values": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'DEPENDENCY'",
+                  "item_id": "(SELECT fd.id FROM field_dependency fd INNER JOIN field f ON f.id = fd.field_id AND f.field_name = 'SelectedHierarchyId' AND f.component = 'app-hierarchy-selection-field' AND f.label = 'private_facility' INNER JOIN form_part fp ON fp.id = fd.form_part_id AND fp.part_name = 'PatientSector' AND fp.part_type = 'vertical-form-part' AND fd.lookups = '[{\"FormPart\": \"PatientSector\", \"Field\": \"TypeOfPatient\", \"ExpectedValues\": [\"IndiaTbPrivate\"]}]')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'SelectedHierarchyId' AND component = 'app-hierarchy-selection-field' AND label = 'private_facility')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_dependency",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_dependency)",
+                  "type": "'VISIBILITY'",
+                  "form_part_id": "(SELECT id FROM form_part WHERE part_name = 'PatientSector' AND part_type = 'vertical-form-part')",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'TypeOfCaseFinding' AND component = 'app-radio' AND label = 'TypeOfCaseFinding')",
+                  "lookups": "'[{\"FormPart\": \"PatientSector\", \"Field\": \"UserLevel\", \"ExpectedValues\": [\"1\",\"2\",\"3\",\"4\",\"5\"]}]'",
+                  "property_and_values": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'DEPENDENCY'",
+                  "item_id": "(SELECT fd.id FROM field_dependency fd INNER JOIN field f ON f.id = fd.field_id AND f.field_name = 'TypeOfCaseFinding' AND f.component = 'app-radio' AND f.label = 'TypeOfCaseFinding' INNER JOIN form_part fp ON fp.id = fd.form_part_id AND fp.part_name = 'PatientSector' AND fp.part_type = 'vertical-form-part' AND fd.lookups = '[{\"FormPart\": \"PatientSector\", \"Field\": \"UserLevel\", \"ExpectedValues\": [\"1\",\"2\",\"3\",\"4\",\"5\"]}]')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'TypeOfCaseFinding' AND component = 'app-radio' AND label = 'TypeOfCaseFinding')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_dependency",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_dependency)",
+                  "type": "'VISIBILITY'",
+                  "form_part_id": "(SELECT id FROM form_part WHERE part_name = 'SymptomsAndRiskFactors' AND part_type = 'vertical-form-part')",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'OtherSymptom' AND component = 'app-input-field' AND label = 'other_symptom')",
+                  "lookups": "'[{\"FormPart\": \"SymptomsAndRiskFactors\", \"Field\": \"Symptom\", \"ExpectedValues\": [\"Others\"]}]'",
+                  "property_and_values": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'DEPENDENCY'",
+                  "item_id": "(SELECT fd.id FROM field_dependency fd INNER JOIN field f ON f.id = fd.field_id AND f.field_name = 'OtherSymptom' AND f.component = 'app-input-field' AND f.label = 'other_symptom' INNER JOIN form_part fp ON fp.id = fd.form_part_id AND fp.part_name = 'SymptomsAndRiskFactors' AND fp.part_type = 'vertical-form-part' AND fd.lookups = '[{\"FormPart\": \"SymptomsAndRiskFactors\", \"Field\": \"Symptom\", \"ExpectedValues\": [\"Others\"]}]')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'OtherSymptom' AND component = 'app-input-field' AND label = 'other_symptom')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "UPDATE",
+                "table": "field",
+                "keyValues": {
+                  "field_options": "'[{\"Key\":\"Tribal-Non Particularly Vulnerable Tribal Groups\", \"Value\":\"Tribal-Non Particularly Vulnerable Tribal Groups\"}, {\"Key\":\"Tribal-Particularly Vulnerable Tribal Groups\", \"Value\":\"Tribal-Particularly Vulnerable Tribal Groups\"}, {\"Key\":\"Rural\", \"Value\":\"Rural\"}, {\"Key\":\"Urban\", \"Value\":\"Urban\"}, {\"Key\":\"Urban Slum\", \"Value\":\"Urban Slum\"}, {\"Key\":\"Unknown\", \"Value\":\"Unknown\"}]'"
+                },
+                "filters": {
+                  "field_name": "'Area'",
+                  "component": "'app-radio'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'FollowUpsDone'",
+                  "label": "'follow_ups_done'",
+                  "component": "'app-multiselect-select'",
+                  "required": "false",
+                  "disabled": "true",
+                  "visible": "false",
+                  "row_number": "5",
+                  "field_options": "'[{\"Key\":1,\"Value\":1},{\"Key\":2,\"Value\":2},{\"Key\":3,\"Value\":3},{\"Key\":4,\"Value\":4},{\"Key\":5,\"Value\":5},{\"Key\":6,\"Value\":6},{\"Key\":7,\"Value\":7},{\"Key\":8,\"Value\":8},{\"Key\":9,\"Value\":9},{\"Key\":10,\"Value\":10},{\"Key\":11,\"Value\":11},{\"Key\":12,\"Value\":12},{\"Key\":13,\"Value\":13},{\"Key\":14,\"Value\":14}]'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'FollowUpsDone' AND component = 'app-multiselect-select' AND label = 'follow_ups_done')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'SymptomsAndRiskFactors' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'TbWinReferenceId'",
+                  "label": "'tb_win_reference_id'",
+                  "component": "'app-input-field'",
+                  "required": "false",
+                  "disabled": "true",
+                  "visible": "false",
+                  "row_number": "6"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'RegistrationNikshay'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'TbWinReferenceId' AND component = 'app-input-field' AND label = 'tb_win_reference_id')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'SymptomsAndRiskFactors' AND part_type = 'vertical-form-part')"
+                }
+              }
+            ]
           }
         ]
       }
@@ -9578,6 +11210,841 @@
     ]
   },
   {
+    "version": 518,
+    "name": "Add_TBMP_ReportForm",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "form",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form)",
+                  "form_label": "'TB Mukt Panchayat Reporting Form'",
+                  "form_name": "'TBMPReportingForm'",
+                  "save_endpoint": "'/v1/formDetails/Report'",
+                  "save_text": "'Add'",
+                  "request_method": "null"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "form_part",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_part)",
+                  "part_name": "'TBMPHierarchy'",
+                  "part_label": "''",
+                  "part_type": "'vertical-form-part'",
+                  "position": "1",
+                  "rows": "null",
+                  "columns": "null",
+                  "allow_row_open": "False",
+                  "allow_row_delete": "False",
+                  "list_item_title": "null",
+                  "item_description_field": "null",
+                  "row_delete_text": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'PART'",
+                  "item_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')",
+                  "parent_type": "'FORM'",
+                  "parent_id": "(SELECT id FROM form WHERE form_name = 'TBMPReportingForm')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_part",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_part)",
+                  "part_name": "'TBMPReportingForm'",
+                  "part_label": "''",
+                  "part_type": "'vertical-form-part'",
+                  "position": "2",
+                  "rows": "null",
+                  "columns": "null",
+                  "allow_row_open": "False",
+                  "allow_row_delete": "False",
+                  "list_item_title": "null",
+                  "item_description_field": "null",
+                  "row_delete_text": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'PART'",
+                  "item_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPReportingForm' AND part_type = 'vertical-form-part')",
+                  "parent_type": "'FORM'",
+                  "parent_id": "(SELECT id FROM form WHERE form_name = 'TBMPReportingForm')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'State' AND component = 'app-search-select' AND label = 'State')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'State' AND component = 'app-search-select' AND label = 'State')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'State' AND component = 'app-search-select' AND label = 'State')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'NikshayPoshanYojanaRateNumerator'",
+                  "label": "'5.a Number of TB patients paid at least one installment under NPY in the month'",
+                  "component": "'app-input-field'",
+                  "field_options": "''",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyNumbersAllowed'",
+                  "row_number": "14",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'NikshayPoshanYojanaRateNumerator' AND component = 'app-input-field' AND label = '5.a Number of TB patients paid at least one installment under NPY in the month')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPReportingForm' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'DrugSusceptibilityTestRateNumerator'",
+                  "label": "'3.a Number of notified TB patients who have a valid result for Rifampicin in the month'",
+                  "component": "'app-input-field'",
+                  "field_options": "''",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyNumbersAllowed'",
+                  "row_number": "8",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'DrugSusceptibilityTestRateNumerator' AND component = 'app-input-field' AND label = '3.a Number of notified TB patients who have a valid result for Rifampicin in the month')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPReportingForm' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'TargetOfPresumptiveExaminationsNumerator'",
+                  "label": "'1.a Number of presumptive TB persons examined in the month'",
+                  "component": "'app-input-field'",
+                  "field_options": "''",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyNumbersAllowed'",
+                  "row_number": "2",
+                  "column_number": "2",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'TargetOfPresumptiveExaminationsNumerator' AND component = 'app-input-field' AND label = '1.a Number of presumptive TB persons examined in the month')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPReportingForm' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'GramPanchayat'",
+                  "label": "'Gram Panchahyat'",
+                  "component": "'app-search-select'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "8",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'GramPanchayat' AND component = 'app-search-select' AND label = 'Gram Panchahyat')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'PHIHF'",
+                  "label": "'PHI/Private HF'",
+                  "component": "'app-search-select'",
+                  "field_options": "null",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "7",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'PHIHF' AND component = 'app-search-select' AND label = 'PHI/Private HF')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'MonthOfReporting'",
+                  "label": "'Month of reporting'",
+                  "component": "'app-select'",
+                  "field_options": "'[ {\"Value\": \"January\", \"Key\": \"January\"}, {\"Value\": \"February\", \"Key\": \"February\"}, {\"Value\": \"March\", \"Key\": \"March\"}, {\"Value\": \"April\", \"Key\": \"April\"}, {\"Value\": \"May\", \"Key\": \"May\"}, {\"Value\": \"June\", \"Key\": \"June\"}, {\"Value\": \"July\", \"Key\": \"July\"}, {\"Value\": \"August\", \"Key\": \"August\"}, {\"Value\": \"September\", \"Key\": \"September\"}, {\"Value\": \"October\", \"Key\": \"October\"}, {\"Value\": \"November\", \"Key\": \"November\"}, {\"Value\": \"December\", \"Key\": \"December\"} ]'",
+                  "disabled": "True",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "null",
+                  "row_number": "11",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'MonthOfReporting' AND component = 'app-select' AND label = 'Month of reporting')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'MonthOfReporting' AND component = 'app-select' AND label = 'Month of reporting')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'MonthOfReporting' AND component = 'app-select' AND label = 'Month of reporting')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'YearOfReporting'",
+                  "label": "'Year of reporting'",
+                  "component": "'app-select'",
+                  "field_options": "'[{\"Value\": \"2023\", \"Key\": \"2023\"}, {\"Value\": \"2024\", \"Key\": \"2024\"}]'",
+                  "disabled": "True",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "'2023'",
+                  "validation_list": "null",
+                  "row_number": "10",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'YearOfReporting' AND component = 'app-select' AND label = 'Year of reporting')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'GramPanchayat' AND component = 'app-search-select' AND label = 'Gram Panchahyat')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'PHIHF' AND component = 'app-search-select' AND label = 'PHI/Private HF')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'TU' AND component = 'app-search-select' AND label = 'tu')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'District' AND component = 'app-search-select' AND label = 'District')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'TreatmentSuccessRateDenominator'",
+                  "label": "'6.b: Net DS TB patients notified during the same period previous year in the Panchayat.'",
+                  "component": "'app-input-field'",
+                  "field_options": "''",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyNumbersAllowed'",
+                  "row_number": "18",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'TreatmentSuccessRateDenominator' AND component = 'app-input-field' AND label = '6.b: Net DS TB patients notified during the same period previous year in the Panchayat.')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPReportingForm' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'TreatmentSuccessRateNumerator'",
+                  "label": "'6.a: Number of DS TB patients with treatment outcome given as success i.e. either cured or treatment completed during the same period previous year'",
+                  "component": "'app-input-field'",
+                  "field_options": "''",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyNumbersAllowed'",
+                  "row_number": "17",
+                  "column_number": "null",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'TreatmentSuccessRateNumerator' AND component = 'app-input-field' AND label = '6.a: Number of DS TB patients with treatment outcome given as success i.e. either cured or treatment completed during the same period previous year')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPReportingForm' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'NutritionalSupportRateDenominator'",
+                  "label": "'4.b Number of TB patients consented in the month in the Panchayat'",
+                  "component": "'app-input-field'",
+                  "field_options": "''",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyNumbersAllowed'",
+                  "row_number": "12",
+                  "column_number": "1",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'NutritionalSupportRateDenominator' AND component = 'app-input-field' AND label = '4.b Number of TB patients consented in the month in the Panchayat')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPReportingForm' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'NutritionalSupportRateNumerator'",
+                  "label": "'4.a Number of TB patients received nutrition support in the month'",
+                  "component": "'app-input-field'",
+                  "field_options": "''",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyNumbersAllowed'",
+                  "row_number": "11",
+                  "column_number": "1",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'NutritionalSupportRateNumerator' AND component = 'app-input-field' AND label = '4.a Number of TB patients received nutrition support in the month')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPReportingForm' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'TBNotificationRateNumerator'",
+                  "label": "'2.a Number of TB cases notified (all types) in the month'",
+                  "component": "'app-input-field'",
+                  "field_options": "''",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyNumbersAllowed'",
+                  "row_number": "5",
+                  "column_number": "5",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'TBNotificationRateNumerator' AND component = 'app-input-field' AND label = '2.a Number of TB cases notified (all types) in the month')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPReportingForm' AND part_type = 'vertical-form-part')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field)",
+                  "field_name": "'TargetOfPresumptiveExaminationsDenominator'",
+                  "label": "'Total population of Panchayat in the year'",
+                  "component": "'app-input-field'",
+                  "field_options": "''",
+                  "disabled": "False",
+                  "visible": "True",
+                  "required": "True",
+                  "default_value": "null",
+                  "validation_list": "'OnlyNumbersAllowed'",
+                  "row_number": "9",
+                  "column_number": "3",
+                  "remote_url": "null",
+                  "config": "null",
+                  "type": "null"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'FIELD'",
+                  "item_id": "(SELECT id FROM field WHERE field_name = 'TargetOfPresumptiveExaminationsDenominator' AND component = 'app-input-field' AND label = 'Total population of Panchayat in the year')",
+                  "parent_type": "'PART'",
+                  "parent_id": "(SELECT id FROM form_part WHERE part_name = 'TBMPHierarchy' AND part_type = 'vertical-form-part')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'NikshayPoshanYojanaRateNumerator' AND component = 'app-input-field' AND label = '5.a Number of TB patients paid at least one installment under NPY in the month')",
+                  "attribute_name": "'LabelKey'",
+                  "attribute_value": "'5. Number of TB patients paid at least one installment under NPY in the month'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'NikshayPoshanYojanaRateNumerator' AND f.component = 'app-input-field' AND f.label = '5.a Number of TB patients paid at least one installment under NPY in the month' AND fc.attribute_name = 'LabelKey' AND fc.attribute_value = '5. Number of TB patients paid at least one installment under NPY in the month')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'NikshayPoshanYojanaRateNumerator' AND component = 'app-input-field' AND label = '5.a Number of TB patients paid at least one installment under NPY in the month')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'DrugSusceptibilityTestRateNumerator' AND component = 'app-input-field' AND label = '3.a Number of notified TB patients who have a valid result for Rifampicin in the month')",
+                  "attribute_name": "'LabelKey'",
+                  "attribute_value": "'3. Number of notified TB patients who have a valid result for Rifampicin in the month'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'DrugSusceptibilityTestRateNumerator' AND f.component = 'app-input-field' AND f.label = '3.a Number of notified TB patients who have a valid result for Rifampicin in the month' AND fc.attribute_name = 'LabelKey' AND fc.attribute_value = '3. Number of notified TB patients who have a valid result for Rifampicin in the month')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'DrugSusceptibilityTestRateNumerator' AND component = 'app-input-field' AND label = '3.a Number of notified TB patients who have a valid result for Rifampicin in the month')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'TargetOfPresumptiveExaminationsNumerator' AND component = 'app-input-field' AND label = '1.a Number of presumptive TB persons examined in the month')",
+                  "attribute_name": "'LabelKey'",
+                  "attribute_value": "'1. Number of presumptive TB persons examined in the month'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'TargetOfPresumptiveExaminationsNumerator' AND f.component = 'app-input-field' AND f.label = '1.a Number of presumptive TB persons examined in the month' AND fc.attribute_name = 'LabelKey' AND fc.attribute_value = '1. Number of presumptive TB persons examined in the month')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'TargetOfPresumptiveExaminationsNumerator' AND component = 'app-input-field' AND label = '1.a Number of presumptive TB persons examined in the month')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'GramPanchayat' AND component = 'app-search-select' AND label = 'Gram Panchahyat')",
+                  "attribute_name": "'IsDisabled'",
+                  "attribute_value": "'true'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'GramPanchayat' AND f.component = 'app-search-select' AND f.label = 'Gram Panchahyat' AND fc.attribute_name = 'IsDisabled' AND fc.attribute_value = 'true')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'GramPanchayat' AND component = 'app-search-select' AND label = 'Gram Panchahyat')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'TU' AND component = 'app-search-select' AND label = 'tu')",
+                  "attribute_name": "'IsDisabled'",
+                  "attribute_value": "'true'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'TU' AND f.component = 'app-search-select' AND f.label = 'tu' AND fc.attribute_name = 'IsDisabled' AND fc.attribute_value = 'true')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'TU' AND component = 'app-search-select' AND label = 'tu')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'PHIHF' AND component = 'app-search-select' AND label = 'PHI/Private HF')",
+                  "attribute_name": "'IsDisabled'",
+                  "attribute_value": "'true'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'PHIHF' AND f.component = 'app-search-select' AND f.label = 'PHI/Private HF' AND fc.attribute_name = 'IsDisabled' AND fc.attribute_value = 'true')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'PHIHF' AND component = 'app-search-select' AND label = 'PHI/Private HF')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "field_customizations",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM field_customizations)",
+                  "field_id": "(SELECT id FROM field WHERE field_name = 'District' AND component = 'app-search-select' AND label = 'District')",
+                  "attribute_name": "'IsDisabled'",
+                  "attribute_value": "'true'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "form_items_map",
+                "keyValues": {
+                  "id": "(SELECT GREATEST(0, MAX(id)) + 1 FROM form_items_map)",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "form_name": "'TBMPReportingForm'",
+                  "item_type": "'CUSTOMIZATION'",
+                  "item_id": "(SELECT fc.id FROM field_customizations fc INNER JOIN field f on f.id = fc.field_id AND f.field_name = 'District' AND f.component = 'app-search-select' AND f.label = 'District' AND fc.attribute_name = 'IsDisabled' AND fc.attribute_value = 'true')",
+                  "parent_type": "'FIELD'",
+                  "parent_id": "(SELECT id FROM field WHERE field_name = 'District' AND component = 'app-search-select' AND label = 'District')"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "version": 521,
     "name": "EnableRegistryHierarchyReplication",
     "sections": [
@@ -9788,6 +12255,961 @@
                     "user_id": "(SELECT id FROM user_access WHERE username = 'SafeVac')"
                   }
                 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 532,
+    "name": "AddTasklistForAdherenceMissed1-3Days",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('LastCalledOn', 7), ('AdherenceTechnology', 8)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": null,
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Adherence Missed 1-3 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Adherence Missed 1-3 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'Stage') AND value = 'DIAGNOSED_ON_TREATMENT')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Adherence Missed 1-3 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'AllowedRangeJsonString') AND value = '[{\"LowerBound\":1,\"UpperBound\":3}]')"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 533,
+    "name": "AddVaccinationFollowUpTasklists",
+    "sections": [
+      {
+        "title": "follow up 1",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 28 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 28 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '29')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 28 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '56')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 28 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '1')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 28 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 28 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 2",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 56 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 56 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '57')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 56 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '84')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 56 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '2')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 56 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 56 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 3",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 84 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 84 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '85')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 84 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '168')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 84 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '3')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 84 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 84 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 4",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination +168 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination +168 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '169')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination +168 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '252')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination +168 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '4')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination +168 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination +168 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 5",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 252 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 252 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '253')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 252 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '336')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 252 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '5')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 252 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 252 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 6",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 336 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 336 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '337')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 336 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '420')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 336 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '6')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 336 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 336 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 7",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 420 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 420 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '421')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 420 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '504')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 420 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '7')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 420 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 420 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 8",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 504 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 504 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '505')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 504 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '588')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 504 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '8')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 504 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 504 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 9",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 588 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 588 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '589')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 588 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '672')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 588 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '9')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 588 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 588 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 10",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 672 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 672 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '673')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 672 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '756')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 672 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '10')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 672 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 672 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 11",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 756 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 756 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '757')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 756 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '840')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 756 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '11')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 756 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 756 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 12",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + 840 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 840 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '841')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 840 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '923')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 840 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '12')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 840 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + 840 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 13",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + = 924 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + = 924 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '924')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + = 924 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MaxDaysSinceVaccinationDate') AND value = '1007')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + = 924 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '13')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + = 924 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + = 924 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "follow up 14",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "deployment_task_list",
+                "keyValues": {
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "display_columns": "(select STRING_AGG(c.id::text, ',') from (select t.id from task_list_column t inner join ( VALUES ('Id', 1), ('TU', 2), ('PHI', 3), ('PatientType', 4), ('ContactNumber', 5), ('Name', 6), ('VaccinationDate', 7)) as o (field_name, column_order) on t.name = o.field_name ORDER BY o.column_order) as c)",
+                  "display_order": "null",
+                  "task_list_id": "(SELECT id FROM task_list WHERE name = 'Date of vaccination + = 1008 days')"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + = 1008 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'MinDaysSinceVaccinationDate') AND value = '1008')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + = 1008 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'ExpectedFollowUp') AND value = '14')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + = 1008 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledStages') AND value = '[\"PRESUMPTIVE_CLOSED\", \"DIAGNOSED_NOT_ON_TREATMENT_CLOSED\", \"DIAGNOSED_OUTCOME_ASSIGNED\"]')"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "task_list_filter_map",
+                "keyValues": {
+                  "deployment_task_list_id": "(SELECT id FROM deployment_task_list WHERE deployment_id = (SELECT id FROM deployment WHERE code = 'IND') AND task_list_id = (SELECT id FROM task_list WHERE name = 'Date of vaccination + = 1008 days'))",
+                  "filter_value_id": "(SELECT id FROM filter_values WHERE filter_id = (SELECT id FROM filters WHERE name = 'DisabledDiseaseIds') AND value = '[1, 2]')"
+                }
+              }
             ]
           }
         ]
