@@ -14,7 +14,7 @@ try:
     # Sort files based on the number in the filename
     files.sort(key=lambda f: file_helper.get_num_from_file(f))
 
-    print(files)
+    # print(files)
     diff = {}
 
     if len(files) > 1:
@@ -24,8 +24,8 @@ try:
         new_definitions_file_path = os.path.join(directory_path, new_definitions_file_name)
         old_definitions_file_path = os.path.join(directory_path, old_definitions_file_name)
 
-        print(new_definitions_file_path)
-        print(old_definitions_file_path)
+        # print(new_definitions_file_path)
+        # print(old_definitions_file_path)
 
         with open(new_definitions_file_path, 'r') as f:
             new_definition_maps = json.load(f)

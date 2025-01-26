@@ -12,7 +12,7 @@ try:
     # Sort files based on numeric value in filename
     files.sort(key=lambda f: int(file_helper.get_num_from_file(f)))
 
-    print(files)
+    # print(files)
 
     diff = {}
 
@@ -23,8 +23,8 @@ try:
         new_counts_file_path = os.path.join(directory_path, new_counts_file_name)
         old_counts_file_path = os.path.join(directory_path, old_counts_file_name)
 
-        print(new_counts_file_path)
-        print(old_counts_file_path)
+        # print(new_counts_file_path)
+        # print(old_counts_file_path)
 
         with open(new_counts_file_path, 'r') as f:
             new_counts = json.load(f)

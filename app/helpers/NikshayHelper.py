@@ -14,6 +14,7 @@ from app.helpers.ElasticHelper import ElasticHelper
 from datetime import datetime
 from app.helpers.MQHelper import MQHelper
 import time
+import urllib.parse
 
 class NikshayHelper(BaseHelper):
     def __init__(self):
@@ -708,7 +709,7 @@ class NikshayHelper(BaseHelper):
         start = time.time()
         buffer_time = 120
         while not stage_transitioned:
-            Logger.info('nikshay', f"Ensuring stage transitions for {episode_id}")
+            # Logger.info('nikshay', f"Ensuring stage transitions for {episode_id}")
             document = elastic_helper.get_document('episode', episode_id)
             stage_transitioned = expected_stage == document['stageKey']
             if (time.time() - start) > buffer_time:
@@ -832,3 +833,30 @@ class NikshayHelper(BaseHelper):
 
         self.ensure_stage_transitioned(episode_id, expected_stage)
         return response
+
+    def close_case(self, token, data):
+        episode_id = data['episodeId']
+        treatment_outcome = data['treatmentOutcome']
+        end_date = data['endDate']
+        expected_stage = data['stage']
+
+        endpoint = self._api_helper.get_endpoint('nikshay')
+        url = f"{endpoint}/Api/Patients/CloseCase/{episode_id}"
+        url = f"{url}?PatientId={episode_id}&TreatmentOutcome={treatment_outcome}&EndDate={urllib.parse.quote(end_date)}Z"
+        print(url)
+
+        headers = {
+            'Authorization': f"Bearer {token}"
+        }
+
+        payload = {
+            'PatientId': episode_id,
+            'TreatmentOutcome': treatment_outcome,
+            'EndDate': end_date
+        }
+
+        response = self._api_helper.put(url, payload, headers)
+
+        self.ensure_stage_transitioned(episode_id, expected_stage)
+        return response
+

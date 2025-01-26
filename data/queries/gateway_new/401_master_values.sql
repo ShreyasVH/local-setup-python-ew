@@ -11,6 +11,7 @@
     INSERT INTO event (created_at, event_name, updated_at) VALUES ('UTC_DATE_TIME_PLUS_0_DAY', 'ADD_EPISODE', 'UTC_DATE_TIME_PLUS_0_DAY');
     INSERT INTO event (created_at, event_name, updated_at) VALUES ('UTC_DATE_TIME_PLUS_0_DAY', 'UPDATE_EPISODE', 'UTC_DATE_TIME_PLUS_0_DAY');
     INSERT INTO event (created_at, event_name, updated_at) VALUES ('UTC_DATE_TIME_PLUS_0_DAY', 'GET_EPISODE', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO event (created_at, event_name, updated_at) VALUES ('UTC_DATE_TIME_PLUS_0_DAY', 'GET_POSSIBLE_DUPLICATES', 'UTC_DATE_TIME_PLUS_0_DAY');
 
 # publisher_queue_info
     INSERT INTO publisher_queue_info (event_name, exchange, queue_name, reply_to_routing_key, routing_key) VALUES ('add-test', 'direct-incoming', 'q.dg.add_test', 'add-test', 'q.dg.add_test');
@@ -62,3 +63,4 @@
     INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (40, '13.39', 'Add Episode Event Changes', 'SQL', 'V13.39__Add_Episode_Event_Changes.sql', -1621299890, 'shreyas', '2024-03-16 09:56:15.730636', 8, true);
     INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (41, '12.1', 'Add update episode event', 'SQL', 'V12.1__Add_update_episode_event.sql', -1926043583, 'shreyas', '2024-05-04 08:28:42.500969', 8, true);
     INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (42, '14.87', 'Add get episode event', 'SQL', 'V14.87__Add_get_episode_event.sql', -477076275, 'shreyas', '2024-06-25 07:51:08.128205', 23, true);
+    INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (43, '13.1', 'Get possible duplicates event', 'SQL', 'V13.1__Get_possible_duplicates_event.sql', -805576698, 'shreyas', '2025-01-25 13:52:51.561095', 7, true);

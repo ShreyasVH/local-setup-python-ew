@@ -12,7 +12,7 @@ def main():
 
         files.sort(key=lambda file: int(file_helper.get_num_from_file(file)))
 
-        print(files)
+        # print(files)
         diff = {}
 
         if len(files) > 1:
@@ -22,8 +22,8 @@ def main():
             new_counts_file_path = os.path.join(directory_path, new_counts_file_name)
             old_counts_file_path = os.path.join(directory_path, old_counts_file_name)
 
-            print(new_counts_file_path)
-            print(old_counts_file_path)
+            # print(new_counts_file_path)
+            # print(old_counts_file_path)
 
             with open(new_counts_file_path, 'r') as file:
                 new_counts = json.load(file)

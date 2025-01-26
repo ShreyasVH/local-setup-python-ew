@@ -4,7 +4,7 @@ from datetime import datetime
 from app.scripts.commonDefinitions import APP_PATH
 import re
 
-buffer_in_minutes = 60
+buffer_in_minutes = 60 * 2
 
 date_time_fields = {
     'adherence_new': {

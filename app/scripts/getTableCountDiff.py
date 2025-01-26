@@ -24,8 +24,8 @@ try:
         new_counts_file_path = os.path.join(directory_path, new_counts_file_name)
         old_counts_file_path = os.path.join(directory_path, old_counts_file_name)
 
-        print(new_counts_file_path)
-        print(old_counts_file_path)
+        # print(new_counts_file_path)
+        # print(old_counts_file_path)
 
         with open(new_counts_file_path, 'r') as f:
             new_counts = json.load(f)

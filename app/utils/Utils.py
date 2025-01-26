@@ -18,10 +18,12 @@ def shell_exec_with_immediate_output(command):
                 break
             if output:
                 sys.stdout.write(output.decode())
+                sys.stdout.flush()
 
         stderr = process.stderr.read()
         if stderr:
             sys.stderr.write(stderr.decode())
+            sys.stderr.flush()
 
         process.stdout.close()
         process.stderr.close()

@@ -4,7 +4,7 @@ from datetime import datetime
 from app.scripts.commonDefinitions import APP_PATH
 from app.helpers.FileHelper import FileHelper
 
-buffer_in_minutes = 60
+buffer_in_minutes = 60 * 2
 
 date_time_fields = {
     'episode': {
@@ -93,20 +93,20 @@ def compare(index_name, column, old_value, new_value, old_row, full_path=[]):
         different_values = False
         inner_extra = []
         inner_missing = []
-        inner_mismatches = []
+        inner_mismatches = {}
 
-        for index, inner_value_old in old_value.items():
-            inner_value_new = new_value.get(index, None)
-            if index in new_value:
-                inner_differences = compare(index_name, column, inner_value_old, inner_value_new, old_value, full_path)
+        for inner_key, inner_value_old in old_value.items():
+            inner_value_new = new_value.get(inner_key, None)
+            if inner_key in new_value:
+                inner_differences = compare(index_name, inner_key, inner_value_old, inner_value_new, old_value, full_path + [column])
                 if inner_differences:
-                    inner_mismatches[index] = inner_differences
+                    inner_mismatches[inner_key] = inner_differences
             else:
-                inner_missing.append(index)
+                inner_missing.append(inner_key)
 
-        for index, inner_value_new in new_value.items():
-            if index not in old_value:
-                inner_extra.append(index)
+        for inner_key, inner_value_new in new_value.items():
+            if inner_key not in old_value:
+                inner_extra.append(inner_key)
 
         if inner_missing or inner_extra or inner_mismatches:
             inner_differences = {}
@@ -115,6 +115,39 @@ def compare(index_name, column, old_value, new_value, old_row, full_path=[]):
             if inner_extra:
                 inner_differences['extra'] = inner_extra
             if inner_mismatches:
+                inner_differences['mismatches'] = inner_mismatches
+            differences = inner_differences
+    elif isinstance(old_value, list) and isinstance(new_value, list):
+        different_values = False
+        inner_extra = []
+        inner_missing = []
+        inner_mismatches = {}
+        index = 0
+        for inner_value_old in old_value:
+            inner_value_new = None
+            if len(new_value) > index:
+                inner_value_new = new_value[index]
+                inner_differences = compare(index_name, column, inner_value_old, inner_value_new, old_value, full_path)
+                if len(inner_differences.keys()) > 0:
+                    inner_mismatches[index] = inner_differences
+            else:
+                inner_missing.append(inner_value_old)
+            index += 1
+
+        index = 0
+        for inner_value_new in new_value:
+            inner_value_old = None
+            if len(old_value) <= index:
+                inner_extra.append(inner_value_new)
+            index += 1
+
+        if len(inner_missing) + len(inner_extra) + len(inner_mismatches.keys()) > 0:
+            inner_differences = {}
+            if len(inner_missing) > 0:
+                inner_differences['missing'] = inner_missing
+            if len(inner_extra) > 0:
+                inner_differences['extra'] = inner_extra
+            if len(inner_mismatches.keys()) > 0:
                 inner_differences['mismatches'] = inner_mismatches
             differences = inner_differences
     else:
@@ -130,7 +163,6 @@ def compare(index_name, column, old_value, new_value, old_row, full_path=[]):
 try:
     file_helper = FileHelper()
     directory_path = os.path.join(APP_PATH, 'data', 'elasticValues')
-    print(directory_path)
     files = file_helper.get_files(directory_path)
 
     files.sort(key=lambda file: int(file_helper.get_num_from_file(file)))
@@ -144,8 +176,8 @@ try:
         new_values_file_path = os.path.join(directory_path, new_values_file_name)
         old_values_file_path = os.path.join(directory_path, old_values_file_name)
 
-        print(new_values_file_path)
-        print(old_values_file_path)
+        # print(new_values_file_path)
+        # print(old_values_file_path)
 
         with open(new_values_file_path, 'r') as file:
             new_values_data = json.load(file)
