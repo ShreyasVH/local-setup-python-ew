@@ -37,8 +37,10 @@ service_helper.start_services()
 server_helper = ServerHelper()
 
 if mode == 'FULL':
+    Logger.info('setup', 'Starting interceptor')
     server_helper.start_server(Server.INTERCEPTOR.value)
     api_helper = ApiHelper()
+    Logger.info('setup', 'Clearing interceptor logs')
     api_helper.get(api_helper.get_endpoint(Server.INTERCEPTOR.value) + '/clear')
 
 # Stop servers

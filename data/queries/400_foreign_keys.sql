@@ -74,31 +74,14 @@ INSERT INTO foreign_persons (first_name, last_name) VALUES ('TS', 'Benefit');
 INSERT INTO foreign_persons (first_name, last_name) VALUES ('PSN Benefit', 'Private Patient');
 INSERT INTO foreign_persons (first_name) VALUES ('PSN Benefit Informant');
 INSERT INTO foreign_persons (first_name, last_name) VALUES ('PSN Benefit', 'Public Patient');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name, last_name) VALUES ('', '');
-INSERT INTO foreign_persons (first_name) VALUES ('phi-KADHA01-025');
+INSERT INTO foreign_persons (first_name, last_name) VALUES ('PSN Notification', 'Enrollment');
+INSERT INTO foreign_persons (first_name, last_name) VALUES ('PSN Notification', 'Diagnosed');
+INSERT INTO foreign_persons (first_name, last_name) VALUES ('PSN', 'Outcome');
 INSERT INTO foreign_persons (first_name) VALUES ('PATIENT_FACING_APP_USER');
+INSERT INTO foreign_persons (first_name) VALUES ('phi-KADHA01-025');
 INSERT INTO foreign_persons (first_name, last_name) VALUES ('democountrylogin', null);
 INSERT INTO foreign_persons (first_name, last_name) VALUES ('On', 'Treatment');
+INSERT INTO foreign_persons (first_name) VALUES ('dispensation-client');
 
 CREATE TABLE IF NOT EXISTS foreign_sso_users ( id bigserial NOT NULL, user_name character varying(255) COLLATE pg_catalog."default", CONSTRAINT foreign_sso_users_pkey PRIMARY KEY (id));
 
@@ -145,14 +128,12 @@ INSERT INTO foreign_sso_users (user_name) VALUES ('9999999947');
 INSERT INTO foreign_sso_users (user_name) VALUES ('9999999938');
 INSERT INTO foreign_sso_users (user_name) VALUES ('9999999934');
 INSERT INTO foreign_sso_users (user_name) VALUES ('9999999918');
-INSERT INTO foreign_sso_users (user_name) VALUES ('');
-INSERT INTO foreign_sso_users (user_name) VALUES ('');
-INSERT INTO foreign_sso_users (user_name) VALUES ('');
-INSERT INTO foreign_sso_users (user_name) VALUES ('');
+INSERT INTO foreign_sso_users (user_name) VALUES ('41');
 INSERT INTO foreign_sso_users (user_name) VALUES ('patient_facing_app_user');
+INSERT INTO foreign_sso_users (user_name) VALUES ('phi-kadha01-025');
 INSERT INTO foreign_sso_users (user_name) VALUES ('democountrylogin');
 INSERT INTO foreign_sso_users (user_name) VALUES ('10');
-INSERT INTO foreign_sso_users (user_name) VALUES ('phi-kadha01-025');
+INSERT INTO foreign_sso_users (user_name) VALUES ('dispensation-client');
 
 CREATE TABLE IF NOT EXISTS foreign_user_access ( id bigserial NOT NULL, user_name character varying(255) COLLATE pg_catalog."default", CONSTRAINT foreign_user_access_pkey PRIMARY KEY (id));
 
@@ -201,6 +182,8 @@ INSERT INTO foreign_user_access (user_name) VALUES ('9999999934');
 INSERT INTO foreign_user_access (user_name) VALUES ('9999999918');
 INSERT INTO foreign_user_access (user_name) VALUES ('patient_facing_app_user');
 INSERT INTO foreign_user_access (user_name) VALUES ('phi-KADHA01-025');
+INSERT INTO foreign_user_access (user_name) VALUES ('democountrylogin');
+INSERT INTO foreign_user_access (user_name) VALUES ('dispensation-client');
 
 CREATE TABLE IF NOT EXISTS foreign_beneficiary ( id bigserial NOT NULL, name character varying(255) COLLATE pg_catalog."default", CONSTRAINT foreign_beneficiary_pkey PRIMARY KEY (id));
 
@@ -388,3 +371,33 @@ INSERT INTO foreign_supported_tab (name) VALUES ('Health Facilities');
 INSERT INTO foreign_supported_tab (name) VALUES ('Treatment Details');
 INSERT INTO foreign_supported_tab (name) VALUES ('Outcomes');
 INSERT INTO foreign_supported_tab (name) VALUES ('DBT');
+INSERT INTO foreign_supported_tab (name) VALUES ('Dispensation');
+
+CREATE TABLE IF NOT EXISTS foreign_dispensation_transaction_type ( id bigserial NOT NULL, name character varying(255) COLLATE pg_catalog."default", CONSTRAINT foreign_dispensation_transaction_type_pkey PRIMARY KEY (id));
+
+INSERT INTO foreign_dispensation_transaction_type (id, name) VALUES (0, 'ISSUED');
+INSERT INTO foreign_dispensation_transaction_type (id, name) VALUES (1, 'RETURNED');
+INSERT INTO foreign_dispensation_transaction_type (id, name) VALUES (2, 'CREDIT');
+INSERT INTO foreign_dispensation_transaction_type (id, name) VALUES (3, 'DEBIT');
+INSERT INTO foreign_dispensation_transaction_type (id, name) VALUES (4, 'UPDATE');
+
+CREATE TABLE IF NOT EXISTS foreign_dispensation_comment_type ( id bigserial NOT NULL, name character varying(255) COLLATE pg_catalog."default", CONSTRAINT foreign_dispensation_comment_type_pkey PRIMARY KEY (id));
+
+INSERT INTO foreign_dispensation_comment_type (id, name) VALUES (0, 'REASON_FOR_RETURN');
+INSERT INTO foreign_dispensation_comment_type (id, name) VALUES (1, 'REASON_FOR_CREDIT');
+INSERT INTO foreign_dispensation_comment_type (id, name) VALUES (2, 'REASON_FOR_DEBIT');
+INSERT INTO foreign_dispensation_comment_type (id, name) VALUES (3, 'REASON_FOR_ADD');
+INSERT INTO foreign_dispensation_comment_type (id, name) VALUES (4, 'REASON_FOR_UPDATE');
+
+CREATE TABLE IF NOT EXISTS foreign_dispensation_transaction_id_type ( id bigserial NOT NULL, name character varying(255) COLLATE pg_catalog."default", CONSTRAINT foreign_dispensation_transaction_id_type_pkey PRIMARY KEY (id));
+
+INSERT INTO foreign_dispensation_transaction_id_type (id, name) VALUES (0, 'INTERNAL');
+INSERT INTO foreign_dispensation_transaction_id_type (id, name) VALUES (1, 'EXTERNAL');
+
+CREATE TABLE IF NOT EXISTS foreign_data_gateway_client ( id bigserial NOT NULL, name character varying(255) COLLATE pg_catalog."default", CONSTRAINT foreign_data_gateway_client_pkey PRIMARY KEY (id));
+
+INSERT INTO foreign_data_gateway_client (name) VALUES ('internal_client');
+INSERT INTO foreign_data_gateway_client (name) VALUES ('lims');
+INSERT INTO foreign_data_gateway_client (name) VALUES ('abdm-client');
+INSERT INTO foreign_data_gateway_client (name) VALUES ('safevac');
+INSERT INTO foreign_data_gateway_client (name) VALUES ('dispensation-client');

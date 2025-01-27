@@ -52,7 +52,7 @@ class DatabaseHelper:
                     helper = self._mssqlHelper
 
                 database_name = database['name']
-                print(f"{database_name}")
+                Logger.info('db', f"Executing queries for db - {database_name}")
 
                 if 'additionalQueries' in database:
                     for file_name in database['additionalQueries']:
@@ -66,6 +66,7 @@ class DatabaseHelper:
                         if file_name in ['.', '..']:
                             continue
                         file_path = os.path.join(db_queries_path, file_name)
+                        Logger.info('db', f"\tExecuting queries from file - {file_name}")
                         self.execute_queries_in_file(file_path, database_name, helper)
 
     def execute_queries_in_file(self, file_path, database_name, helper):

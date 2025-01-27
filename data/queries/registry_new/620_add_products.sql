@@ -1,0 +1,1 @@
+INSERT INTO hierarchy_config_map (hierarchy_id, config_mapping_id, value, active, created_at, updated_at) VALUES ((SELECT id FROM hierarchy WHERE level = 1 AND name = 'India'), (SELECT id FROM config WHERE name = 'ProductAttributes'), '{"ProductId":1,"AgeCategory":null,"Source":"NTEP","Disease":"TB"}', true, 'UTC_DATE_TIME_PLUS_22_MINUTE', 'UTC_DATE_TIME_PLUS_22_MINUTE');

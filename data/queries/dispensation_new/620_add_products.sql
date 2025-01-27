@@ -1,0 +1,1 @@
+INSERT INTO ds_product (composition, dosage, dosage_form, drug_code, manufacturer, product_name, category) VALUES (null, 'Blister', 'Blister', 'MY-DRUG', null, 'My Drug', null);

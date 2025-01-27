@@ -12,6 +12,8 @@
     INSERT INTO event (created_at, event_name, updated_at) VALUES ('UTC_DATE_TIME_PLUS_0_DAY', 'UPDATE_EPISODE', 'UTC_DATE_TIME_PLUS_0_DAY');
     INSERT INTO event (created_at, event_name, updated_at) VALUES ('UTC_DATE_TIME_PLUS_0_DAY', 'GET_EPISODE', 'UTC_DATE_TIME_PLUS_0_DAY');
     INSERT INTO event (created_at, event_name, updated_at) VALUES ('UTC_DATE_TIME_PLUS_0_DAY', 'GET_POSSIBLE_DUPLICATES', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO event (created_at, event_name, updated_at) VALUES ('UTC_DATE_TIME_PLUS_0_DAY', 'dispensation-add-products', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO event (created_at, event_name, updated_at) VALUES ('UTC_DATE_TIME_PLUS_0_DAY', 'dispensation-stock-credit', 'UTC_DATE_TIME_PLUS_0_DAY');
 
 # publisher_queue_info
     INSERT INTO publisher_queue_info (event_name, exchange, queue_name, reply_to_routing_key, routing_key) VALUES ('add-test', 'direct-incoming', 'q.dg.add_test', 'add-test', 'q.dg.add_test');
@@ -19,6 +21,8 @@
     INSERT INTO publisher_queue_info (event_name, exchange, queue_name, reply_to_routing_key, routing_key) VALUES ('ADD_PATIENT', 'direct-incoming', 'q.dg.add_patient', 'add-patient', 'q.dg.add_patient');
     INSERT INTO publisher_queue_info (event_name, exchange, queue_name, reply_to_routing_key, routing_key) VALUES ('ADD_EPISODE', 'direct-incoming', 'q.dg.add_patient', 'add-patient', 'q.dg.add_patient');
     INSERT INTO publisher_queue_info (event_name, exchange, queue_name, reply_to_routing_key, routing_key) VALUES ('UPDATE_EPISODE', 'direct-incoming', 'q.dg.update_episode', 'update-episode', 'q.dg.update_episode');
+    INSERT INTO publisher_queue_info (event_name, exchange, queue_name, reply_to_routing_key, routing_key) VALUES ('dispensation-add-products', 'direct-incoming', 'q.dg.disp_add_products', 'dispensation-add-products', 'q.dg.disp_add_products');
+    INSERT INTO publisher_queue_info (event_name, exchange, queue_name, reply_to_routing_key, routing_key) VALUES ('dispensation-stock-credit', 'direct-incoming', 'q.dg.disp_stock_credit', 'dispensation-stock-credit', 'q.dg.disp_stock_credit');
 
 # flyway_schema_history
     INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (1, '1', '<< Flyway Baseline >>', 'BASELINE', '<< Flyway Baseline >>', null, 'null', '2022-11-08 20:40:34.231081', 0, true);

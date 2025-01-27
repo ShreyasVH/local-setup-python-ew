@@ -242,6 +242,14 @@
           {
             "name": "q.dg.update_episode",
             "routingKey": "q.dg.update_episode"
+          },
+          {
+            "name": "q.dg.disp_add_products",
+            "routingKey": "q.dg.disp_add_products"
+          },
+          {
+            "name": "q.dg.disp_stock_credit",
+            "routingKey": "q.dg.disp_stock_credit"
           }
         ]
       }
@@ -381,6 +389,14 @@
           {
             "name": "q.nikshay.add_test",
             "routingKey": "q.nikshay.add_test"
+          },
+          {
+            "name": "q.dg.ref_id_reply_queue",
+            "routingKey": "dispensation-add-products"
+          },
+          {
+            "name": "q.dg.ref_id_reply_queue",
+            "routingKey": "dispensation-stock-credit"
           }
         ]
       }

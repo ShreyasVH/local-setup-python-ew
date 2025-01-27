@@ -37,7 +37,8 @@ def replace_time_strings(original_string):
 
     current_time = CURRENT_TIME
     date_time_plus_day_strings = [
-        "DATE_TIME_PLUS_0_DAY"
+        "DATE_TIME_PLUS_0_DAY",
+        "DATE_TIME_PLUS_730_DAY"
     ]
 
     date_time_minus_day_strings = []
