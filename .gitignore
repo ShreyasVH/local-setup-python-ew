@@ -20,3 +20,4 @@ data/columnDefinitionDiff.json
 data/distinctVersions.json
 data/foreignKeyMismatches.json
 .DS_Store
+__pycache__/

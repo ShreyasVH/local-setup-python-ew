@@ -2170,3 +2170,77 @@ if starting_version <= version_map['NikshayAddDirectTreatmentPrivate'] <= ending
     nikshay_helper.remove_benefits(dbt_maker_token, episode_helper.get_episode_id(first_name, last_name), 'NS')
 
     Logger.info('simulate', '-------------------------------------------')
+
+if starting_version <= version_map['NikshayAddSystemIdentifiedDuplicatePatient'] <= ending_version:
+    Logger.info('simulate', 'Creating system identified duplicate patient')
+    Logger.info('simulate', 'Generating phi token')
+    token = nikshay_helper.get_token('phi-kadha01-001', 'Test@123')
+    Logger.info('simulate', 'Adding patient')
+    first_name = 'System Identified'
+    last_name = 'Duplicate'
+    facility_name = 'phi'
+    nikshay_helper.add_patient(token, {
+        'typeOfEpisode': 'IndiaTbPublic',
+        'enrollmentDate': 'DATE_TIME_PLUS_0_DAY_DATE_FIRST',
+        'firstName': first_name,
+        'lastName': last_name,
+        'age': int(datetime.now().strftime('%Y')) - 2000,
+        'dateOfBirth': '01-01-2000',
+        'gender': 'Male',
+        'mobile': 9999999957,
+        'address': 'Address',
+        'pincode': 999999,
+        'area': 'Unknown',
+        'maritalStatus': 'Unknown',
+        'occupation': 'Unknown',
+        'socioEconomicStatus': 'Unknown',
+        'keyPopulation': 'Not Applicable',
+        'symptom': 'Asymptomatic,',
+        'hivStatus': 'Unknown',
+        'typeOfCaseFinding': 'Passive (Routine programme)',
+        'selectedHierarchyName': facility_name,
+        'residenceHierarchyName': facility_name,
+        'residenceHierarchyLevel': 5
+    })
+
+    episode_id = episode_helper.get_episode_id(first_name, last_name)
+
+    Logger.info('simulate', 'Adding test')
+    nikshay_helper.add_test(token, {
+        'reason': 'Diagnosis of TB',
+        'typeOfCase': 'New',
+        'type': 'Microscopy ZN',
+        'testFacilityName': 'dmc lab',
+        'sampleCollectionFacilityName': facility_name,
+        'sampleCollectionDate': replace_time_strings('DATE_ONLY_MINUS_4_DAY'),
+        'diagnosisDate': replace_time_strings('DATE_ONLY_MINUS_3_DAY'),
+        'finalInterpretation': 'Positive',
+        'sampleDescription': 'Mucopurulent',
+        'sampleSputumCollectionDetail': 'Early Morning',
+        'sampleSpecimenType': 'Sputum',
+        'episodeId': episode_id
+    })
+
+    Logger.info('simulate', 'Starting treatment')
+    nikshay_helper.start_treatment(token, {
+        'episodeId': episode_id,
+        'typeOfTreatment': 'DSTB',
+        'weight': 50,
+        'height': 100,
+        'testType': 'Microscopy ZN',
+        'diagnosisDate': replace_time_strings('DATE_ONLY_YEAR_FIRST_MINUS_3_DAY'),
+        'startDate': replace_time_strings('DATE_ONLY_YEAR_FIRST_MINUS_2_DAY'),
+        'treatmentPhase': 'IP',
+        'siteOfDisease': 'Pulmonary',
+        'regimen': '2HRZE/4HRE',
+        'hasDstbTest': 'True',
+        'hasDrtbTest': None,
+        'hasLtbiTest': None,
+        'monitoringMethod': 'None',
+        'typeOfEpisode': 'IndiaTbPublic'
+    })
+
+    Logger.info('simulate', 'Getting adherence')
+    iam_helper.get_adherence('Nikshay', episode_id)
+
+    Logger.info('simulate', '-------------------------------------------')
