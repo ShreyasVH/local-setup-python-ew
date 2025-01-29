@@ -372,6 +372,7 @@ INSERT INTO foreign_supported_tab (name) VALUES ('Treatment Details');
 INSERT INTO foreign_supported_tab (name) VALUES ('Outcomes');
 INSERT INTO foreign_supported_tab (name) VALUES ('DBT');
 INSERT INTO foreign_supported_tab (name) VALUES ('Dispensation');
+INSERT INTO foreign_supported_tab (name) VALUES ('Contact Tracing');
 
 CREATE TABLE IF NOT EXISTS foreign_dispensation_transaction_type ( id bigserial NOT NULL, name character varying(255) COLLATE pg_catalog."default", CONSTRAINT foreign_dispensation_transaction_type_pkey PRIMARY KEY (id));
 
