@@ -12211,50 +12211,50 @@
             "title": "",
             "queries": [
               {
-                  "type": "INSERT",
-                  "table": "staff",
-                  "keyValues": {
-                    "client_id": "(SELECT id FROM client WHERE name = 'Nikshay')",
-                    "person_id": "(SELECT id FROM foreign_persons WHERE first_name = 'SafeVac')",
-                    "designation": "'API_ACCESS'",
-                    "added_by": null,
-                    "selective_episode_mapping": false,
-                    "active": true,
-                    "added_on": "'UTC_DATE_TIME_PLUS_0_DAY'",
-                    "last_updated_on": "'UTC_DATE_TIME_PLUS_0_DAY'",
-                    "visible": false
-                  }
-                },
-                {
-                  "type": "INSERT",
-                  "table": "user_access",
-                  "keyValues": {
-                    "active": true,
-                    "hierarchy_id": "(SELECT id FROM hierarchy WHERE level = 1 AND name = 'India')",
-                    "selective_hierarchy_mapping": false,
-                    "sso_id": "(SELECT id FROM foreign_sso_users WHERE user_name = 'safevac')",
-                    "username": "'SafeVac'",
-                    "client_id": "(SELECT id FROM client WHERE name = 'Nikshay')",
-                    "staff_id": "(SELECT MAX(id) FROM staff)",
-                    "description": null,
-                    "view_only": false,
-                    "can_delete_patients": false,
-                    "visible": true,
-                    "restricted_view": false
-                  }
-                },
-                {
-                  "type": "INSERT",
-                  "table": "user_access_hierarchy_map",
-                  "keyValues": {
-                    "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
-                    "hierarchy_id": "(SELECT id FROM hierarchy WHERE level = 1 AND name = 'India')",
-                    "last_updated_by": "0",
-                    "relation": "'Direct'",
-                    "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
-                    "user_id": "(SELECT id FROM user_access WHERE username = 'SafeVac')"
-                  }
+                "type": "INSERT",
+                "table": "staff",
+                "keyValues": {
+                  "client_id": "(SELECT id FROM client WHERE name = 'Nikshay')",
+                  "person_id": "(SELECT id FROM foreign_persons WHERE first_name = 'SafeVac')",
+                  "designation": "'API_ACCESS'",
+                  "added_by": null,
+                  "selective_episode_mapping": false,
+                  "active": true,
+                  "added_on": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "last_updated_on": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "visible": false
                 }
+              },
+              {
+                "type": "INSERT",
+                "table": "user_access",
+                "keyValues": {
+                  "active": true,
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "selective_hierarchy_mapping": false,
+                  "sso_id": "(SELECT id FROM foreign_sso_users WHERE user_name = 'safevac')",
+                  "username": "'SafeVac'",
+                  "client_id": "(SELECT id FROM client WHERE name = 'Nikshay')",
+                  "staff_id": "(SELECT MAX(id) FROM staff)",
+                  "description": null,
+                  "view_only": false,
+                  "can_delete_patients": false,
+                  "visible": true,
+                  "restricted_view": false
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "user_access_hierarchy_map",
+                "keyValues": {
+                  "created_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "last_updated_by": "0",
+                  "relation": "'Direct'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_0_DAY'",
+                  "user_id": "(SELECT id FROM user_access WHERE username = 'SafeVac')"
+                }
+              }
             ]
           }
         ]
@@ -13320,6 +13320,977 @@
                   "active": true,
                   "created_at": "'UTC_DATE_TIME_PLUS_22_MINUTE'",
                   "updated_at": "'UTC_DATE_TIME_PLUS_22_MINUTE'"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": 535,
+    "name": "AddStateNikshay",
+    "sections": [
+      {
+        "title": "",
+        "subSections": [
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "hierarchy",
+                "keyValues": {
+                  "active": "true",
+                  "client_id": "(SELECT id FROM client WHERE name = 'Nikshay')",
+                  "code": "'0'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_5_MINUTE_WITH_MICRO_SECONDS'",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "end_date": "null",
+                  "has_children": "false",
+                  "level": "2",
+                  "level_1_code": "(SELECT code FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_1_id": "(SELECT id FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_1_name": "(SELECT name FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_1_type": "(SELECT type FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_2_code": "null",
+                  "level_2_id": "null",
+                  "level_2_name": "null",
+                  "level_2_type": "null",
+                  "level_3_code": "null",
+                  "level_3_id": "null",
+                  "level_3_name": "null",
+                  "level_3_type": "null",
+                  "level_4_code": "null",
+                  "level_4_id": "null",
+                  "level_4_name": "null",
+                  "level_4_type": "null",
+                  "level_5_code": "null",
+                  "level_5_id": "null",
+                  "level_5_name": "null",
+                  "level_5_type": "null",
+                  "level_6_code": "null",
+                  "level_6_id": "null",
+                  "level_6_name": "null",
+                  "level_6_type": "null",
+                  "merge_status": "null",
+                  "name": "'Karnataka'",
+                  "parent_id": "(SELECT id FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "start_date": "null",
+                  "type": "'STATE'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_5_MINUTE_WITH_MICRO_SECONDS'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "revinfo",
+                "keyValues": {
+                  "rev": "(SELECT GREATEST(0, MAX(rev)) + 1 FROM revinfo)",
+                  "revtstmp": "\"TIMESTAMP_DATE_TIME_PLUS_5_MINUTE\""
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "hierarchy_aud",
+                "keyValues": {
+                  "id": "(SELECT id FROM hierarchy WHERE level = 2 AND name = 'Karnataka')",
+                  "rev": "(SELECT MAX(rev) from revinfo)",
+                  "revtype": "0",
+                  "active": "true",
+                  "client_id": "(SELECT id FROM client WHERE name = 'Nikshay')",
+                  "code": "'0'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_5_MINUTE_WITH_MICRO_SECONDS'",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "end_date": "null",
+                  "has_children": "false",
+                  "level": "2",
+                  "level_1_code": "(SELECT code FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_1_id": "(SELECT id FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_1_name": "(SELECT name FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_1_type": "(SELECT type FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_2_code": "null",
+                  "level_2_id": "null",
+                  "level_2_name": "null",
+                  "level_2_type": "null",
+                  "level_3_code": "null",
+                  "level_3_id": "null",
+                  "level_3_name": "null",
+                  "level_3_type": "null",
+                  "level_4_code": "null",
+                  "level_4_id": "null",
+                  "level_4_name": "null",
+                  "level_4_type": "null",
+                  "level_5_code": "null",
+                  "level_5_id": "null",
+                  "level_5_name": "null",
+                  "level_5_type": "null",
+                  "level_6_code": "null",
+                  "level_6_id": "null",
+                  "level_6_name": "null",
+                  "level_6_type": "null",
+                  "merge_status": "null",
+                  "name": "'Karnataka'",
+                  "parent_id": "(SELECT id FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "start_date": "null",
+                  "type": "'STATE'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_5_MINUTE_WITH_MICRO_SECONDS'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "hierarchy_associations",
+                "keyValues": {
+                  "association_id": "(SELECT id FROM associations_master WHERE type = 'eligibleForIncentive')",
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE client_id = (SELECT id FROM client WHERE name = 'Nikshay') AND level = 2 AND name = 'Karnataka')",
+                  "value": "'true'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_6_MINUTE'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_6_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_associations",
+                "keyValues": {
+                  "association_id": "(SELECT id FROM associations_master WHERE type = 'mobileNumber')",
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE client_id = (SELECT id FROM client WHERE name = 'Nikshay') AND level = 2 AND name = 'Karnataka')",
+                  "value": "'9999999998'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_6_MINUTE'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_6_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_associations",
+                "keyValues": {
+                  "association_id": "(SELECT id FROM associations_master WHERE type = 'extraData')",
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE client_id = (SELECT id FROM client WHERE name = 'Nikshay') AND level = 2 AND name = 'Karnataka')",
+                  "value": "'{\"StoName\":\"\",\"Email\":\"mail.one@gmail.com\",\"PhoneOffice\":\"9999999997\",\"PhoneRes\":\"9999999998\",\"MobileNo\":\"9999999998\",\"StcAddress\":\"\",\"StcPincode\":\"999999\",\"UpdatedBy\":\"india-all\",\"UpdatedDate\":\"DATE_TIME_PLUS_6_MINUTE\"}'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_6_MINUTE'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_6_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_associations",
+                "keyValues": {
+                  "association_id": "(SELECT id FROM associations_master WHERE type = 'drugRegimen')",
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE client_id = (SELECT id FROM client WHERE name = 'Nikshay') AND level = 2 AND name = 'Karnataka')",
+                  "value": "'UNKNOWN'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_6_MINUTE'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_6_MINUTE'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "revinfo",
+                "keyValues": {
+                  "rev": "(SELECT GREATEST(0, MAX(rev)) + 1 FROM revinfo)",
+                  "revtstmp": "\"TIMESTAMP_DATE_TIME_PLUS_6_MINUTE\""
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "hierarchy_associations_aud",
+                "keyValues": {
+                  "id": "(SELECT id FROM hierarchy_associations WHERE hierarchy_id = (SELECT id FROM hierarchy WHERE level = 2 AND name = 'Karnataka') AND association_id = (SELECT id FROM associations_master WHERE type = 'eligibleForIncentive'))",
+                  "rev": "(SELECT MAX(rev) from revinfo)",
+                  "revtype": "0",
+                  "value": "'true'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_associations_aud",
+                "keyValues": {
+                  "id": "(SELECT id FROM hierarchy_associations WHERE hierarchy_id = (SELECT id FROM hierarchy WHERE level = 2 AND name = 'Karnataka') AND association_id = (SELECT id FROM associations_master WHERE type = 'mobileNumber'))",
+                  "rev": "(SELECT MAX(rev) from revinfo)",
+                  "revtype": "0",
+                  "value": "'9999999998'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_associations_aud",
+                "keyValues": {
+                  "id": "(SELECT id FROM hierarchy_associations WHERE hierarchy_id = (SELECT id FROM hierarchy WHERE level = 2 AND name = 'Karnataka') AND association_id = (SELECT id FROM associations_master WHERE type = 'extraData'))",
+                  "rev": "(SELECT MAX(rev) from revinfo)",
+                  "revtype": "0",
+                  "value": "'{\"StoName\":\"stoName\",\"Email\":\"mail.one@gmail.com\",\"PhoneOffice\":\"9999999997\",\"PhoneRes\":\"9999999998\",\"MobileNo\":\"9999999998\",\"MctsStateCode\":\"123\",\"StcAddress\":\"stcAddress\",\"StcPincode\":\"999999\",\"UpdatedBy\":\"india-all\",\"UpdatedDate\":\"DATE_TIME_PLUS_6_MINUTE\"}'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_associations_aud",
+                "keyValues": {
+                  "id": "(SELECT id FROM hierarchy_associations WHERE hierarchy_id = (SELECT id FROM hierarchy WHERE level = 2 AND name = 'Karnataka') AND association_id = (SELECT id FROM associations_master WHERE type = 'drugRegimen'))",
+                  "rev": "(SELECT MAX(rev) from revinfo)",
+                  "revtype": "0",
+                  "value": "'UNKNOWN'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "hierarchy_associations",
+                "keyValues": {
+                  "association_id": "(SELECT id FROM associations_master WHERE type = 'pfmsStateCode')",
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE client_id = (SELECT id FROM client WHERE name = 'Nikshay') AND level = 2 AND name = 'Karnataka')",
+                  "value": "'29'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_7_MINUTE'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_7_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "revinfo",
+                "keyValues": {
+                  "rev": "(SELECT GREATEST(0, MAX(rev)) + 1 FROM revinfo)",
+                  "revtstmp": "\"TIMESTAMP_DATE_TIME_PLUS_7_MINUTE\""
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_associations_aud",
+                "keyValues": {
+                  "id": "(SELECT id FROM hierarchy_associations WHERE hierarchy_id = (SELECT id FROM hierarchy WHERE level = 2 AND name = 'Karnataka') AND association_id = (SELECT id FROM associations_master WHERE type = 'pfmsStateCode'))",
+                  "rev": "(SELECT MAX(rev) from revinfo)",
+                  "revtype": "0",
+                  "value": "'29'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "UPDATE",
+                "table": "hierarchy",
+                "keyValues": {
+                  "code": "'KA'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_7_MINUTE'"
+                },
+                "filters": {
+                  "level": 2,
+                  "name": "'Karnataka'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "revinfo",
+                "keyValues": {
+                  "rev": "(SELECT GREATEST(0, MAX(rev)) + 1 FROM revinfo)",
+                  "revtstmp": "\"TIMESTAMP_DATE_TIME_PLUS_7_MINUTE\""
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_aud",
+                "keyValues": {
+                  "id": "(SELECT id FROM hierarchy WHERE level = 2 AND name = 'Karnataka')",
+                  "rev": "(SELECT MAX(rev) from revinfo)",
+                  "revtype": "1",
+                  "active": "true",
+                  "client_id": "(SELECT id FROM client WHERE name = 'Nikshay')",
+                  "code": "'KA'",
+                  "created_at": "'UTC_DATE_TIME_PLUS_5_MINUTE_WITH_MICRO_SECONDS'",
+                  "deployment_id": "(SELECT id FROM deployment WHERE code = 'IND')",
+                  "end_date": "null",
+                  "has_children": "false",
+                  "level": "2",
+                  "level_1_code": "(SELECT code FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_1_id": "(SELECT id FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_1_name": "(SELECT name FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_1_type": "(SELECT type FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "level_2_code": "null",
+                  "level_2_id": "null",
+                  "level_2_name": "null",
+                  "level_2_type": "null",
+                  "level_3_code": "null",
+                  "level_3_id": "null",
+                  "level_3_name": "null",
+                  "level_3_type": "null",
+                  "level_4_code": "null",
+                  "level_4_id": "null",
+                  "level_4_name": "null",
+                  "level_4_type": "null",
+                  "level_5_code": "null",
+                  "level_5_id": "null",
+                  "level_5_name": "null",
+                  "level_5_type": "null",
+                  "level_6_code": "null",
+                  "level_6_id": "null",
+                  "level_6_name": "null",
+                  "level_6_type": "null",
+                  "merge_status": "null",
+                  "name": "'Karnataka'",
+                  "parent_id": "(SELECT id FROM hierarchy WHERE level = 1 AND name = 'India')",
+                  "start_date": "null",
+                  "type": "'STATE'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_5_MINUTE_WITH_MICRO_SECONDS'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'dashboards')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'UserManagement')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'StaffManagement')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = '_reset_password')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'MappingDetailsActivityReports')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'ActiveCaseMappingsummary')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'GeneExpert')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'AboutUs')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'Overview')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'NewEnrollment')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'AddTestGlobal')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'PatientManagement')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'reports')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'Admin')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'my_profile')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'Others')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'Dispensation')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'facility_administration')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'merge_health_facility')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'EVRIMED_METRICS')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'CONTRACT_MANAGEMENT')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'SearchSample')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'ADD_CONTRACT')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'SOE')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "module_permission",
+                "keyValues": {
+                  "deployment_id": "(select id from deployment where code = 'IND')",
+                  "designation": "'ADMIN'",
+                  "item_id": "(select id from sidebar_item where name = 'MY_CONTRACTS')",
+                  "is_active": "true",
+                  "hierarchy_type": "'STATE'",
+                  "item_type": "'sidebar'",
+                  "view": "false",
+                  "add": "false",
+                  "edit": "false",
+                  "delete": "false"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtSchemeCode')",
+                  "value": "'KA182'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtBeneficiaryTypeCodeNS')",
+                  "value": "'4282'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtPurposeCodeAndBenficiaryTypeCodeTransitionDate')",
+                  "value": "'26-11-2021 11:08:00'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtBeneficiaryTypeCodeTS')",
+                  "value": "'4283'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtBeneficiaryTypeCodePSN')",
+                  "value": "'4281'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtBeneficiaryTypeCodeTSS')",
+                  "value": "'4284'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtPurposeCodeNS')",
+                  "value": "'7942'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtPurposeCodeNPY')",
+                  "value": "'7175'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtPurposeCodeTS')",
+                  "value": "'7176'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtPurposeCodePSN')",
+                  "value": "'7174'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtCentreAuthorityCodeNS')",
+                  "value": "'EID2L'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtCentreAuthorityCodeTS')",
+                  "value": "'E8TDP'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "hierarchy_config_map",
+                "keyValues": {
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE name = 'Karnataka')",
+                  "config_mapping_id": "(SELECT Id FROM config WHERE name = 'DbtCentreAuthorityCodePSN')",
+                  "value": "'E4308'",
+                  "active": "true",
+                  "created_at": "'UTC_DATE_TIME_PLUS_10_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_15_MINUTE'"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "staff",
+                "keyValues": {
+                  "client_id": "(SELECT id FROM client WHERE name = 'Nikshay')",
+                  "person_id": "(SELECT id FROM foreign_persons WHERE first_name = 'sto-KA')",
+                  "designation": "'ADMIN'",
+                  "added_by": "null",
+                  "selective_episode_mapping": "false",
+                  "active": "true",
+                  "added_on": "'UTC_DATE_TIME_PLUS_15_MINUTE'",
+                  "last_updated_on": "'UTC_DATE_TIME_PLUS_15_MINUTE'",
+                  "visible": "false"
+                }
+              }
+            ]
+          },
+          {
+            "title": "",
+            "queries": [
+              {
+                "type": "INSERT",
+                "table": "user_access",
+                "keyValues": {
+                  "active": "true",
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE level = 2 AND name = 'Karnataka')",
+                  "selective_hierarchy_mapping": "false",
+                  "sso_id": "(SELECT id FROM foreign_sso_users WHERE user_name = 'sto-ka')",
+                  "username": "'sto-KA'",
+                  "client_id": "(SELECT id FROM client WHERE name = 'Nikshay')",
+                  "staff_id": "(SELECT id FROM staff WHERE person_id = (select id FROM foreign_persons WHERE first_name = 'sto-KA'))",
+                  "description": "'Karnataka STATE Login'",
+                  "view_only": "false",
+                  "can_delete_patients": "true",
+                  "visible": "true",
+                  "restricted_view": "false",
+                  "created_at": "'DATE_TIME_PLUS_26_MINUTE'",
+                  "updated_at": "'DATE_TIME_PLUS_26_MINUTE'"
+                }
+              },
+              {
+                "type": "INSERT",
+                "table": "user_access_hierarchy_map",
+                "keyValues": {
+                  "created_at": "'UTC_DATE_TIME_PLUS_26_MINUTE'",
+                  "hierarchy_id": "(SELECT id FROM hierarchy WHERE level = 2 AND name = 'Karnataka')",
+                  "last_updated_by": "0",
+                  "relation": "'Direct'",
+                  "updated_at": "'UTC_DATE_TIME_PLUS_26_MINUTE'",
+                  "user_id": "(SELECT id FROM user_access WHERE username = 'sto-KA')"
                 }
               }
             ]

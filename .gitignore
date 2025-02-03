@@ -21,3 +21,4 @@ data/distinctVersions.json
 data/foreignKeyMismatches.json
 .DS_Store
 pipInstall.log
+__pycache__/
