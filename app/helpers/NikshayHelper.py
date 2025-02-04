@@ -860,3 +860,25 @@ class NikshayHelper(BaseHelper):
         self.ensure_stage_transitioned(episode_id, expected_stage)
         return response
 
+    def update_duplicate_status(self, token, data):
+        episode_id = data['episodeId']
+        status = data['status']
+        duplicate_of = data['duplicateOf']
+
+        endpoint = self._api_helper.get_endpoint('nikshay')
+        url = f"{endpoint}/api/Patients/UpdateDuplicateStatus"
+
+        headers = {
+            'Authorization': f"Bearer {token}"
+        }
+
+        payload = [
+            {
+                'PatientId': episode_id,
+                'DuplicationStatus': status,
+                'DuplicateOf': duplicate_of
+            }
+        ]
+
+        response = self._api_helper.post(url, payload, headers)
+        return response

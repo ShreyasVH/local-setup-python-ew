@@ -25,7 +25,8 @@ class DbtHelper:
         self._read_folder = 'read/'
 
     def add_files(self, add_prefix=True):
-        config = json.load(open(os.path.join(APP_PATH, 'data', 'dbtData.json')))
+        with open(os.path.join(APP_PATH, 'data', 'dbtData.json')) as f:
+            config = json.load(f)
         prefix = 'Z' if add_prefix else ''
 
         for request_object in config['beneficiaryRequests']:
