@@ -23,6 +23,9 @@ class MQHelper:
             )
         )
 
+    def __del__(self):
+        self.connection.close()
+
     def _get_channel(self):
         return self.connection.channel()
 

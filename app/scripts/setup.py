@@ -1,5 +1,5 @@
 import sys
-import subprocess
+# import subprocess
 from app.utils.Logger import Logger
 from datetime import datetime
 # from app.helpers.ServiceHelper import ApiHelper, DatabaseHelper, DbtHelper, ElasticHelper, MQHelper, ServerHelper, ServiceHelper
@@ -11,6 +11,7 @@ from app.helpers.ElasticHelper import ElasticHelper
 from app.enums.Server import Server
 from app.helpers.ApiHelper import ApiHelper
 from app.helpers.DbtHelper import DbtHelper
+from app.utils.Utils import shell_exec_with_immediate_output
 
 
 eligible_modes = ['FULL', 'MINIMAL']
@@ -71,9 +72,9 @@ elastic_helper.create_documents()
 # Create cache values
 if mode == 'FULL':
     Logger.info('setup', 'Clearing data state')
-    subprocess.run(['python3', 'app/scripts/clearDataState.py'])
+    shell_exec_with_immediate_output('python3 app/scripts/clearDataState.py')
     Logger.info('setup', 'Getting current data state')
-    subprocess.run(['python3', 'app/scripts/getCurrentDataState.py'])
+    shell_exec_with_immediate_output('python3 app/scripts/getCurrentDataState.py')
 
     dbt_helper = DbtHelper()
     # Clear old dbt files and add new ones
@@ -87,6 +88,6 @@ if mode == 'FULL':
     server_helper.start_servers()
 
 Logger.info('setup', 'Getting current data state')
-subprocess.run(['python3', 'app/scripts/getCurrentDataState.py'])
+shell_exec_with_immediate_output('python3 app/scripts/getCurrentDataState.py')
 Logger.info('setup', 'Getting data diff')
-subprocess.run(['python3', 'app/scripts/getDataDiff.py'])
+shell_exec_with_immediate_output('python3 app/scripts/getDataDiff.py')

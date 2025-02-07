@@ -2,8 +2,6 @@ from app.utils.Logger import Logger
 import os
 from datetime import datetime
 
-# Assuming you have the equivalent helper classes implemented in Python
-# from helpers import DatabaseHelper, ElasticHelper, MQHelper, ServerHelper, ServiceHelper, RedisHelper
 from app.helpers.ServiceHelper import ServiceHelper
 from app.helpers.ServerHelper import ServerHelper
 from app.helpers.DatabaseHelper import DatabaseHelper
