@@ -7,16 +7,29 @@
     insert into config (name, default_value, created_at, updated_at) values ('SCHEME_INTERVAL_INCENTIVE_AMOUNT', '500', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
     insert into config (name, default_value, created_at, updated_at) values ('SCHEME_INCENTIVE_GROUPING_DURATION', '6', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
     insert into config (name, default_value, created_at, updated_at) values ('SCHEME_INCENTIVE_GROUPING_FACTOR', '3', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
-insert into config (name, default_value, created_at, updated_at) values ('GENERATE_BENEFIT_FILES_ELIGIBLE_SCHEMES', 'NS,TS,TSS,PSN', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
-insert into config (name, default_value, created_at, updated_at) values ('MAX_BENEFIT_AMOUNT_LIMIT', '100000.0', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
-insert into config (name, default_value, created_at, updated_at) values ('MAX_ALLOWED_BENEFIT_BATCH_LIMIT', '9999', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
-insert into config (name, default_value, created_at, updated_at) values ('BENEFIT_REQUEST_SOURCE_FOLDER_PATH', 'dbttestfiles', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
-insert into config (name, default_value, created_at, updated_at) values ('VALIDATE_BENEFICIARY', 'false', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
-insert into config (name, default_value, created_at, updated_at) values ('BENEFIT_STATUS_DESTINATION_FOLDER_PATH', 'dbttestfiles\PaymentStatusData\FromCPSMS', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
-insert into config (name, default_value, created_at, updated_at) values ('BENEFIT_ACK_DESTINATION_FOLDER_PATH', 'dbttestfiles\PaymentData\FromCPSMS', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
-insert into config (name, default_value, created_at, updated_at) values ('SCHEME_REVISION_ENABLED', false, 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
-insert into config (name, default_value, created_at, updated_at) values ('SCHEME_REVISION_DATE', 'UTC_DATE_MINUS_50_DAY', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
-insert into config (name, default_value, created_at, updated_at) values ('SCHEME_REVISION_AMOUNT', '1000', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    insert into config (name, default_value, created_at, updated_at) values ('GENERATE_BENEFIT_FILES_ELIGIBLE_SCHEMES', 'NS,TS,TSS,PSN', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    insert into config (name, default_value, created_at, updated_at) values ('MAX_BENEFIT_AMOUNT_LIMIT', '100000.0', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    insert into config (name, default_value, created_at, updated_at) values ('MAX_ALLOWED_BENEFIT_BATCH_LIMIT', '9999', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    insert into config (name, default_value, created_at, updated_at) values ('BENEFIT_REQUEST_SOURCE_FOLDER_PATH', 'dbttestfiles', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    insert into config (name, default_value, created_at, updated_at) values ('VALIDATE_BENEFICIARY', 'false', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    insert into config (name, default_value, created_at, updated_at) values ('BENEFIT_STATUS_DESTINATION_FOLDER_PATH', 'dbttestfiles\PaymentStatusData\FromCPSMS', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    insert into config (name, default_value, created_at, updated_at) values ('BENEFIT_ACK_DESTINATION_FOLDER_PATH', 'dbttestfiles\PaymentData\FromCPSMS', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    insert into config (name, default_value, created_at, updated_at) values ('SCHEME_REVISION_ENABLED', false, 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    insert into config (name, default_value, created_at, updated_at) values ('SCHEME_REVISION_DATE', 'UTC_DATE_MINUS_50_DAY', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    insert into config (name, default_value, created_at, updated_at) values ('SCHEME_REVISION_AMOUNT', '1000', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_BENEFIT_REQUEST_DESTINATION_FOLDER_PATH', '/sftp/cpsms/0038/PaymentData/ToCPSMS/', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_BENEFIT_ACK_SOURCE_FOLDER_PATH', '/sftp/cpsms/0038/PaymentData/FromCPSMS/', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_BENEFIT_ACK_DOWNLOADED_FILES_DESTINATION_PATH', '/sftp/cpsms/0038/PaymentData/FromCPSMS/read/', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_BENEFIT_ACK_DOWNLOADED_FILES_EXTENSION', '.done', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_BENEFIT_STATUS_SOURCE_FOLDER_PATH', '/sftp/cpsms/0038/PaymentStatusData/FromCPSMS/', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_BENEFIT_STATUS_DOWNLOADED_FILES_DESTINATION_PATH', '/sftp/cpsms/0038/PaymentStatusData/FromCPSMS/read/', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_BENEFIT_STATUS_DOWNLOADED_FILES_EXTENSION', '.done', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_HOST', 'localhost', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_PORT', '22', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_AUTH_KEY', '', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('SFTP_AUTH_TOKEN', '', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+    INSERT INTO config (name, default_value, created_at, updated_at) VALUES ('DATA_TRANSFER_PROTOCOL', 'SFTP', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+
 
 #scheme
     insert into scheme (code, name, version, start_date, end_date, created_at, updated_at) values ('NPY', 'Ni-kshay Poshan Yojana', 1, '2018-03-31 18:30:00', 'UTC_DATE_MINUS_75_DAY', NOW(), NOW());
@@ -56,6 +69,24 @@ insert into config (name, default_value, created_at, updated_at) values ('SCHEME
     insert into scheme_config_map (config_mapping_id, scheme_id, "value", created_at, updated_at) values ((select id from config WHERE name = 'GeneratePeriodicBenefits'), (select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3), true, NOW(), NOW());
     insert into scheme_config_map (config_mapping_id, scheme_id, "value", created_at, updated_at) values ((select id from config WHERE name = 'VALIDATE_BENEFICIARY'), (select id from scheme where code = 'NPY' and name = 'Ni-kshay Poshan Yojana' and version = 3), true, NOW(), NOW());
 
+#partner
+    INSERT INTO partner (active, name, registered_at, updated_at) VALUES (true, 'PFMS', 'UTC_DATE_TIME_PLUS_0_DAY', 'UTC_DATE_TIME_PLUS_0_DAY');
+
+#partner_config_map
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_BENEFIT_REQUEST_DESTINATION_FOLDER_PATH'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', '/home/nikshay-dev/sftp/cpsms/0038/PaymentData/ToCPSMS/');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_BENEFIT_ACK_SOURCE_FOLDER_PATH'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', '/Users/shreyas/sftp/cpsms/0038/PaymentData/FromCPSMS/');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_BENEFIT_ACK_DOWNLOADED_FILES_DESTINATION_PATH'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', '/Users/shreyas/sftp/cpsms/0038/PaymentData/FromCPSMS/read/');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_BENEFIT_ACK_DOWNLOADED_FILES_EXTENSION'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', '.done');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_BENEFIT_STATUS_SOURCE_FOLDER_PATH'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', '/Users/shreyas/sftp/cpsms/0038/PaymentStatusData/FromCPSMS/');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_BENEFIT_STATUS_DOWNLOADED_FILES_DESTINATION_PATH'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', '/Users/shreyas/sftp/cpsms/0038/PaymentStatusData/FromCPSMS/read/');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_BENEFIT_STATUS_DOWNLOADED_FILES_EXTENSION'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', '.done');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_HOST'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', '192.168.0.178');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_PORT'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', '22');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_AUTH_KEY'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', 'shreyas');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'SFTP_AUTH_TOKEN'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', 'opensesame');
+    INSERT INTO partner_config_map (config_mapping_id, created_at, partner_id, updated_at, value) VALUES ((SELECT id FROM config WHERE name = 'DATA_TRANSFER_PROTOCOL'), 'UTC_DATE_TIME_PLUS_0_DAY', (SELECT id FROM partner WHERE name = 'PFMS'), 'UTC_DATE_TIME_PLUS_0_DAY', 'SFTP');
+
+
 #flyway_schema_history
     INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (1, '1.1', 'Create Client', 'SQL', 'V1.1__Create_Client.sql', -1824415831, 'shreyas', '2024-08-22 15:32:00.125975', 30, true);
     INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (2, '1.2', 'Create hierarchy benefit status map', 'SQL', 'V1.2__Create_hierarchy_benefit_status_map.sql', 104265578, 'shreyas', '2024-08-22 15:32:00.178217', 3, true);
@@ -76,3 +107,7 @@ insert into config (name, default_value, created_at, updated_at) values ('SCHEME
     INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (17, '202411131220', 'Add benefit revision configs', 'SQL', 'V202411131220__Add_benefit_revision_configs.sql', -647817899, 'shreyas', '2024-11-25 05:21:14.981417', 8, true);
     INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (18, '202412051658', 'Enable npy scheme revision v1', 'SQL', 'V202412051658__Enable_npy_scheme_revision_v1.sql', 152689505, 'shreyas', '2024-12-31 07:17:08.630452', 21, true);
     INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (19, '202412051703', 'Enable scheme revision V2', 'SQL', 'V202412051703__Enable_scheme_revision_V2.sql', -78908086, 'shreyas', '2024-12-31 07:17:08.665457', 3, true);
+    INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (20, '202501011442', 'Add partner and partner config map table', 'SQL', 'V202501011442__Add_partner_and_partner_config_map_table.sql', -1333676076, 'shreyas', '2025-02-19 13:54:11.660096', 4, true);
+    INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (21, '202501031442', 'Add SFTP master configs', 'SQL', 'V202501031442__Add_SFTP_master_configs.sql', 306115306, 'shreyas', '2025-02-19 13:54:11.669045', 2, true);
+    INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (22, '202501031500', 'Add SFTP PFMS Configs', 'SQL', 'V202501031500__Add_SFTP_PFMS_Configs.sql', -419730659, 'shreyas', '2025-02-19 13:54:11.674770', 1, true);
+    INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (23, '202501241340', 'Create Benefit reconciliation tacker table', 'SQL', 'V202501241340__Create_Benefit_reconciliation_tacker_table.sql', -1107167612, 'shreyas', '2025-02-19 13:54:11.679646', 3, true);
