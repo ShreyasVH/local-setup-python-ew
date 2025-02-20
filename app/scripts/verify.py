@@ -58,7 +58,7 @@ print("\n")
 input().strip()
 
 Logger.info('verify', 'Destroying')
-shell_exec_with_immediate_output('python3 app/scripts/destroy.py')
+shell_exec_with_immediate_output('source .envrc && python3 app/scripts/destroy.py')
 
 print("\n")
 print("Hit any key once nikshay is started")
@@ -88,7 +88,7 @@ for file_name in documents:
         subprocess.run(['rm', file_path])
 
 Logger.info('verify', 'Setting up')
-shell_exec_with_immediate_output('python3 app/scripts/setup.py')
+shell_exec_with_immediate_output('source .envrc && python3 app/scripts/setup.py')
 
 nikshay_helper = NikshayHelper()
 Logger.info('verify', 'Warming Nikshay')
@@ -98,9 +98,9 @@ nikshay_helper.warmup_webapp()
 
 
 Logger.info('verify', 'Simulating')
-shell_exec_with_immediate_output('python3 app/scripts/simulate.py ' + str(starting_version) + ' ' + str(ending_version))
+shell_exec_with_immediate_output('source .envrc && python3 app/scripts/simulate.py ' + str(starting_version) + ' ' + str(ending_version))
 Logger.info('verify', 'Getting current data state')
-shell_exec_with_immediate_output('python3 app/scripts/getCurrentDataState.py')
+shell_exec_with_immediate_output('source .envrc && python3 app/scripts/getCurrentDataState.py')
 
 print("\n")
 print("Hit any key once nikshay is stopped")
@@ -108,7 +108,7 @@ print("\n")
 input().strip()
 
 Logger.info('verify', 'Destroying')
-shell_exec_with_immediate_output('python3 app/scripts/destroy.py')
+shell_exec_with_immediate_output('source .envrc && python3 app/scripts/destroy.py')
 
 for version in range(starting_version, ending_version + 1):
     Logger.info('verify', 'Toggling on current migration ' + str(version))
@@ -120,7 +120,7 @@ for document_id in document_ids:
     shell_exec_with_immediate_output('git checkout ' + file_path)
 
 Logger.info('verify', 'Setting up db queries')
-shell_exec_with_immediate_output('python3 app/scripts/setup.py MINIMAL')
+shell_exec_with_immediate_output('source .envrc && python3 app/scripts/setup.py MINIMAL')
 
 shell_exec_with_immediate_output(f"echo {os.getenv('USER_PASSWORD')} | sudo -S -p '' /usr/sbin/systemsetup -settimezone Asia/Calcutta")
 

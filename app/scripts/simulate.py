@@ -1577,7 +1577,7 @@ if starting_version <= version_map['NikshayDBTMaker'] <= ending_version:
 if starting_version <= version_map['NikshayDBTMakerTribal'] <= ending_version:
     Logger.info('simulate', 'Generating district token')
     district_token = nikshay_helper.get_token('dto-kadha', 'Test@123')
-    Logger.info('simulate', 'Creating DBT Maker')
+    Logger.info('simulate', 'Creating DBT Maker Tribal')
     state_data = nikshay_helper.add_dbt_maker(district_token, {
         'hierarchyName': 'tuTribal',
         'mobile': '9999999934',

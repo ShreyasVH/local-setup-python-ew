@@ -44,6 +44,26 @@ date_time_fields = {
                 'additionalData': []
             }
         },
+        'partner': {
+            'registered_at': {
+                'format': '%Y-%m-%d %H:%M:%S',
+                'additionalData': []
+            },
+            'updated_at': {
+                'format': '%Y-%m-%d %H:%M:%S',
+                'additionalData': []
+            }
+        },
+        'partner_config_map': {
+            'created_at': {
+                'format': '%Y-%m-%d %H:%M:%S',
+                'additionalData': []
+            },
+            'updated_at': {
+                'format': '%Y-%m-%d %H:%M:%S',
+                'additionalData': []
+            }
+        },
         'scheme': {
             'created_at': {
                 'format': '%Y-%m-%d %H:%M:%S',
@@ -532,7 +552,27 @@ date_time_fields = {
                 'additionalData': []
             }
         },
+        'staff_aud': {
+            'added_on': {
+                'format': '%Y-%m-%d %H:%M:%S',
+                'additionalData': []
+            },
+            'last_updated_on': {
+                'format': '%Y-%m-%d %H:%M:%S',
+                'additionalData': []
+            }
+        },
         'user_access': {
+            'created_at': {
+                'format': '%Y-%m-%d %H:%M:%S',
+                'additionalData': []
+            },
+            'updated_at': {
+                'format': '%Y-%m-%d %H:%M:%S',
+                'additionalData': []
+            }
+        },
+        'user_access_aud': {
             'created_at': {
                 'format': '%Y-%m-%d %H:%M:%S',
                 'additionalData': []
@@ -1076,9 +1116,11 @@ if len(files) > 1:
     diff = {}
 
     for database_name, table_values in old_values_data.items():
+        # print(database_name)
         database_diff = {}
 
         for table_name, old_values in table_values.items():
+            # print(f"\t{table_name}")
             table_diff = {}
 
             if old_values:

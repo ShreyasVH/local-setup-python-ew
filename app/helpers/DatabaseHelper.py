@@ -214,7 +214,9 @@ class DatabaseHelper:
                 'hierarchy_associations_aud',
                 'hierarchy_aud',
                 'revinfo',
-                'spatial_ref_sys'
+                'spatial_ref_sys',
+                'staff_aud',
+                'user_access_aud'
             ],
             'sso_new': ['flyway_schema_history', 'sso_session'],
             'transition_new': [

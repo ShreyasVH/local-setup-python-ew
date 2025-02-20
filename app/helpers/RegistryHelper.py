@@ -257,6 +257,18 @@ class RegistryHelper(BaseHelper):
                 'add': True,
                 'edit': True,
                 'delete': False
+            },
+            'Dispensation': {
+                'view': True,
+                'add': True,
+                'edit': True,
+                'delete': True
+            },
+            'Contact Tracing': {
+                'view': True,
+                'add': False,
+                'edit': True,
+                'delete': False
             }
         }
 
