@@ -799,8 +799,8 @@ timestamp_fields = {
     },
     'registry_new': {
         'revinfo': {
-            'revstmp': {
-                'multiplier': 1
+            'revtstmp': {
+                'multiplier': 1000
             }
         }
     },
@@ -860,6 +860,16 @@ json_fields = {
     },
     'registry_new': {
         'hierarchy_associations': {
+            'value': {
+                'additionalData': {
+                    'UpdatedDate': {
+                        'type': 'date_time',
+                        'format': '%Y-%m-%d %H:%M:%S'
+                    }
+                }
+            }
+        },
+        'hierarchy_associations_aud': {
             'value': {
                 'additionalData': {
                     'UpdatedDate': {
@@ -946,6 +956,9 @@ otp_fields = {
 id_columns = {
     'nikshay_new': {
         '_BenefitsBatch': 'requestuniquemessageid'
+    },
+    'registry_new': {
+        'revinfo': 'rev'
     }
 }
 
@@ -1086,9 +1099,7 @@ def compare(database_name, table_name, column, old_value, new_value, old_row):
 
     if is_date_time_field(database_name, table_name, column, old_value, new_value, old_row, format_ref):
         different_values = compare_datetime(old_value, new_value, format_ref[0])
-    elif database_name in timestamp_fields and \
-         table_name in timestamp_fields[database_name] and \
-         column in timestamp_fields[database_name][table_name]:
+    elif database_name in timestamp_fields and table_name in timestamp_fields[database_name] and column in timestamp_fields[database_name][table_name]:
         field_data = timestamp_fields[database_name][table_name][column]
         multiplier = field_data['multiplier']
         diff_minutes = abs((int(new_value) - int(old_value)) / (60 * multiplier))
